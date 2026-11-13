@@ -1,0 +1,367 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FCE7F3">
+
+    <title>Pink English Quiz</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #FFF5F9;
+            color: #594252;
+            min-height: 100vh;
+            padding: 24px 16px;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .app {
+            width: 100%;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .logo {
+            font-size: 38px;
+            margin-bottom: 8px;
+        }
+
+        header h1 {
+            color: #B65F89;
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #A88B9B;
+            font-size: 14px;
+        }
+
+        .panel {
+            background: #FFFFFF;
+            border: 1px solid #F3DCE8;
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 25px rgba(185, 112, 148, 0.08);
+        }
+
+        .section-title {
+            font-size: 20px;
+            color: #A64F79;
+            margin-bottom: 18px;
+        }
+
+        .set-list {
+            display: grid;
+            gap: 12px;
+        }
+
+        .set-card {
+            width: 100%;
+            border: 1px solid #F0D6E3;
+            background: #FFFAFC;
+            border-radius: 14px;
+            padding: 17px;
+            text-align: left;
+            transition: 0.2s;
+        }
+
+        .set-card:hover {
+            background: #FCE7F3;
+            border-color: #DFA5C2;
+            transform: translateY(-2px);
+        }
+
+        .set-card h3 {
+            color: #A64F79;
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+
+        .set-card p {
+            color: #9E8795;
+            font-size: 13px;
+        }
+
+        .quiz-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            font-size: 14px;
+        }
+
+        .score {
+            color: #B65F89;
+            font-weight: bold;
+        }
+
+        .progress-track {
+            width: 100%;
+            height: 8px;
+            background: #F7E5EE;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-bottom: 26px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 0;
+            background: #D985AE;
+            transition: width 0.3s;
+        }
+
+        .question {
+            font-size: 23px;
+            line-height: 1.5;
+            color: #604558;
+            margin-bottom: 24px;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #F0DCE6;
+            background: #FFFAFC;
+            color: #654D5D;
+            border-radius: 12px;
+            text-align: left;
+            font-size: 16px;
+            transition: 0.2s;
+        }
+
+        .option:hover:not(:disabled) {
+            border-color: #D58BAE;
+            background: #FFF0F6;
+        }
+
+        .option:disabled {
+            cursor: default;
+        }
+
+        .option.correct {
+            background: #DCF4E2;
+            border-color: #57AE70;
+            color: #237A3C;
+        }
+
+        .option.wrong {
+            background: #FFEDD5;
+            border-color: #E9A04D;
+            color: #A45D14;
+        }
+
+        .explanation {
+            display: none;
+            margin-top: 22px;
+            padding: 18px;
+            background: #FFF3F8;
+            border-radius: 12px;
+            border-left: 4px solid #D985AE;
+        }
+
+        .explanation h3 {
+            color: #A64F79;
+            margin-bottom: 8px;
+        }
+
+        .explanation p {
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .main-button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 15px;
+            background: #D985AE;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            transition: 0.2s;
+        }
+
+        .main-button:hover {
+            background: #BC6993;
+        }
+
+        .result {
+            text-align: center;
+            padding: 25px 5px;
+        }
+
+        .result-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .result h2 {
+            color: #A64F79;
+            margin-bottom: 12px;
+        }
+
+        .result-score {
+            font-size: 38px;
+            font-weight: bold;
+            color: #D17BA5;
+            margin: 18px 0;
+        }
+
+        .secondary-button {
+            width: 100%;
+            margin-top: 10px;
+            padding: 13px;
+            background: white;
+            color: #A64F79;
+            border: 1px solid #DFA5C2;
+            border-radius: 12px;
+            font-size: 15px;
+        }
+
+        .secondary-button:hover {
+            background: #FFF0F6;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        footer {
+            text-align: center;
+            color: #B59DAC;
+            font-size: 12px;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 18px 12px;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            .question {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="app">
+
+    <header>
+        <div class="logo">🌸</div>
+        <h1>Pink English Quiz</h1>
+        <p>Learn English, one question at a time!</p>
+    </header>
+
+    <!-- Màn hình chọn bộ câu hỏi -->
+    <section id="home-screen" class="panel">
+        <h2 class="section-title">Choose your quiz 💗</h2>
+
+        <div id="set-list" class="set-list">
+            <p>Loading question sets...</p>
+        </div>
+    </section>
+
+    <!-- Màn hình chơi -->
+    <section id="quiz-screen" class="panel hidden">
+
+        <div class="quiz-top">
+            <span id="question-number">Question 1</span>
+            <span id="score" class="score">Score: 0</span>
+        </div>
+
+        <div class="progress-track">
+            <div id="progress" class="progress-fill"></div>
+        </div>
+
+        <h2 id="question" class="question">
+            Question goes here
+        </h2>
+
+        <div id="options" class="options">
+            <!-- JavaScript sẽ tạo 3 đáp án ở đây -->
+        </div>
+
+        <div id="explanation" class="explanation">
+            <h3>💡 Explanation</h3>
+            <p id="explanation-text"></p>
+        </div>
+
+        <button id="next-button" class="main-button hidden">
+            Next Question →
+        </button>
+
+    </section>
+
+    <!-- Màn hình kết quả -->
+    <section id="result-screen" class="panel hidden">
+        <div class="result">
+            <div class="result-icon">🏆</div>
+
+            <h2>Quiz Completed!</h2>
+
+            <p>Your final score:</p>
+
+            <div id="final-score" class="result-score">
+                0 / 0
+            </div>
+
+            <p id="result-message"></p>
+        </div>
+
+        <button id="retry-button" class="main-button">
+            Try Again ↻
+        </button>
+
+        <button id="home-button" class="secondary-button">
+            Back to Quiz Selection
+        </button>
+    </section>
+
+    <footer>
+        Made with 💗 for English learners
+    </footer>
+
+</div>
+
+<script src="./app.js" defer></script>
+
+</body>
+</html>
