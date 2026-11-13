@@ -1,0 +1,161 @@
+
+{
+  "sets": [
+    {
+      "id": "grammar_a1",
+      "title": "Basic Grammar",
+      "level": "A1",
+      "description": "Practice basic English grammar",
+      "questions": [
+        {
+          "id": 1,
+          "question": "She _____ to school every day.",
+          "options": ["go", "goes", "going"],
+          "correctAnswer": 1,
+          "explanation": "She là ngôi thứ ba số ít. Trong thì hiện tại đơn, động từ go phải thêm -es thành goes."
+        },
+        {
+          "id": 2,
+          "question": "I _____ a student.",
+          "options": ["am", "is", "are"],
+          "correctAnswer": 0,
+          "explanation": "Với chủ ngữ I, chúng ta sử dụng động từ to be là am."
+        },
+        {
+          "id": 3,
+          "question": "They _____ football yesterday.",
+          "options": ["play", "plays", "played"],
+          "correctAnswer": 2,
+          "explanation": "Yesterday là dấu hiệu của thì quá khứ đơn. Động từ play chuyển thành played."
+        },
+        {
+          "id": 4,
+          "question": "He is _____ than his brother.",
+          "options": ["tall", "taller", "tallest"],
+          "correctAnswer": 1,
+          "explanation": "Than là dấu hiệu của câu so sánh hơn. Với tính từ ngắn tall, ta thêm -er thành taller."
+        },
+        {
+          "id": 5,
+          "question": "We have lived here _____ 2020.",
+          "options": ["for", "since", "during"],
+          "correctAnswer": 1,
+          "explanation": "Since dùng với một mốc thời gian bắt đầu cụ thể, chẳng hạn since 2020. For dùng với một khoảng thời gian."
+        },
+        {
+          "id": 6,
+          "question": "There _____ some milk in the fridge.",
+          "options": ["are", "am", "is"],
+          "correctAnswer": 2,
+          "explanation": "Milk là danh từ không đếm được nên sử dụng There is, không dùng There are."
+        },
+        {
+          "id": 7,
+          "question": "If it rains tomorrow, we _____ at home.",
+          "options": ["stay", "will stay", "stayed"],
+          "correctAnswer": 1,
+          "explanation": "Đây là câu điều kiện loại 1: If + hiện tại đơn, will + động từ nguyên mẫu."
+        },
+        {
+          "id": 8,
+          "question": "I _____ TV when my phone rang.",
+          "options": ["watched", "was watching", "watch"],
+          "correctAnswer": 1,
+          "explanation": "Hành động đang diễn ra trong quá khứ bị một hành động khác xen vào. Ta dùng quá khứ tiếp diễn: was watching."
+        },
+        {
+          "id": 9,
+          "question": "She doesn't _____ coffee.",
+          "options": ["likes", "liking", "like"],
+          "correctAnswer": 2,
+          "explanation": "Sau doesn't, động từ chính phải ở dạng nguyên mẫu không có to. Vì vậy dùng like."
+        },
+        {
+          "id": 10,
+          "question": "This is _____ interesting book.",
+          "options": ["a", "an", "the"],
+          "correctAnswer": 1,
+          "explanation": "Interesting bắt đầu bằng âm nguyên âm /ɪ/. Ta sử dụng mạo từ an trước từ có âm mở đầu là nguyên âm."
+        }
+      ]
+    },
+    {
+      "id": "vocabulary_a2",
+      "title": "Basic Vocabulary",
+      "level": "A2",
+      "description": "Learn useful everyday English words",
+      "questions": [
+        {
+          "id": 1,
+          "question": "What is the opposite of 'expensive'?",
+          "options": ["Cheap", "Beautiful", "Difficult"],
+          "correctAnswer": 0,
+          "explanation": "Expensive có nghĩa là đắt tiền. Cheap có nghĩa là rẻ tiền, trái nghĩa với expensive."
+        },
+        {
+          "id": 2,
+          "question": "What does 'borrow' mean?",
+          "options": ["Give something away", "Take something and return it later", "Buy something"],
+          "correctAnswer": 1,
+          "explanation": "Borrow có nghĩa là mượn thứ gì đó từ người khác và sẽ trả lại sau. Đừng nhầm với lend (cho mượn)."
+        },
+        {
+          "id": 3,
+          "question": "If food is 'delicious', it means:",
+          "options": ["It tastes very good", "It is very expensive", "It is very cold"],
+          "correctAnswer": 0,
+          "explanation": "Delicious là tính từ có nghĩa là ngon, có hương vị rất tuyệt."
+        },
+        {
+          "id": 4,
+          "question": "What is an 'appointment'?",
+          "options": ["A type of food", "A planned meeting", "A kind of sport"],
+          "correctAnswer": 1,
+          "explanation": "Appointment có nghĩa là cuộc hẹn hoặc lịch hẹn đã được sắp xếp trước."
+        },
+        {
+          "id": 5,
+          "question": "The restaurant is 'crowded'. What does it mean?",
+          "options": ["It is empty", "It is very quiet", "It is full of people"],
+          "correctAnswer": 2,
+          "explanation": "Crowded có nghĩa là đông đúc, có rất nhiều người ở cùng một địa điểm."
+        },
+        {
+          "id": 6,
+          "question": "What does 'improve' mean?",
+          "options": ["To make something better", "To make something worse", "To forget something"],
+          "correctAnswer": 0,
+          "explanation": "Improve có nghĩa là cải thiện hoặc làm cho điều gì đó trở nên tốt hơn."
+        },
+        {
+          "id": 7,
+          "question": "Which word means 'making very little noise'?",
+          "options": ["Loud", "Quiet", "Busy"],
+          "correctAnswer": 1,
+          "explanation": "Quiet có nghĩa là yên tĩnh, ít tiếng ồn. Trái nghĩa với quiet là loud (ồn ào)."
+        },
+        {
+          "id": 8,
+          "question": "What does the phrasal verb 'put off' mean?",
+          "options": ["To postpone something", "To start something", "To finish something"],
+          "correctAnswer": 0,
+          "explanation": "Put off có nghĩa là trì hoãn hoặc dời một việc sang thời điểm khác."
+        },
+        {
+          "id": 9,
+          "question": "A 'generous' person is someone who:",
+          "options": ["Never shares anything", "Likes helping and giving to others", "Always arrives late"],
+          "correctAnswer": 1,
+          "explanation": "Generous có nghĩa là hào phóng, sẵn lòng chia sẻ hoặc giúp đỡ người khác."
+        },
+        {
+          "id": 10,
+          "question": "What does 'reliable' mean?",
+          "options": ["Can be trusted", "Always angry", "Very expensive"],
+          "correctAnswer": 0,
+          "explanation": "Reliable có nghĩa là đáng tin cậy, một người hoặc vật mà bạn có thể tin tưởng và dựa vào."
+        }
+      ]
+    }
+  ]
+}
