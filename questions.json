@@ -1,159 +1,1828 @@
-
 {
+  "version": 2,
+  "description": "Pink English Quiz question bank: 3 categories, 50 questions each, progressive A1-C1.",
   "sets": [
     {
-      "id": "grammar_a1",
-      "title": "Basic Grammar",
-      "level": "A1",
-      "description": "Practice basic English grammar",
+      "id": "grammar_progressive",
+      "title": "Grammar – Ngữ pháp",
+      "level": "A1–C1",
+      "description": "50 câu ngữ pháp, độ khó tăng dần từ cơ bản đến nâng cao",
       "questions": [
         {
           "id": 1,
+          "difficulty": "A1 · Cơ bản",
           "question": "She _____ to school every day.",
-          "options": ["go", "goes", "going"],
-          "correctAnswer": 1,
-          "explanation": "She là ngôi thứ ba số ít. Trong thì hiện tại đơn, động từ go phải thêm -es thành goes."
+          "options": [
+            "goes",
+            "going",
+            "go"
+          ],
+          "correctAnswer": 0,
+          "explanation": "She là ngôi thứ ba số ít. Ở thì hiện tại đơn, động từ go thêm -es thành goes."
         },
         {
           "id": 2,
+          "difficulty": "A1 · Cơ bản",
           "question": "I _____ a student.",
-          "options": ["am", "is", "are"],
-          "correctAnswer": 0,
-          "explanation": "Với chủ ngữ I, chúng ta sử dụng động từ to be là am."
+          "options": [
+            "are",
+            "is",
+            "am"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Với chủ ngữ I, động từ to be ở hiện tại là am."
         },
         {
           "id": 3,
-          "question": "They _____ football yesterday.",
-          "options": ["play", "plays", "played"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "They _____ happy today.",
+          "options": [
+            "am",
+            "is",
+            "are"
+          ],
           "correctAnswer": 2,
-          "explanation": "Yesterday là dấu hiệu của thì quá khứ đơn. Động từ play chuyển thành played."
+          "explanation": "They là chủ ngữ số nhiều nên đi với are."
         },
         {
           "id": 4,
-          "question": "He is _____ than his brother.",
-          "options": ["tall", "taller", "tallest"],
-          "correctAnswer": 1,
-          "explanation": "Than là dấu hiệu của câu so sánh hơn. Với tính từ ngắn tall, ta thêm -er thành taller."
+          "difficulty": "A1 · Cơ bản",
+          "question": "There _____ an apple on the table.",
+          "options": [
+            "be",
+            "are",
+            "is"
+          ],
+          "correctAnswer": 2,
+          "explanation": "An apple là danh từ đếm được số ít nên dùng There is."
         },
         {
           "id": 5,
-          "question": "We have lived here _____ 2020.",
-          "options": ["for", "since", "during"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "He doesn't _____ coffee.",
+          "options": [
+            "likes",
+            "like",
+            "liking"
+          ],
           "correctAnswer": 1,
-          "explanation": "Since dùng với một mốc thời gian bắt đầu cụ thể, chẳng hạn since 2020. For dùng với một khoảng thời gian."
+          "explanation": "Sau trợ động từ doesn't, động từ chính dùng dạng nguyên mẫu like."
         },
         {
           "id": 6,
-          "question": "There _____ some milk in the fridge.",
-          "options": ["are", "am", "is"],
-          "correctAnswer": 2,
-          "explanation": "Milk là danh từ không đếm được nên sử dụng There is, không dùng There are."
+          "difficulty": "A1 · Cơ bản",
+          "question": "We _____ to the beach last Sunday.",
+          "options": [
+            "goes",
+            "went",
+            "go"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Last Sunday chỉ thời điểm quá khứ; go có dạng quá khứ bất quy tắc là went."
         },
         {
           "id": 7,
-          "question": "If it rains tomorrow, we _____ at home.",
-          "options": ["stay", "will stay", "stayed"],
-          "correctAnswer": 1,
-          "explanation": "Đây là câu điều kiện loại 1: If + hiện tại đơn, will + động từ nguyên mẫu."
+          "difficulty": "A1 · Cơ bản",
+          "question": "It took me _____ hour to finish the task.",
+          "options": [
+            "the",
+            "a",
+            "an"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Hour có âm h câm và bắt đầu bằng âm nguyên âm /aʊ/, vì vậy dùng an."
         },
         {
           "id": 8,
-          "question": "I _____ TV when my phone rang.",
-          "options": ["watched", "was watching", "watch"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "Would you like _____ water?",
+          "options": [
+            "many",
+            "some",
+            "a few"
+          ],
           "correctAnswer": 1,
-          "explanation": "Hành động đang diễn ra trong quá khứ bị một hành động khác xen vào. Ta dùng quá khứ tiếp diễn: was watching."
+          "explanation": "Some thường được dùng trong lời mời hoặc lời đề nghị với danh từ không đếm được như water."
         },
         {
           "id": 9,
-          "question": "She doesn't _____ coffee.",
-          "options": ["likes", "liking", "like"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "_____ you speak English?",
+          "options": [
+            "Are",
+            "Does",
+            "Can"
+          ],
           "correctAnswer": 2,
-          "explanation": "Sau doesn't, động từ chính phải ở dạng nguyên mẫu không có to. Vì vậy dùng like."
+          "explanation": "Can dùng để hỏi về khả năng. Câu hỏi đúng là Can you speak...?"
         },
         {
           "id": 10,
-          "question": "This is _____ interesting book.",
-          "options": ["a", "an", "the"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "My brother can _____ very well.",
+          "options": [
+            "swimming",
+            "swim",
+            "swims"
+          ],
           "correctAnswer": 1,
-          "explanation": "Interesting bắt đầu bằng âm nguyên âm /ɪ/. Ta sử dụng mạo từ an trước từ có âm mở đầu là nguyên âm."
+          "explanation": "Sau động từ khuyết thiếu can, dùng động từ nguyên mẫu không có to: swim."
+        },
+        {
+          "id": 11,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "I have lived in Can Tho _____ five years.",
+          "options": [
+            "during",
+            "since",
+            "for"
+          ],
+          "correctAnswer": 2,
+          "explanation": "For đi với khoảng thời gian, ở đây là five years. Since đi với mốc bắt đầu."
+        },
+        {
+          "id": 12,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "She has worked here _____ 2021.",
+          "options": [
+            "for",
+            "from",
+            "since"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Since dùng với mốc thời gian bắt đầu cụ thể như 2021."
+        },
+        {
+          "id": 13,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "While I _____ dinner, the phone rang.",
+          "options": [
+            "was cooking",
+            "cooked",
+            "am cooking"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Hành động đang diễn ra trong quá khứ bị một hành động khác xen vào: quá khứ tiếp diễn was cooking."
+        },
+        {
+          "id": 14,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "This bag is _____ heavy for me to carry.",
+          "options": [
+            "so that",
+            "too",
+            "enough"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Cấu trúc too + tính từ + to-infinitive diễn tả quá mức để làm việc gì."
+        },
+        {
+          "id": 15,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "We don't have _____ time to visit both places.",
+          "options": [
+            "many",
+            "too",
+            "enough"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Enough đứng trước danh từ để chỉ lượng đủ: enough time."
+        },
+        {
+          "id": 16,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "If I had more free time, I _____ a new language.",
+          "options": [
+            "will learn",
+            "learned",
+            "would learn"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu."
+        },
+        {
+          "id": 17,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "The old bridge _____ in 1998.",
+          "options": [
+            "was built",
+            "is building",
+            "built"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Câu bị động quá khứ đơn có dạng was/were + quá khứ phân từ: was built."
+        },
+        {
+          "id": 18,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "When I was a child, I _____ play outside every evening.",
+          "options": [
+            "used to",
+            "was used",
+            "use to"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Used to + động từ nguyên mẫu diễn tả thói quen hoặc trạng thái trong quá khứ nay không còn."
+        },
+        {
+          "id": 19,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Neither of the answers _____ correct.",
+          "options": [
+            "are",
+            "be",
+            "is"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Neither thường được xem là chủ ngữ số ít trong cấu trúc này, nên dùng is."
+        },
+        {
+          "id": 20,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "You _____ use your phone during the exam. It is prohibited.",
+          "options": [
+            "mustn't",
+            "should",
+            "don't have to"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Mustn't diễn tả sự cấm đoán. Don't have to nghĩa là không cần thiết, khác nghĩa."
+        },
+        {
+          "id": 21,
+          "difficulty": "B1 · Trung cấp",
+          "question": "_____ being tired, she finished the report before midnight.",
+          "options": [
+            "Because",
+            "Although",
+            "Despite"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Despite đi với danh từ hoặc V-ing. Ở đây là Despite being tired (rút gọn)."
+        },
+        {
+          "id": 22,
+          "difficulty": "B1 · Trung cấp",
+          "question": "By the time we arrived, the film _____.",
+          "options": [
+            "already started",
+            "had already started",
+            "has already started"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Một hành động xảy ra trước một thời điểm/hành động khác trong quá khứ dùng quá khứ hoàn thành."
+        },
+        {
+          "id": 23,
+          "difficulty": "B1 · Trung cấp",
+          "question": "I wish I _____ harder for the exam last month.",
+          "options": [
+            "had studied",
+            "studied",
+            "would study"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Ước tiếc về quá khứ dùng wish + past perfect: wish I had studied."
+        },
+        {
+          "id": 24,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The laptop _____ I bought last week is already broken.",
+          "options": [
+            "who",
+            "which",
+            "where"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Which thay thế cho vật (the laptop) trong mệnh đề quan hệ."
+        },
+        {
+          "id": 25,
+          "difficulty": "B1 · Trung cấp",
+          "question": "If I _____ about the traffic, I would have left earlier.",
+          "options": [
+            "would know",
+            "had known",
+            "knew"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Câu điều kiện loại 3 nói về điều không có thật trong quá khứ: If + past perfect, would have + V3."
+        },
+        {
+          "id": 26,
+          "difficulty": "B1 · Trung cấp",
+          "question": "She suggested _____ the meeting until Friday.",
+          "options": [
+            "postponing",
+            "postpone",
+            "to postpone"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Suggest thường đi với V-ing khi đề xuất một hành động: suggested postponing."
+        },
+        {
+          "id": 27,
+          "difficulty": "B1 · Trung cấp",
+          "question": "I'm interested _____ learning Japanese.",
+          "options": [
+            "on",
+            "at",
+            "in"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Cụm cố định là be interested in + danh từ/V-ing."
+        },
+        {
+          "id": 28,
+          "difficulty": "B1 · Trung cấp",
+          "question": "It's high time we _____ home.",
+          "options": [
+            "went",
+            "go",
+            "will go"
+          ],
+          "correctAnswer": 0,
+          "explanation": "It's high time + chủ ngữ + quá khứ đơn diễn tả đã đến lúc nên làm gì."
+        },
+        {
+          "id": 29,
+          "difficulty": "B1 · Trung cấp",
+          "question": "Not only _____ late, but he also forgot the documents.",
+          "options": [
+            "was he",
+            "he was",
+            "he is"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Khi Not only đứng đầu câu, mệnh đề chính đảo trợ động từ/động từ lên trước chủ ngữ."
+        },
+        {
+          "id": 30,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The match was cancelled _____ the heavy rain.",
+          "options": [
+            "although",
+            "because of",
+            "because"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Because of đi với cụm danh từ (the heavy rain); because đi với mệnh đề."
+        },
+        {
+          "id": 31,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Hardly had I sat down _____ the doorbell rang.",
+          "options": [
+            "when",
+            "than",
+            "then"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Cấu trúc đảo ngữ Hardly had + S + V3 when + mệnh đề quá khứ đơn."
+        },
+        {
+          "id": 32,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "_____ I to accept the offer, I would need to move abroad.",
+          "options": [
+            "Had",
+            "Were",
+            "Should"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Đảo ngữ điều kiện loại 2: Were I to... tương đương If I were to..."
+        },
+        {
+          "id": 33,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Not until the lights went out _____ how dark the room was.",
+          "options": [
+            "I realized",
+            "I had realized",
+            "did I realize"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Not until đứng đầu câu kéo theo đảo ngữ ở mệnh đề chính: did + chủ ngữ + động từ nguyên mẫu."
+        },
+        {
+          "id": 34,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "He denied _____ the confidential file.",
+          "options": [
+            "take",
+            "to take",
+            "having taken"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Deny có thể đi với V-ing; having taken nhấn mạnh hành động đã xảy ra trước đó."
+        },
+        {
+          "id": 35,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The proposal, _____ was submitted yesterday, will be reviewed next week.",
+          "options": [
+            "what",
+            "which",
+            "that"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Trong mệnh đề quan hệ không xác định có dấu phẩy, dùng which cho vật; không dùng that."
+        },
+        {
+          "id": 36,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "By next June, she _____ at the company for ten years.",
+          "options": [
+            "has worked",
+            "will have been working",
+            "will work"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Tương lai hoàn thành tiếp diễn nhấn mạnh khoảng thời gian một hành động kéo dài đến một mốc tương lai."
+        },
+        {
+          "id": 37,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "No sooner _____ the announcement than the audience began cheering.",
+          "options": [
+            "had the speaker made",
+            "the speaker made",
+            "the speaker had made"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Cấu trúc No sooner + had + S + V3 + than + quá khứ đơn yêu cầu đảo ngữ."
+        },
+        {
+          "id": 38,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "I'd rather you _____ anyone about this for now.",
+          "options": [
+            "not telling",
+            "don't tell",
+            "didn't tell"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Would rather + chủ ngữ khác + quá khứ đơn diễn tả mong muốn ở hiện tại/tương lai."
+        },
+        {
+          "id": 39,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "What concerns me most _____ the lack of reliable evidence.",
+          "options": [
+            "are",
+            "is",
+            "be"
+          ],
+          "correctAnswer": 1,
+          "explanation": "What-clause làm chủ ngữ thường được xem là số ít khi nói đến một vấn đề/điều cụ thể."
+        },
+        {
+          "id": 40,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The more carefully you plan, _____ likely you are to make mistakes.",
+          "options": [
+            "less",
+            "the less",
+            "the least"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Cấu trúc so sánh kép: The + comparative..., the + comparative..."
+        },
+        {
+          "id": 41,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Had it not been for your advice, I _____ the wrong decision.",
+          "options": [
+            "will have made",
+            "would make",
+            "would have made"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Đảo ngữ điều kiện loại 3: Had it not been for... tương đương If it had not been for..."
+        },
+        {
+          "id": 42,
+          "difficulty": "C1 · Nâng cao",
+          "question": "_____ for the support of her colleagues, she might have resigned.",
+          "options": [
+            "Had it not been",
+            "If it were not",
+            "Were it not"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Had it not been for... là dạng đảo ngữ điều kiện loại 3, nói về điều kiện trái với quá khứ."
+        },
+        {
+          "id": 43,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The documents are believed _____ during the night.",
+          "options": [
+            "being leaked",
+            "to have been leaked",
+            "that they leaked"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Cấu trúc bị động tường thuật: S + be believed + to have been + V3 khi hành động xảy ra trước thời điểm tin/nhận định."
+        },
+        {
+          "id": 44,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Little _____ that the decision would change her career.",
+          "options": [
+            "had she knew",
+            "did she know",
+            "she knew"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Little đứng đầu câu mang nghĩa phủ định kéo theo đảo ngữ: did + chủ ngữ + động từ nguyên mẫu."
+        },
+        {
+          "id": 45,
+          "difficulty": "C1 · Nâng cao",
+          "question": "I'd sooner you _____ me before making such a major change.",
+          "options": [
+            "will consult",
+            "consulted",
+            "have consulted"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Would sooner / would rather + chủ ngữ khác + quá khứ đơn để diễn tả mong muốn ở hiện tại/tương lai."
+        },
+        {
+          "id": 46,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The extent to _____ the policy will affect small businesses remains unclear.",
+          "options": [
+            "what",
+            "which",
+            "whose"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Cụm trang trọng cố định: the extent to which (mức độ mà)."
+        },
+        {
+          "id": 47,
+          "difficulty": "C1 · Nâng cao",
+          "question": "_____ the initial setbacks, the project was completed on schedule.",
+          "options": [
+            "Although",
+            "Because",
+            "Notwithstanding"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Notwithstanding là giới từ mang nghĩa mặc dù/bất chấp và đi với cụm danh từ."
+        },
+        {
+          "id": 48,
+          "difficulty": "C1 · Nâng cao",
+          "question": "It is essential that every applicant _____ the form in full.",
+          "options": [
+            "complete",
+            "completes",
+            "completed"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Sau các tính từ như essential/important trong mệnh đề that trang trọng, tiếng Anh dùng giả định thức với động từ nguyên mẫu."
+        },
+        {
+          "id": 49,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Scarcely _____ the station when the train began to move.",
+          "options": [
+            "we had reached",
+            "had we reached",
+            "did we reach"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Scarcely + had + chủ ngữ + V3 + when... là cấu trúc đảo ngữ nhấn mạnh hai hành động gần như liên tiếp trong quá khứ."
+        },
+        {
+          "id": 50,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Had I been made aware of the change, I _____ my plans accordingly.",
+          "options": [
+            "will have adjusted",
+            "would have adjusted",
+            "would adjust"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Câu điều kiện loại 3 đảo ngữ: Had I been made aware... would have adjusted."
         }
       ]
     },
     {
-      "id": "vocabulary_a2",
-      "title": "Basic Vocabulary",
-      "level": "A2",
-      "description": "Learn useful everyday English words",
+      "id": "vocabulary_progressive",
+      "title": "Vocabulary – Từ vựng",
+      "level": "A1–C1",
+      "description": "50 câu từ vựng, từ thông dụng đến học thuật và sắc thái nâng cao",
       "questions": [
         {
           "id": 1,
-          "question": "What is the opposite of 'expensive'?",
-          "options": ["Cheap", "Beautiful", "Difficult"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "What is the opposite of 'early'?",
+          "options": [
+            "Late",
+            "Fast",
+            "Easy"
+          ],
           "correctAnswer": 0,
-          "explanation": "Expensive có nghĩa là đắt tiền. Cheap có nghĩa là rẻ tiền, trái nghĩa với expensive."
+          "explanation": "Late có nghĩa là muộn, trái nghĩa với early (sớm)."
         },
         {
           "id": 2,
-          "question": "What does 'borrow' mean?",
-          "options": ["Give something away", "Take something and return it later", "Buy something"],
-          "correctAnswer": 1,
-          "explanation": "Borrow có nghĩa là mượn thứ gì đó từ người khác và sẽ trả lại sau. Đừng nhầm với lend (cho mượn)."
+          "difficulty": "A1 · Cơ bản",
+          "question": "If you are 'thirsty', you want _____.",
+          "options": [
+            "food",
+            "sleep",
+            "water"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Thirsty nghĩa là khát nước."
         },
         {
           "id": 3,
-          "question": "If food is 'delicious', it means:",
-          "options": ["It tastes very good", "It is very expensive", "It is very cold"],
-          "correctAnswer": 0,
-          "explanation": "Delicious là tính từ có nghĩa là ngon, có hương vị rất tuyệt."
+          "difficulty": "A1 · Cơ bản",
+          "question": "What does 'borrow' mean?",
+          "options": [
+            "To throw something away",
+            "To give something permanently",
+            "To take something and return it later"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Borrow nghĩa là mượn và có ý định trả lại. Lend nghĩa là cho mượn."
         },
         {
           "id": 4,
-          "question": "What is an 'appointment'?",
-          "options": ["A type of food", "A planned meeting", "A kind of sport"],
-          "correctAnswer": 1,
-          "explanation": "Appointment có nghĩa là cuộc hẹn hoặc lịch hẹn đã được sắp xếp trước."
+          "difficulty": "A1 · Cơ bản",
+          "question": "A 'receipt' is a document that shows _____.",
+          "options": [
+            "your school grades",
+            "your home address",
+            "what you bought and paid for"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Receipt là hóa đơn/biên lai xác nhận giao dịch mua hàng hoặc thanh toán."
         },
         {
           "id": 5,
-          "question": "The restaurant is 'crowded'. What does it mean?",
-          "options": ["It is empty", "It is very quiet", "It is full of people"],
-          "correctAnswer": 2,
-          "explanation": "Crowded có nghĩa là đông đúc, có rất nhiều người ở cùng một địa điểm."
+          "difficulty": "A1 · Cơ bản",
+          "question": "A 'polite' person is usually _____.",
+          "options": [
+            "respectful and well-mannered",
+            "always in a hurry",
+            "rude to everyone"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Polite nghĩa là lịch sự, cư xử có chừng mực và tôn trọng người khác."
         },
         {
           "id": 6,
-          "question": "What does 'improve' mean?",
-          "options": ["To make something better", "To make something worse", "To forget something"],
-          "correctAnswer": 0,
-          "explanation": "Improve có nghĩa là cải thiện hoặc làm cho điều gì đó trở nên tốt hơn."
+          "difficulty": "A1 · Cơ bản",
+          "question": "If you 'repair' a bicycle, you _____.",
+          "options": [
+            "borrow it",
+            "sell it",
+            "fix it"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Repair là sửa chữa để vật hoạt động hoặc sử dụng được."
         },
         {
           "id": 7,
-          "question": "Which word means 'making very little noise'?",
-          "options": ["Loud", "Quiet", "Busy"],
-          "correctAnswer": 1,
-          "explanation": "Quiet có nghĩa là yên tĩnh, ít tiếng ồn. Trái nghĩa với quiet là loud (ồn ào)."
+          "difficulty": "A1 · Cơ bản",
+          "question": "What does 'abroad' mean?",
+          "options": [
+            "Near your house",
+            "Under the ground",
+            "In another country"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Abroad nghĩa là ở hoặc đến một quốc gia khác."
         },
         {
           "id": 8,
-          "question": "What does the phrasal verb 'put off' mean?",
-          "options": ["To postpone something", "To start something", "To finish something"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "A person who is 'honest' does not _____.",
+          "options": [
+            "lie or cheat",
+            "tell the truth",
+            "keep promises"
+          ],
           "correctAnswer": 0,
-          "explanation": "Put off có nghĩa là trì hoãn hoặc dời một việc sang thời điểm khác."
+          "explanation": "Honest nghĩa là trung thực, không nói dối hoặc gian lận."
         },
         {
           "id": 9,
-          "question": "A 'generous' person is someone who:",
-          "options": ["Never shares anything", "Likes helping and giving to others", "Always arrives late"],
-          "correctAnswer": 1,
-          "explanation": "Generous có nghĩa là hào phóng, sẵn lòng chia sẻ hoặc giúp đỡ người khác."
+          "difficulty": "A1 · Cơ bản",
+          "question": "If you 'choose' something, you _____.",
+          "options": [
+            "break it",
+            "forget it",
+            "select it"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Choose có nghĩa là lựa chọn một người hoặc một vật trong nhiều phương án."
         },
         {
           "id": 10,
-          "question": "What does 'reliable' mean?",
-          "options": ["Can be trusted", "Always angry", "Very expensive"],
+          "difficulty": "A1 · Cơ bản",
+          "question": "A 'neighbour' is someone who _____.",
+          "options": [
+            "works in another country",
+            "lives near you",
+            "teaches at your school"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Neighbour là hàng xóm, người sống gần nhà bạn."
+        },
+        {
+          "id": 11,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "This phone is good quality and reasonably priced. It is _____.",
+          "options": [
+            "invisible",
+            "affordable",
+            "exhausted"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Affordable nghĩa là có giá phải chăng, có thể mua được với mức giá hợp lý."
+        },
+        {
+          "id": 12,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "You should _____ eating too much sugar.",
+          "options": [
+            "avoid",
+            "invite",
+            "borrow"
+          ],
           "correctAnswer": 0,
-          "explanation": "Reliable có nghĩa là đáng tin cậy, một người hoặc vật mà bạn có thể tin tưởng và dựa vào."
+          "explanation": "Avoid nghĩa là tránh. Cấu trúc thường dùng: avoid + danh từ/V-ing."
+        },
+        {
+          "id": 13,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "The course helped me _____ my writing skills.",
+          "options": [
+            "refuse",
+            "damage",
+            "improve"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Improve nghĩa là cải thiện hoặc làm cho tốt hơn."
+        },
+        {
+          "id": 14,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Is this seat _____, or is someone sitting here?",
+          "options": [
+            "private",
+            "dangerous",
+            "available"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Available nghĩa là còn trống hoặc sẵn có để sử dụng."
+        },
+        {
+          "id": 15,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Could you _____ a good restaurant near here?",
+          "options": [
+            "complain",
+            "prevent",
+            "recommend"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Recommend nghĩa là giới thiệu/đề xuất điều gì đó mà bạn cho là tốt."
+        },
+        {
+          "id": 16,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "The train was delayed because of a technical _____.",
+          "options": [
+            "achievement",
+            "problem",
+            "invitation"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Problem là vấn đề/sự cố; technical problem là sự cố kỹ thuật."
+        },
+        {
+          "id": 17,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Many people _____ to work by bus or train every day.",
+          "options": [
+            "celebrate",
+            "commute",
+            "whisper"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Commute là đi lại thường xuyên giữa nhà và nơi làm việc/trường học."
+        },
+        {
+          "id": 18,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Please check that the figures are _____ before sending the report.",
+          "options": [
+            "accurate",
+            "generous",
+            "ordinary"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Accurate nghĩa là chính xác, đúng với sự thật hoặc số liệu."
+        },
+        {
+          "id": 19,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Online banking is convenient because it saves time. 'Convenient' means _____.",
+          "options": [
+            "easy and practical to use",
+            "difficult to understand",
+            "very expensive"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Convenient nghĩa là tiện lợi, phù hợp và dễ sử dụng trong hoàn cảnh cụ thể."
+        },
+        {
+          "id": 20,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "The shop is closed today, so the service is not _____.",
+          "options": [
+            "polite",
+            "similar",
+            "available"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Available nghĩa là có sẵn/đang hoạt động để mọi người sử dụng."
+        },
+        {
+          "id": 21,
+          "difficulty": "B1 · Trung cấp",
+          "question": "She was _____ to accept the invitation because she was extremely busy.",
+          "options": [
+            "reluctant",
+            "delighted",
+            "eager"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Reluctant nghĩa là miễn cưỡng, không thật sự muốn làm điều gì."
+        },
+        {
+          "id": 22,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The final _____ of the discussion was a new marketing plan.",
+          "options": [
+            "distance",
+            "ingredient",
+            "outcome"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Outcome là kết quả hoặc hệ quả của một quá trình/sự việc."
+        },
+        {
+          "id": 23,
+          "difficulty": "B1 · Trung cấp",
+          "question": "It is important to _____ good relationships with your colleagues.",
+          "options": [
+            "withdraw",
+            "maintain",
+            "invent"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Maintain nghĩa là duy trì, giữ cho điều gì tiếp tục ở trạng thái tốt."
+        },
+        {
+          "id": 24,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The road closure is only _____. It should reopen tomorrow.",
+          "options": [
+            "permanent",
+            "ancient",
+            "temporary"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Temporary nghĩa là tạm thời, chỉ kéo dài trong một khoảng thời gian ngắn."
+        },
+        {
+          "id": 25,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The instructions were clear and _____ for beginners.",
+          "options": [
+            "hostile",
+            "adequate",
+            "rare"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Adequate nghĩa là đủ hoặc đạt mức cần thiết cho một mục đích."
+        },
+        {
+          "id": 26,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The manager must _____ enough staff to each shift.",
+          "options": [
+            "allocate",
+            "imitate",
+            "hesitate"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Allocate nghĩa là phân bổ/phân chia nguồn lực cho những mục đích hoặc nhóm khác nhau."
+        },
+        {
+          "id": 27,
+          "difficulty": "B1 · Trung cấp",
+          "question": "With such heavy traffic, delays are almost _____.",
+          "options": [
+            "inevitable",
+            "accurate",
+            "optional"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Inevitable nghĩa là không thể tránh khỏi hoặc chắc chắn sẽ xảy ra."
+        },
+        {
+          "id": 28,
+          "difficulty": "B1 · Trung cấp",
+          "question": "The new lighting will _____ the appearance of the room.",
+          "options": [
+            "reduce",
+            "interrupt",
+            "enhance"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Enhance nghĩa là nâng cao hoặc làm cho chất lượng/diện mạo tốt hơn."
+        },
+        {
+          "id": 29,
+          "difficulty": "B1 · Trung cấp",
+          "question": "People may _____ the same event in different ways.",
+          "options": [
+            "deliver",
+            "perceive",
+            "replace"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Perceive nghĩa là nhận thức, cảm nhận hoặc diễn giải điều gì đó."
+        },
+        {
+          "id": 30,
+          "difficulty": "B1 · Trung cấp",
+          "question": "Drivers should be _____ when visibility is poor.",
+          "options": [
+            "cautious",
+            "careless",
+            "curious"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Cautious nghĩa là thận trọng, cẩn thận để tránh rủi ro."
+        },
+        {
+          "id": 31,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The wording of the contract is _____ and could be interpreted in two ways.",
+          "options": [
+            "ambiguous",
+            "obvious",
+            "accurate"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Ambiguous nghĩa là mơ hồ, có thể được hiểu theo nhiều cách khác nhau."
+        },
+        {
+          "id": 32,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Is it _____ to finish the project by Friday with the current team?",
+          "options": [
+            "artificial",
+            "fragile",
+            "feasible"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Feasible nghĩa là khả thi, có thể thực hiện được trong điều kiện hiện tại."
+        },
+        {
+          "id": 33,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The company proved _____ during the economic crisis and recovered quickly.",
+          "options": [
+            "reluctant",
+            "passive",
+            "resilient"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Resilient nghĩa là có khả năng phục hồi và thích nghi sau khó khăn."
+        },
+        {
+          "id": 34,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Without maintenance, the building will gradually _____.",
+          "options": [
+            "flourish",
+            "deteriorate",
+            "accelerate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Deteriorate nghĩa là xuống cấp hoặc trở nên tệ hơn theo thời gian."
+        },
+        {
+          "id": 35,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The evidence provides a _____ explanation for the sudden change.",
+          "options": [
+            "careless",
+            "plausible",
+            "impossible"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Plausible nghĩa là hợp lý/có vẻ đáng tin, dù chưa chắc đã được chứng minh hoàn toàn."
+        },
+        {
+          "id": 36,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The difference in cost was _____, so it had no impact on the budget.",
+          "options": [
+            "negligible",
+            "substantial",
+            "remarkable"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Negligible nghĩa là không đáng kể, quá nhỏ để tạo ra ảnh hưởng quan trọng."
+        },
+        {
+          "id": 37,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The editor is known for being _____, checking every detail carefully.",
+          "options": [
+            "reckless",
+            "indifferent",
+            "meticulous"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Meticulous nghĩa là cực kỳ tỉ mỉ và chú ý đến từng chi tiết."
+        },
+        {
+          "id": 38,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "The board voted to _____ the recommendations in the report.",
+          "options": [
+            "conceal",
+            "endorse",
+            "postpone"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Endorse nghĩa là công khai ủng hộ hoặc xác nhận một đề xuất/quan điểm."
+        },
+        {
+          "id": 39,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Fax machines are now largely _____ in many workplaces.",
+          "options": [
+            "portable",
+            "obsolete",
+            "essential"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Obsolete nghĩa là lỗi thời, không còn được sử dụng vì đã có lựa chọn mới hơn."
+        },
+        {
+          "id": 40,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "There is a clear _____ between the two versions of the contract.",
+          "options": [
+            "harmony",
+            "discrepancy",
+            "similarity"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Discrepancy là sự khác biệt/không nhất quán giữa các thông tin hoặc con số đáng lẽ phải khớp nhau."
+        },
+        {
+          "id": 41,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Smartphones have become _____; people use them almost everywhere.",
+          "options": [
+            "scarce",
+            "temporary",
+            "ubiquitous"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Ubiquitous nghĩa là hiện diện ở khắp nơi hoặc rất phổ biến."
+        },
+        {
+          "id": 42,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Failing to address the issue could _____ the problem.",
+          "options": [
+            "clarify",
+            "alleviate",
+            "exacerbate"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Exacerbate nghĩa là làm cho một vấn đề vốn đã xấu trở nên nghiêm trọng hơn."
+        },
+        {
+          "id": 43,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The auditor will _____ the financial records for errors.",
+          "options": [
+            "simplify",
+            "scrutinize",
+            "decorate"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Scrutinize nghĩa là xem xét/kiểm tra rất kỹ lưỡng."
+        },
+        {
+          "id": 44,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The new measures are intended to _____ the risk of flooding.",
+          "options": [
+            "intensify",
+            "mitigate",
+            "ignore"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Mitigate nghĩa là giảm nhẹ mức độ nghiêm trọng hoặc tác động tiêu cực."
+        },
+        {
+          "id": 45,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The selection process seemed _____, with no clear criteria.",
+          "options": [
+            "transparent",
+            "arbitrary",
+            "systematic"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Arbitrary nghĩa là tùy tiện, dựa trên lựa chọn chủ quan thay vì nguyên tắc rõ ràng."
+        },
+        {
+          "id": 46,
+          "difficulty": "C1 · Nâng cao",
+          "question": "A certain amount of uncertainty is _____ in scientific research.",
+          "options": [
+            "external",
+            "inherent",
+            "avoidable"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Inherent nghĩa là vốn có, là một phần tự nhiên không thể tách rời của điều gì."
+        },
+        {
+          "id": 47,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The proposal remains _____ because it raises strong disagreement.",
+          "options": [
+            "contentious",
+            "straightforward",
+            "unanimous"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Contentious nghĩa là gây tranh cãi hoặc tạo ra bất đồng mạnh."
+        },
+        {
+          "id": 48,
+          "difficulty": "C1 · Nâng cao",
+          "question": "The essay is well organized and presents a _____ argument.",
+          "options": [
+            "contradictory",
+            "random",
+            "coherent"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Coherent nghĩa là mạch lạc, các ý liên kết hợp lý và nhất quán."
+        },
+        {
+          "id": 49,
+          "difficulty": "C1 · Nâng cao",
+          "question": "We need a _____ solution that can be implemented with the resources available.",
+          "options": [
+            "pragmatic",
+            "sentimental",
+            "theoretical"
+          ],
+          "correctAnswer": 0,
+          "explanation": "Pragmatic nghĩa là thực tế, chú trọng điều có thể thực hiện hiệu quả."
+        },
+        {
+          "id": 50,
+          "difficulty": "C1 · Nâng cao",
+          "question": "In _____, we should have tested the system before launching it.",
+          "options": [
+            "particular",
+            "advance",
+            "retrospect"
+          ],
+          "correctAnswer": 2,
+          "explanation": "In retrospect nghĩa là khi nhìn lại một sự việc trong quá khứ."
+        }
+      ]
+    },
+    {
+      "id": "conversation_progressive",
+      "title": "Everyday Conversation – Giao tiếp",
+      "level": "A1–C1",
+      "description": "50 tình huống giao tiếp, chọn phản hồi phù hợp nhất trong ngữ cảnh",
+      "questions": [
+        {
+          "id": 1,
+          "difficulty": "A1 · Cơ bản",
+          "question": "A friend asks, 'How are you today?' What is a natural reply?",
+          "options": [
+            "At the bus stop.",
+            "I'm 25 years old.",
+            "I'm fine, thanks. And you?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Đây là câu hỏi thăm sức khỏe/tình hình. Câu trả lời tự nhiên là nói ngắn gọn về tình trạng của mình và hỏi lại."
+        },
+        {
+          "id": 2,
+          "difficulty": "A1 · Cơ bản",
+          "question": "Someone offers you a cup of tea: 'Would you like some tea?'",
+          "options": [
+            "Yes, please.",
+            "I like yesterday.",
+            "No, I am tea."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Yes, please là cách nhận lời lịch sự khi được mời đồ uống."
+        },
+        {
+          "id": 3,
+          "difficulty": "A1 · Cơ bản",
+          "question": "You need directions. What should you say?",
+          "options": [
+            "The station is delicious.",
+            "Excuse me, where is the train station?",
+            "Give me station now."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Excuse me mở đầu lời hỏi lịch sự; where is...? dùng để hỏi vị trí."
+        },
+        {
+          "id": 4,
+          "difficulty": "A1 · Cơ bản",
+          "question": "A classmate says, 'Thank you for helping me.'",
+          "options": [
+            "I'm twelve.",
+            "You're welcome.",
+            "Never mind tomorrow."
+          ],
+          "correctAnswer": 1,
+          "explanation": "You're welcome là phản hồi thông dụng khi được cảm ơn."
+        },
+        {
+          "id": 5,
+          "difficulty": "A1 · Cơ bản",
+          "question": "You arrive late and want to apologize.",
+          "options": [
+            "See you last week.",
+            "I'm sorry I'm late.",
+            "I'm happy you are late."
+          ],
+          "correctAnswer": 1,
+          "explanation": "I'm sorry I'm late là lời xin lỗi trực tiếp và tự nhiên khi đến muộn."
+        },
+        {
+          "id": 6,
+          "difficulty": "A1 · Cơ bản",
+          "question": "Someone asks, 'What time is it?' The clock shows 3:30.",
+          "options": [
+            "It's half past four.",
+            "It's half past three.",
+            "It's three days."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Half past three nghĩa là 3 giờ 30 phút."
+        },
+        {
+          "id": 7,
+          "difficulty": "A1 · Cơ bản",
+          "question": "In a clothes shop, you want to try on a jacket. What do you ask?",
+          "options": [
+            "Can I eat this on?",
+            "Can I try this on?",
+            "Can I borrow your shop?"
+          ],
+          "correctAnswer": 1,
+          "explanation": "Try something on nghĩa là mặc thử quần áo."
+        },
+        {
+          "id": 8,
+          "difficulty": "A1 · Cơ bản",
+          "question": "Your friend says, 'See you tomorrow!'",
+          "options": [
+            "I saw you tomorrow yesterday.",
+            "See you! Have a nice evening.",
+            "No, I'm a window."
+          ],
+          "correctAnswer": 1,
+          "explanation": "See you là lời đáp tự nhiên khi tạm biệt và dự định gặp lại."
+        },
+        {
+          "id": 9,
+          "difficulty": "A1 · Cơ bản",
+          "question": "At a restaurant, you need the menu.",
+          "options": [
+            "Bring me a table yesterday.",
+            "I menu have you?",
+            "Could I have the menu, please?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Could I have...? là cách yêu cầu lịch sự."
+        },
+        {
+          "id": 10,
+          "difficulty": "A1 · Cơ bản",
+          "question": "A customer asks, 'How much are these apples?' The price is $2 per kilo.",
+          "options": [
+            "They're two kilos old.",
+            "I am two dollars.",
+            "They're two dollars a kilo."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Câu trả lời nêu giá theo đơn vị: two dollars a kilo."
+        },
+        {
+          "id": 11,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "You want to open a window. You ask, 'Do you mind if I open the window?'",
+          "options": [
+            "Not at all. Go ahead.",
+            "Yes, I don't mind.",
+            "The window is on Tuesday."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Not at all nghĩa là không phiền; Go ahead cho phép người kia làm việc đó."
+        },
+        {
+          "id": 12,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "A new colleague asks, 'What do you do?'",
+          "options": [
+            "I'm doing fine, thanks.",
+            "I work as an accountant.",
+            "I do it at seven yesterday."
+          ],
+          "correctAnswer": 1,
+          "explanation": "What do you do? thường hỏi về nghề nghiệp; I work as... nêu công việc."
+        },
+        {
+          "id": 13,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "You didn't hear what someone said. What is the polite response?",
+          "options": [
+            "Could you repeat that, please?",
+            "Speak louder, you!",
+            "I heard tomorrow."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Could you repeat that, please? là cách lịch sự yêu cầu nhắc lại."
+        },
+        {
+          "id": 14,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "A friend says, 'I'm afraid I can't make it tonight.'",
+          "options": [
+            "You must be tonight.",
+            "I can't make your shoes.",
+            "No worries. Maybe next time."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Can't make it nghĩa là không thể tham dự. No worries thể hiện sự thông cảm."
+        },
+        {
+          "id": 15,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Someone invites you to dinner: 'Would you like to join us?' You want to accept.",
+          "options": [
+            "I'd love to. What time?",
+            "Dinner is a blue color.",
+            "I refuse yesterday."
+          ],
+          "correctAnswer": 0,
+          "explanation": "I'd love to là cách nhận lời thân thiện; hỏi What time? để biết thời gian."
+        },
+        {
+          "id": 16,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "A colleague tells you, 'The bus is running late.'",
+          "options": [
+            "I ran late the bus.",
+            "The bus is very delicious.",
+            "Thanks for letting me know."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Thanks for letting me know là phản hồi phù hợp khi ai đó cung cấp thông tin."
+        },
+        {
+          "id": 17,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "A customer says, 'This soup is a bit salty.' What is a helpful response from the server?",
+          "options": [
+            "I'm sorry about that. I'll bring you some water.",
+            "Soup is always a number.",
+            "You are salty too."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Người phục vụ nên xin lỗi và đề nghị hỗ trợ thay vì tranh luận với khách."
+        },
+        {
+          "id": 18,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "A visitor asks how to get to the museum.",
+          "options": [
+            "The museum is hungry.",
+            "I went there next year.",
+            "Walk two blocks and turn left."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Đây là chỉ dẫn đường đi rõ ràng, dùng động từ mệnh lệnh walk và turn."
+        },
+        {
+          "id": 19,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "Your friend says, 'I passed my driving test!'",
+          "options": [
+            "Please turn off the test.",
+            "Congratulations! That's great news.",
+            "I'm sorry to hear that."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Congratulations là lời chúc mừng phù hợp khi ai đó đạt thành tích."
+        },
+        {
+          "id": 20,
+          "difficulty": "A2 · Sơ cấp",
+          "question": "You enter a café and want to sit down. You ask, 'Is this seat taken?'",
+          "options": [
+            "No, it's free. Please sit down.",
+            "Yes, I take a bus.",
+            "The seat is drinking coffee."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Is this seat taken? hỏi chỗ ngồi có người giữ chưa. No, it's free nghĩa là còn trống."
+        },
+        {
+          "id": 21,
+          "difficulty": "B1 · Trung cấp",
+          "question": "You want a colleague to review your report. What is a polite request?",
+          "options": [
+            "You must read my report now.",
+            "I was wondering if you could look over my report.",
+            "My report is looking at you."
+          ],
+          "correctAnswer": 1,
+          "explanation": "I was wondering if you could... là cách nhờ vả mềm mại, lịch sự."
+        },
+        {
+          "id": 22,
+          "difficulty": "B1 · Trung cấp",
+          "question": "Someone says, 'I don't quite agree with your suggestion.' How can you respond constructively?",
+          "options": [
+            "I see your point, but could I explain my reasoning?",
+            "You are always wrong.",
+            "Then there is nothing to discuss ever."
+          ],
+          "correctAnswer": 0,
+          "explanation": "I see your point thừa nhận ý kiến của đối phương trước khi trình bày quan điểm khác."
+        },
+        {
+          "id": 23,
+          "difficulty": "B1 · Trung cấp",
+          "question": "You have a scheduling conflict. What should you say?",
+          "options": [
+            "Could we delete the office?",
+            "I reschedule yesterday.",
+            "Could we reschedule our meeting?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reschedule nghĩa là sắp xếp lại thời gian. Đây là lời đề nghị lịch sự."
+        },
+        {
+          "id": 24,
+          "difficulty": "B1 · Trung cấp",
+          "question": "You didn't catch someone's name.",
+          "options": [
+            "Your name fell down.",
+            "Sorry, I didn't catch your name.",
+            "I caught the train name."
+          ],
+          "correctAnswer": 1,
+          "explanation": "I didn't catch your name là cách nói tự nhiên khi nghe không rõ tên ai đó."
+        },
+        {
+          "id": 25,
+          "difficulty": "B1 · Trung cấp",
+          "question": "A neighbour asks you to keep the noise down.",
+          "options": [
+            "Noise is my neighbour.",
+            "Of course. Sorry about that.",
+            "I will make it louder."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Keep the noise down nghĩa là giảm tiếng ồn. Of course kèm lời xin lỗi thể hiện sự hợp tác."
+        },
+        {
+          "id": 26,
+          "difficulty": "B1 · Trung cấp",
+          "question": "A customer says their package has not arrived. What is a useful response?",
+          "options": [
+            "Packages do not exist.",
+            "You should forget about it.",
+            "Let me check the tracking information for you."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Đề nghị kiểm tra thông tin theo dõi đơn hàng là phản hồi hỗ trợ phù hợp."
+        },
+        {
+          "id": 27,
+          "difficulty": "B1 · Trung cấp",
+          "question": "A colleague says, 'I appreciate your honesty.'",
+          "options": [
+            "Thank you for understanding.",
+            "Honesty is closed.",
+            "I appreciate your sandwich yesterday."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Thank you for understanding là lời đáp lịch sự, thể hiện sự trân trọng."
+        },
+        {
+          "id": 28,
+          "difficulty": "B1 · Trung cấp",
+          "question": "Someone asks, 'Do you happen to know whether the library is open today?' You are unsure.",
+          "options": [
+            "The library is a blue book.",
+            "I'm not sure, but I can check the website.",
+            "Of course, it is closed tomorrow last year."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Khi không chắc chắn, hãy nói thật và đề nghị kiểm tra nguồn thông tin."
+        },
+        {
+          "id": 29,
+          "difficulty": "B1 · Trung cấp",
+          "question": "Your teammate suggests leaving early to avoid traffic.",
+          "options": [
+            "I left tomorrow morning yesterday.",
+            "Traffic is made of ideas.",
+            "That's probably a good idea."
+          ],
+          "correctAnswer": 2,
+          "explanation": "That's probably a good idea thể hiện đồng tình một cách tự nhiên."
+        },
+        {
+          "id": 30,
+          "difficulty": "B1 · Trung cấp",
+          "question": "A colleague offers to help: 'Would you like me to give you a hand?'",
+          "options": [
+            "No, your hand is blue.",
+            "I gave a hand yesterday tomorrow.",
+            "That would be very helpful, thanks."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Give someone a hand nghĩa là giúp đỡ. That would be very helpful là lời nhận sự giúp đỡ lịch sự."
+        },
+        {
+          "id": 31,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "A client says, 'I'm afraid there's been a misunderstanding about the delivery date.'",
+          "options": [
+            "I see. Let's go through the details and clarify the date.",
+            "You misunderstood because you are careless.",
+            "There is no date in the calendar of life."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Phản hồi chuyên nghiệp nên bình tĩnh làm rõ thông tin thay vì đổ lỗi."
+        },
+        {
+          "id": 32,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "In a meeting, someone asks, 'Could you elaborate on what you mean by flexible hours?'",
+          "options": [
+            "I don't want to talk about time ever.",
+            "I mean employees can adjust their start and finish times within agreed limits.",
+            "Flexible means made of metal."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Elaborate on nghĩa là giải thích chi tiết hơn. Câu trả lời cần làm rõ ý nghĩa trong ngữ cảnh công việc."
+        },
+        {
+          "id": 33,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "A teammate says, 'I don't want to jump to conclusions before we see the data.'",
+          "options": [
+            "Let's decide without looking at anything.",
+            "Agreed. Let's wait until we have the full results.",
+            "Conclusions are at the airport."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Jump to conclusions nghĩa là kết luận quá vội. Đồng ý chờ dữ liệu là phản hồi hợp lý."
+        },
+        {
+          "id": 34,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Your manager says the budget may need to be revised.",
+          "options": [
+            "Budgets cannot be changed because they are paper.",
+            "I revised the weather yesterday.",
+            "That makes sense. Which areas should we review first?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Phản hồi này vừa ghi nhận ý kiến vừa hỏi bước tiếp theo để giải quyết vấn đề."
+        },
+        {
+          "id": 35,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "A colleague says, 'I have to take issue with the figures in this report.'",
+          "options": [
+            "The report has taken my lunch.",
+            "I understand your concern. Could you show me which figures you mean?",
+            "You are not allowed to have issues."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Take issue with nghĩa là phản đối/không đồng tình. Yêu cầu chỉ rõ số liệu giúp thảo luận dựa trên bằng chứng."
+        },
+        {
+          "id": 36,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "You need more time to finish a task. What is a professional request?",
+          "options": [
+            "The deadline is a person.",
+            "Would it be possible to extend the deadline?",
+            "Give me more days or else."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Would it be possible to...? là cách yêu cầu lịch sự. Extend the deadline nghĩa là gia hạn hạn chót."
+        },
+        {
+          "id": 37,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "A colleague says, 'I was under the impression that the meeting started at ten.'",
+          "options": [
+            "Impressions are only for paintings.",
+            "I can see why you thought that. The time was changed to nine yesterday.",
+            "You should know everything without being told."
+          ],
+          "correctAnswer": 1,
+          "explanation": "I was under the impression nghĩa là tôi đã tưởng/rằng. Câu trả lời phù hợp giải thích sự thay đổi nhẹ nhàng."
+        },
+        {
+          "id": 38,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "At the end of a long workday, someone says, 'Let's call it a day.'",
+          "options": [
+            "Agreed. We can pick this up tomorrow.",
+            "Let's phone the calendar.",
+            "I called the day last week."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Call it a day nghĩa là kết thúc công việc trong ngày. Pick this up tomorrow nghĩa là tiếp tục vào ngày mai."
+        },
+        {
+          "id": 39,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "Your manager asks you to keep them informed about progress.",
+          "options": [
+            "Absolutely. I'll keep you updated as things develop.",
+            "I will put you inside the computer.",
+            "Progress is not allowed."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Keep someone updated/in the loop nghĩa là thường xuyên cập nhật thông tin cho họ."
+        },
+        {
+          "id": 40,
+          "difficulty": "B2 · Trung cấp cao",
+          "question": "A client says your proposal is promising but needs more detail.",
+          "options": [
+            "That's a fair point. I'll add a clearer implementation timeline.",
+            "A proposal cannot make promises.",
+            "Details are not important in any plan."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Đây là cách tiếp nhận góp ý tích cực và nêu hành động cụ thể để cải thiện đề xuất."
+        },
+        {
+          "id": 41,
+          "difficulty": "C1 · Nâng cao",
+          "question": "A colleague says, 'I take your point, but I'm not entirely convinced.'",
+          "options": [
+            "I take your point and put it in a box.",
+            "You must be convinced immediately.",
+            "That's fair. Which part would you like me to support with more evidence?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Câu trả lời thừa nhận sự hoài nghi và mời người kia nêu phần cần thêm bằng chứng."
+        },
+        {
+          "id": 42,
+          "difficulty": "C1 · Nâng cao",
+          "question": "Someone says, 'I wouldn't go so far as to call the project a failure.'",
+          "options": [
+            "Going far requires a train.",
+            "I agree. It has faced setbacks, but there are still useful outcomes.",
+            "Let's call every project a failure."
+          ],
+          "correctAnswer": 1,
+          "explanation": "I wouldn't go so far as to... là cách diễn đạt bất đồng nhẹ, tránh kết luận quá cực đoan."
+        },
+        {
+          "id": 43,
+          "difficulty": "C1 · Nâng cao",
+          "question": "In a debate, someone says, 'For the sake of argument, let's assume the costs double.'",
+          "options": [
+            "Even under that assumption, we should compare the long-term benefits.",
+            "Costs cannot be discussed hypothetically.",
+            "Arguments should always be about sports."
+          ],
+          "correctAnswer": 0,
+          "explanation": "For the sake of argument giới thiệu một giả định để thảo luận. Câu trả lời tiếp tục phân tích giả định đó."
+        },
+        {
+          "id": 44,
+          "difficulty": "C1 · Nâng cao",
+          "question": "You realize your earlier comment may have sounded rude. What should you say?",
+          "options": [
+            "I may have given the wrong impression. I didn't mean to dismiss your work.",
+            "My impression is on the wall.",
+            "You should not understand my words."
+          ],
+          "correctAnswer": 0,
+          "explanation": "Câu này nhận trách nhiệm về cách diễn đạt và làm rõ ý định mà không đổ lỗi cho người nghe."
+        },
+        {
+          "id": 45,
+          "difficulty": "C1 · Nâng cao",
+          "question": "A colleague asks, 'Could you clarify the rationale behind this decision?'",
+          "options": [
+            "Decisions do not need reasons.",
+            "Rationale is a type of calculator.",
+            "Certainly. The main consideration was reducing delays for customers."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Rationale nghĩa là cơ sở/lý do hợp lý đứng sau một quyết định."
+        },
+        {
+          "id": 46,
+          "difficulty": "C1 · Nâng cao",
+          "question": "In a disagreement, you want to express respect while maintaining your view.",
+          "options": [
+            "I understand your position, though I see the issue differently.",
+            "With all due disrespect, you're wrong.",
+            "I will not listen to any other view."
+          ],
+          "correctAnswer": 0,
+          "explanation": "I understand your position, though... là cách bất đồng lịch sự, vẫn công nhận quan điểm của đối phương."
+        },
+        {
+          "id": 47,
+          "difficulty": "C1 · Nâng cao",
+          "question": "You need to ask a colleague for an opinion in front of others without pressuring them.",
+          "options": [
+            "Answer now or everyone will be angry.",
+            "I have already decided what you think.",
+            "I don't mean to put you on the spot, but would you be comfortable sharing your view?"
+          ],
+          "correctAnswer": 2,
+          "explanation": "Put someone on the spot nghĩa là đặt ai vào tình huống khó xử/bị yêu cầu trả lời đột ngột. Câu này giảm áp lực bằng cách xin phép."
+        },
+        {
+          "id": 48,
+          "difficulty": "C1 · Nâng cao",
+          "question": "A teammate says, 'I wouldn't rule out a change in the schedule.'",
+          "options": [
+            "Rules are only found in classrooms.",
+            "We must rule out every possible option.",
+            "Agreed. It remains a possibility, depending on the client’s response."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Wouldn't rule out nghĩa là chưa loại trừ khả năng. Câu trả lời thừa nhận khả năng đó còn mở."
+        },
+        {
+          "id": 49,
+          "difficulty": "C1 · Nâng cao",
+          "question": "During a discussion, you feel you and another person are misunderstanding each other.",
+          "options": [
+            "Let's talk louder until we agree.",
+            "I think we're talking at cross purposes. Could we clarify what each of us means?",
+            "Cross purposes means crossing a street."
+          ],
+          "correctAnswer": 1,
+          "explanation": "Talk at cross purposes nghĩa là hai bên đang nói lệch ý/hiểu sai nhau. Đề nghị làm rõ khái niệm giúp cuộc trao đổi tiến triển."
+        },
+        {
+          "id": 50,
+          "difficulty": "C1 · Nâng cao",
+          "question": "A colleague asks for your final opinion, but you need more evidence first.",
+          "options": [
+            "Judgment should always be immediate.",
+            "I have decided without reading anything.",
+            "I'm inclined to reserve judgment until we've reviewed the full data."
+          ],
+          "correctAnswer": 2,
+          "explanation": "Reserve judgment nghĩa là tạm hoãn kết luận cho đến khi có đủ thông tin."
         }
       ]
     }
