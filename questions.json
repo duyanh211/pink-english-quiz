@@ -1445,609 +1445,609 @@
     },
     {
       "id": "conversation_progressive",
-      "title": "Everyday Conversation – Giao tiếp",
+      "title": "Everyday Conversation – Giao tiếp tự nhiên",
       "level": "A1–C1",
-      "description": "50 tình huống giao tiếp, chọn phản hồi phù hợp nhất trong ngữ cảnh",
+      "description": "Natural everyday English in real-life situations, from casual chats to nuanced discussions.",
       "questions": [
         {
           "id": 1,
           "difficulty": "A1 · Cơ bản",
-          "question": "A friend asks, 'How are you today?' What is a natural reply?",
+          "question": "A friend you know well says, “Hey, how’s it going?” What’s a natural reply?",
           "options": [
-            "At the bus stop.",
-            "I'm 25 years old.",
-            "I'm fine, thanks. And you?"
+            "Pretty good, thanks. You?",
+            "It's been a long day, but I'm nearly done.",
+            "I'm just heading out—talk to you later?"
           ],
-          "correctAnswer": 2,
-          "explanation": "Đây là câu hỏi thăm sức khỏe/tình hình. Câu trả lời tự nhiên là nói ngắn gọn về tình trạng của mình và hỏi lại."
+          "correctAnswer": 0,
+          "explanation": "Với bạn bè hoặc người quen, “Pretty good, thanks. You?” nghe thân mật và tự nhiên. “I’m fine, thank you. And you?” vẫn đúng, nhưng trong cuộc trò chuyện thoải mái có thể hơi giống câu mẫu trong sách học."
         },
         {
           "id": 2,
           "difficulty": "A1 · Cơ bản",
-          "question": "Someone offers you a cup of tea: 'Would you like some tea?'",
+          "question": "A friend texts, “Want to grab a coffee later?” You’re free and interested. What do you say?",
           "options": [
-            "Yes, please.",
-            "I like yesterday.",
-            "No, I am tea."
+            "I'd love to, but I'm tied up later.",
+            "Yeah, I'm up for that. What time?",
+            "I usually grab coffee on my way to work."
           ],
-          "correctAnswer": 0,
-          "explanation": "Yes, please là cách nhận lời lịch sự khi được mời đồ uống."
+          "correctAnswer": 1,
+          "explanation": "“I’m up for that” là cách nói đời thường để đồng ý tham gia một kế hoạch. Hỏi thêm “What time?” giúp tiếp tục sắp xếp cuộc hẹn."
         },
         {
           "id": 3,
           "difficulty": "A1 · Cơ bản",
-          "question": "You need directions. What should you say?",
+          "question": "You’re about to sit down in a café. Someone asks, “Is anyone sitting here?” The seat is free. What do you say?",
           "options": [
-            "The station is delicious.",
-            "Excuse me, where is the train station?",
-            "Give me station now."
+            "I'm saving it for a friend, sorry.",
+            "Do you know if the table by the window is free?",
+            "Nope, go ahead."
           ],
-          "correctAnswer": 1,
-          "explanation": "Excuse me mở đầu lời hỏi lịch sự; where is...? dùng để hỏi vị trí."
+          "correctAnswer": 2,
+          "explanation": "“Nope, go ahead” là cách trả lời ngắn gọn, tự nhiên để cho biết chỗ còn trống và mời người kia ngồi."
         },
         {
           "id": 4,
           "difficulty": "A1 · Cơ bản",
-          "question": "A classmate says, 'Thank you for helping me.'",
+          "question": "At a shop, the cashier asks, “Would you like a receipt?” You don’t need one. What do you say?",
           "options": [
-            "I'm twelve.",
-            "You're welcome.",
-            "Never mind tomorrow."
+            "No, I'm all set, thanks.",
+            "Could I get an email copy instead?",
+            "Can I pay by card?"
           ],
-          "correctAnswer": 1,
-          "explanation": "You're welcome là phản hồi thông dụng khi được cảm ơn."
+          "correctAnswer": 0,
+          "explanation": "“I’m all set, thanks” có nghĩa là bạn không cần thêm gì nữa. Đây là cách từ chối lịch sự, tự nhiên trong cửa hàng."
         },
         {
           "id": 5,
           "difficulty": "A1 · Cơ bản",
-          "question": "You arrive late and want to apologize.",
+          "question": "Your friend texts, “I’m stuck in traffic. I’ll be about 10 minutes late.” What’s a friendly reply?",
           "options": [
-            "See you last week.",
-            "I'm sorry I'm late.",
-            "I'm happy you are late."
+            "Are you nearly here?",
+            "No worries. Thanks for letting me know.",
+            "I'll just head in and order now."
           ],
           "correctAnswer": 1,
-          "explanation": "I'm sorry I'm late là lời xin lỗi trực tiếp và tự nhiên khi đến muộn."
+          "explanation": "“No worries” giúp trấn an người kia rằng việc đến muộn không sao. “Thanks for letting me know” ghi nhận việc họ đã báo trước."
         },
         {
           "id": 6,
           "difficulty": "A1 · Cơ bản",
-          "question": "Someone asks, 'What time is it?' The clock shows 3:30.",
+          "question": "A coworker says, “Thanks for covering my shift yesterday.” What’s a natural response?",
           "options": [
-            "It's half past four.",
-            "It's half past three.",
-            "It's three days."
+            "Actually, could you cover mine next week?",
+            "You can make it up to me next time!",
+            "No problem. Happy to help."
           ],
-          "correctAnswer": 1,
-          "explanation": "Half past three nghĩa là 3 giờ 30 phút."
+          "correctAnswer": 2,
+          "explanation": "“No problem. Happy to help” là phản hồi thân thiện, phổ biến khi đồng nghiệp cảm ơn bạn đã giúp họ."
         },
         {
           "id": 7,
           "difficulty": "A1 · Cơ bản",
-          "question": "In a clothes shop, you want to try on a jacket. What do you ask?",
+          "question": "Someone you know asks, “What are you up to this weekend?” You have no plans yet. What do you say?",
           "options": [
-            "Can I eat this on?",
-            "Can I try this on?",
-            "Can I borrow your shop?"
+            "Nothing much yet. Why?",
+            "I've already got plans with some friends.",
+            "I'll probably stay in and catch up on a few shows."
           ],
-          "correctAnswer": 1,
-          "explanation": "Try something on nghĩa là mặc thử quần áo."
+          "correctAnswer": 0,
+          "explanation": "“What are you up to?” là cách hỏi thân mật về dự định. “Nothing much yet. Why?” cho biết bạn chưa có kế hoạch và mở lời để nghe đề nghị tiếp theo."
         },
         {
           "id": 8,
           "difficulty": "A1 · Cơ bản",
-          "question": "Your friend says, 'See you tomorrow!'",
+          "question": "You didn’t hear what your friend said. What’s a natural way to ask them to repeat it?",
           "options": [
-            "I saw you tomorrow yesterday.",
-            "See you! Have a nice evening.",
-            "No, I'm a window."
+            "I'll have to think about that.",
+            "Sorry, what was that?",
+            "I think we're good to go."
           ],
           "correctAnswer": 1,
-          "explanation": "See you là lời đáp tự nhiên khi tạm biệt và dự định gặp lại."
+          "explanation": "“Sorry, what was that?” là cách hỏi lại ngắn gọn trong giao tiếp hàng ngày. Thêm “Sorry” khiến lời hỏi nhẹ nhàng hơn."
         },
         {
           "id": 9,
           "difficulty": "A1 · Cơ bản",
-          "question": "At a restaurant, you need the menu.",
+          "question": "A friend says, “I love your jacket!” How do you respond naturally?",
           "options": [
-            "Bring me a table yesterday.",
-            "I menu have you?",
-            "Could I have the menu, please?"
+            "I was just about to say the same about yours.",
+            "I'm not sure it suits me, to be honest.",
+            "Thanks! That's really nice of you to say."
           ],
           "correctAnswer": 2,
-          "explanation": "Could I have...? là cách yêu cầu lịch sự."
+          "explanation": "Khi được khen, người bản xứ thường cảm ơn rồi chia sẻ thêm một chi tiết nhỏ. “I got it on sale” nghĩa là bạn mua được nó lúc giảm giá."
         },
         {
           "id": 10,
           "difficulty": "A1 · Cơ bản",
-          "question": "A customer asks, 'How much are these apples?' The price is $2 per kilo.",
+          "question": "You’re leaving a friend’s place and say, “I’d better get going.” What’s a natural reply from your friend?",
           "options": [
-            "They're two kilos old.",
-            "I am two dollars.",
-            "They're two dollars a kilo."
+            "Of course. Have a good one!",
+            "Do you want to stay for one more?",
+            "I'll text you the address."
           ],
-          "correctAnswer": 2,
-          "explanation": "Câu trả lời nêu giá theo đơn vị: two dollars a kilo."
+          "correctAnswer": 0,
+          "explanation": "“I’d better get going” là cách báo hiệu mình nên rời đi. “Take care!” là lời chúc thân thiện khi tạm biệt."
         },
         {
           "id": 11,
           "difficulty": "A2 · Sơ cấp",
-          "question": "You want to open a window. You ask, 'Do you mind if I open the window?'",
+          "question": "A friend asks, “Are you free for lunch tomorrow?” You’re available around 12:30. What do you say?",
           "options": [
-            "Not at all. Go ahead.",
-            "Yes, I don't mind.",
-            "The window is on Tuesday."
+            "I'm usually free around that time.",
+            "I could do 12:30. Does that work for you?",
+            "Could we make it dinner instead?"
           ],
-          "correctAnswer": 0,
-          "explanation": "Not at all nghĩa là không phiền; Go ahead cho phép người kia làm việc đó."
+          "correctAnswer": 1,
+          "explanation": "“I could do 12:30” là cách nói tự nhiên khi đề xuất thời gian mình có thể tham gia. “Does that work for you?” hỏi xem giờ đó có tiện cho người kia không."
         },
         {
           "id": 12,
           "difficulty": "A2 · Sơ cấp",
-          "question": "A new colleague asks, 'What do you do?'",
+          "question": "At a café, the barista asks, “What can I get for you?” You want a medium latte. What do you say?",
           "options": [
-            "I'm doing fine, thanks.",
-            "I work as an accountant.",
-            "I do it at seven yesterday."
+            "I'll have whatever you're having.",
+            "Can I get a table for two?",
+            "Could I get a medium latte, please?"
           ],
-          "correctAnswer": 1,
-          "explanation": "What do you do? thường hỏi về nghề nghiệp; I work as... nêu công việc."
+          "correctAnswer": 2,
+          "explanation": "“Could I get...?” là cách gọi món lịch sự và rất phổ biến ở quán cà phê, nhà hàng."
         },
         {
           "id": 13,
           "difficulty": "A2 · Sơ cấp",
-          "question": "You didn't hear what someone said. What is the polite response?",
+          "question": "You’re visiting a new area and ask someone, “Do you know where the nearest ATM is?” They reply, “There’s one just around the corner.” What do you say?",
           "options": [
-            "Could you repeat that, please?",
-            "Speak louder, you!",
-            "I heard tomorrow."
+            "Oh, great. Thanks for your help.",
+            "Sorry, I'm not from around here.",
+            "Is it open 24 hours?"
           ],
           "correctAnswer": 0,
-          "explanation": "Could you repeat that, please? là cách lịch sự yêu cầu nhắc lại."
+          "explanation": "“Oh, great. Thanks a lot!” là phản hồi tự nhiên khi nhận được chỉ dẫn hữu ích."
         },
         {
           "id": 14,
           "difficulty": "A2 · Sơ cấp",
-          "question": "A friend says, 'I'm afraid I can't make it tonight.'",
+          "question": "Someone hands you your phone and says, “I think you left this on the table.” What do you say?",
           "options": [
-            "You must be tonight.",
-            "I can't make your shoes.",
-            "No worries. Maybe next time."
+            "Would you mind putting it in your bag for now?",
+            "Oh, thanks! I was looking for that.",
+            "That's not mine—it must belong to someone else."
           ],
-          "correctAnswer": 2,
-          "explanation": "Can't make it nghĩa là không thể tham dự. No worries thể hiện sự thông cảm."
+          "correctAnswer": 1,
+          "explanation": "“I was looking for that” cho thấy bạn đang tìm món đồ bị bỏ quên. Cảm ơn trước rồi nói thêm như vậy rất tự nhiên."
         },
         {
           "id": 15,
           "difficulty": "A2 · Sơ cấp",
-          "question": "Someone invites you to dinner: 'Would you like to join us?' You want to accept.",
+          "question": "A friend asks, “How did the interview go?” It went quite well, but you haven’t heard back yet. What do you say?",
           "options": [
-            "I'd love to. What time?",
-            "Dinner is a blue color.",
-            "I refuse yesterday."
+            "I haven't heard anything yet, so I'm trying not to think about it.",
+            "It didn't go as well as I'd hoped, actually.",
+            "Pretty well, I think. I should hear back next week."
           ],
-          "correctAnswer": 0,
-          "explanation": "I'd love to là cách nhận lời thân thiện; hỏi What time? để biết thời gian."
+          "correctAnswer": 2,
+          "explanation": "“Pretty well, I think” diễn đạt đánh giá tích cực nhưng chưa chắc chắn. “I should hear back next week” nghĩa là bạn dự kiến sẽ nhận được phản hồi vào tuần tới."
         },
         {
           "id": 16,
           "difficulty": "A2 · Sơ cấp",
-          "question": "A colleague tells you, 'The bus is running late.'",
+          "question": "You’re at a busy café and need to use the restroom. You ask a friend, “Could you keep an eye on my bag for a minute?” What’s a natural reply?",
           "options": [
-            "I ran late the bus.",
-            "The bus is very delicious.",
-            "Thanks for letting me know."
+            "Sure, no problem.",
+            "I'd rather not leave my things unattended either.",
+            "I need to head off in a minute."
           ],
-          "correctAnswer": 2,
-          "explanation": "Thanks for letting me know là phản hồi phù hợp khi ai đó cung cấp thông tin."
+          "correctAnswer": 0,
+          "explanation": "“Keep an eye on” nghĩa là trông chừng. “Sure, no problem” là cách đồng ý giúp đỡ thân mật, tự nhiên."
         },
         {
           "id": 17,
           "difficulty": "A2 · Sơ cấp",
-          "question": "A customer says, 'This soup is a bit salty.' What is a helpful response from the server?",
+          "question": "You tell a friend, “I’m thinking of trying that new Thai place.” They’ve eaten there and liked it. What might they say?",
           "options": [
-            "I'm sorry about that. I'll bring you some water.",
-            "Soup is always a number.",
-            "You are salty too."
+            "I'm not really in the mood for Thai food.",
+            "You should! The food there is really good.",
+            "I've been meaning to try it, too."
           ],
-          "correctAnswer": 0,
-          "explanation": "Người phục vụ nên xin lỗi và đề nghị hỗ trợ thay vì tranh luận với khách."
+          "correctAnswer": 1,
+          "explanation": "“You should!” là cách khuyến khích tự nhiên. Câu sau đưa ra lý do và chia sẻ trải nghiệm cá nhân."
         },
         {
           "id": 18,
           "difficulty": "A2 · Sơ cấp",
-          "question": "A visitor asks how to get to the museum.",
+          "question": "At a restaurant, the server asks, “How’s everything tasting?” You’re enjoying your meal. What do you say?",
           "options": [
-            "The museum is hungry.",
-            "I went there next year.",
-            "Walk two blocks and turn left."
+            "Could we get the bill, please?",
+            "I'm still waiting for my drink.",
+            "Really good, thanks!"
           ],
           "correctAnswer": 2,
-          "explanation": "Đây là chỉ dẫn đường đi rõ ràng, dùng động từ mệnh lệnh walk và turn."
+          "explanation": "“Really good, thanks!” là phản hồi ngắn gọn và tự nhiên khi nhân viên hỏi thăm chất lượng món ăn."
         },
         {
           "id": 19,
           "difficulty": "A2 · Sơ cấp",
-          "question": "Your friend says, 'I passed my driving test!'",
+          "question": "A friend texts, “Are we still on for Friday?” You want to confirm the plan. What do you reply?",
           "options": [
-            "Please turn off the test.",
-            "Congratulations! That's great news.",
-            "I'm sorry to hear that."
+            "Yep, still good for Friday. See you then!",
+            "I might have to rain-check—something came up.",
+            "What day was that again?"
           ],
-          "correctAnswer": 1,
-          "explanation": "Congratulations là lời chúc mừng phù hợp khi ai đó đạt thành tích."
+          "correctAnswer": 0,
+          "explanation": "“Are we still on for...?” hỏi xem kế hoạch có còn diễn ra không. “Yep, still good...” xác nhận thân mật và rõ ràng."
         },
         {
           "id": 20,
           "difficulty": "A2 · Sơ cấp",
-          "question": "You enter a café and want to sit down. You ask, 'Is this seat taken?'",
+          "question": "You can’t make it to a friend’s birthday dinner after all. What’s a considerate message?",
           "options": [
-            "No, it's free. Please sit down.",
-            "Yes, I take a bus.",
-            "The seat is drinking coffee."
+            "Can we move it to tomorrow instead?",
+            "I'm really sorry, but I can't make it tonight. Hope you have a lovely time!",
+            "I'll try to stop by later, if I can."
           ],
-          "correctAnswer": 0,
-          "explanation": "Is this seat taken? hỏi chỗ ngồi có người giữ chưa. No, it's free nghĩa là còn trống."
+          "correctAnswer": 1,
+          "explanation": "“I can’t make it” là cách nói tự nhiên để báo mình không thể tham dự. Lời xin lỗi và câu chúc giúp tin nhắn lịch sự, quan tâm."
         },
         {
           "id": 21,
           "difficulty": "B1 · Trung cấp",
-          "question": "You want a colleague to review your report. What is a polite request?",
+          "question": "A teammate messages, “I might be a little late to the meeting.” What’s a natural reply?",
           "options": [
-            "You must read my report now.",
-            "I was wondering if you could look over my report.",
-            "My report is looking at you."
+            "No problem, just message me when you arrive.",
+            "Should we push the meeting back?",
+            "Thanks for the heads-up. We'll get started without you."
           ],
-          "correctAnswer": 1,
-          "explanation": "I was wondering if you could... là cách nhờ vả mềm mại, lịch sự."
+          "correctAnswer": 2,
+          "explanation": "“Thanks for the heads-up” nghĩa là cảm ơn vì đã báo trước. “We’ll get started without you” giúp người kia yên tâm rằng cuộc họp vẫn có thể bắt đầu."
         },
         {
           "id": 22,
           "difficulty": "B1 · Trung cấp",
-          "question": "Someone says, 'I don't quite agree with your suggestion.' How can you respond constructively?",
+          "question": "After a film, your friend says, “That was so much better than I expected.” You agree. What do you say?",
           "options": [
-            "I see your point, but could I explain my reasoning?",
-            "You are always wrong.",
-            "Then there is nothing to discuss ever."
+            "Same here. I thought it'd be pretty average.",
+            "I was actually a little underwhelmed.",
+            "I haven't had a chance to watch it yet."
           ],
           "correctAnswer": 0,
-          "explanation": "I see your point thừa nhận ý kiến của đối phương trước khi trình bày quan điểm khác."
+          "explanation": "“Same here” nghĩa là mình cũng có cùng cảm nhận. “I thought it’d be pretty average” giải thích rằng trước đó bạn không kỳ vọng quá cao."
         },
         {
           "id": 23,
           "difficulty": "B1 · Trung cấp",
-          "question": "You have a scheduling conflict. What should you say?",
+          "question": "A colleague asks, “Would you mind sending me the link when you get a chance?” What’s a natural response?",
           "options": [
-            "Could we delete the office?",
-            "I reschedule yesterday.",
-            "Could we reschedule our meeting?"
+            "I think I sent it over yesterday.",
+            "Sure, I'll send it over this afternoon.",
+            "Could you remind me which link you mean?"
           ],
-          "correctAnswer": 2,
-          "explanation": "Reschedule nghĩa là sắp xếp lại thời gian. Đây là lời đề nghị lịch sự."
+          "correctAnswer": 1,
+          "explanation": "“I’ll send it over” là cách nói tự nhiên trong công việc, nghĩa là mình sẽ gửi nó cho bạn. “When you get a chance” ngụ ý không cần làm ngay lập tức."
         },
         {
           "id": 24,
           "difficulty": "B1 · Trung cấp",
-          "question": "You didn't catch someone's name.",
+          "question": "You can’t attend a 3 p.m. call and suggest moving it to 4. Your colleague says, “Would 4 work for you?” What do you reply?",
           "options": [
-            "Your name fell down.",
-            "Sorry, I didn't catch your name.",
-            "I caught the train name."
+            "Would 4:30 give you a bit more time?",
+            "I'm afraid I'll need to reschedule altogether.",
+            "Yep, 4 works for me. Thanks for being flexible."
           ],
-          "correctAnswer": 1,
-          "explanation": "I didn't catch your name là cách nói tự nhiên khi nghe không rõ tên ai đó."
+          "correctAnswer": 2,
+          "explanation": "“4 works for me” là cách xác nhận giờ hẹn rất tự nhiên. “Thanks for being flexible” thể hiện sự cảm kích vì người kia đã linh động."
         },
         {
           "id": 25,
           "difficulty": "B1 · Trung cấp",
-          "question": "A neighbour asks you to keep the noise down.",
+          "question": "You forgot to reply to a friend’s message for several days. You finally respond and apologise. Your friend says, “Don’t worry about it.” What’s a natural follow-up?",
           "options": [
-            "Noise is my neighbour.",
-            "Of course. Sorry about that.",
-            "I will make it louder."
+            "Thanks for understanding. How have you been?",
+            "I thought I'd replied, actually.",
+            "I don't check my phone very often."
           ],
-          "correctAnswer": 1,
-          "explanation": "Keep the noise down nghĩa là giảm tiếng ồn. Of course kèm lời xin lỗi thể hiện sự hợp tác."
+          "correctAnswer": 0,
+          "explanation": "“Thanks for understanding” cảm ơn người kia vì đã thông cảm; sau đó hỏi thăm là cách tự nhiên để nối lại cuộc trò chuyện."
         },
         {
           "id": 26,
           "difficulty": "B1 · Trung cấp",
-          "question": "A customer says their package has not arrived. What is a useful response?",
+          "question": "A friend says, “I was a bit disappointed with how the meeting went.” What’s an empathetic response?",
           "options": [
-            "Packages do not exist.",
-            "You should forget about it.",
-            "Let me check the tracking information for you."
+            "I'm sure it wasn't that bad.",
+            "Yeah, it didn't quite go to plan. Want to talk it through?",
+            "At least it's behind us now."
           ],
-          "correctAnswer": 2,
-          "explanation": "Đề nghị kiểm tra thông tin theo dõi đơn hàng là phản hồi hỗ trợ phù hợp."
+          "correctAnswer": 1,
+          "explanation": "“It didn’t quite go to plan” thừa nhận cuộc họp không diễn ra như mong đợi. “Want to talk it through?” thể hiện sự quan tâm và sẵn sàng lắng nghe."
         },
         {
           "id": 27,
           "difficulty": "B1 · Trung cấp",
-          "question": "A colleague says, 'I appreciate your honesty.'",
+          "question": "You’re in a waiting room and want to sit in an empty chair. What’s a polite, natural question?",
           "options": [
-            "Thank you for understanding.",
-            "Honesty is closed.",
-            "I appreciate your sandwich yesterday."
+            "Is this seat taken?",
+            "Would you like to sit here?",
+            "Do you mind if I sit here?"
           ],
-          "correctAnswer": 0,
-          "explanation": "Thank you for understanding là lời đáp lịch sự, thể hiện sự trân trọng."
+          "correctAnswer": 2,
+          "explanation": "“Do you mind if I...?” là cách xin phép lịch sự. Nếu người kia trả lời “Not at all”, nghĩa là họ không phiền và bạn có thể ngồi."
         },
         {
           "id": 28,
           "difficulty": "B1 · Trung cấp",
-          "question": "Someone asks, 'Do you happen to know whether the library is open today?' You are unsure.",
+          "question": "You’re serving customers at a restaurant. A guest says, “The food’s taking a while, isn’t it?” What’s the best response?",
           "options": [
-            "The library is a blue book.",
-            "I'm not sure, but I can check the website.",
-            "Of course, it is closed tomorrow last year."
+            "Sorry about the wait. I'll check with the kitchen for you.",
+            "We're quite busy tonight.",
+            "It shouldn't be much longer."
           ],
-          "correctAnswer": 1,
-          "explanation": "Khi không chắc chắn, hãy nói thật và đề nghị kiểm tra nguồn thông tin."
+          "correctAnswer": 0,
+          "explanation": "Nhân viên nên xin lỗi vì khách phải chờ và chủ động kiểm tra với nhà bếp. Cách đáp này vừa tự nhiên vừa thể hiện trách nhiệm."
         },
         {
           "id": 29,
           "difficulty": "B1 · Trung cấp",
-          "question": "Your teammate suggests leaving early to avoid traffic.",
+          "question": "A coworker says, “I’ve been completely swamped lately.” What’s a natural, sympathetic reply?",
           "options": [
-            "I left tomorrow morning yesterday.",
-            "Traffic is made of ideas.",
-            "That's probably a good idea."
+            "Have you thought about taking a day off?",
+            "Sounds like you've had a lot on your plate. Hope things ease up soon.",
+            "I know exactly how that feels; I've been busy too."
           ],
-          "correctAnswer": 2,
-          "explanation": "That's probably a good idea thể hiện đồng tình một cách tự nhiên."
+          "correctAnswer": 1,
+          "explanation": "“Swamped” và “have a lot on your plate” đều diễn tả đang có quá nhiều việc. Đây là cách đáp thể hiện đồng cảm, không hiểu theo nghĩa đen."
         },
         {
           "id": 30,
           "difficulty": "B1 · Trung cấp",
-          "question": "A colleague offers to help: 'Would you like me to give you a hand?'",
+          "question": "A friend says, “Could you keep this between us for now?” What do you say if you agree to keep it private?",
           "options": [
-            "No, your hand is blue.",
-            "I gave a hand yesterday tomorrow.",
-            "That would be very helpful, thanks."
+            "I'd prefer not to get involved.",
+            "Can I tell just one person?",
+            "Of course. I won't mention it to anyone."
           ],
           "correctAnswer": 2,
-          "explanation": "Give someone a hand nghĩa là giúp đỡ. That would be very helpful là lời nhận sự giúp đỡ lịch sự."
+          "explanation": "“I won’t mention it to anyone” xác nhận rõ rằng bạn sẽ không kể chuyện này cho người khác. Đây là phản hồi tự nhiên khi được nhờ giữ bí mật."
         },
         {
           "id": 31,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "A client says, 'I'm afraid there's been a misunderstanding about the delivery date.'",
+          "question": "A colleague says, “I really appreciate you taking the time to walk me through this.” What’s a warm, professional response?",
           "options": [
-            "I see. Let's go through the details and clarify the date.",
-            "You misunderstood because you are careless.",
-            "There is no date in the calendar of life."
+            "Of course. Happy to help—just let me know if anything else comes up.",
+            "I managed to work it out on my own.",
+            "I had some time earlier, so it worked out."
           ],
           "correctAnswer": 0,
-          "explanation": "Phản hồi chuyên nghiệp nên bình tĩnh làm rõ thông tin thay vì đổ lỗi."
+          "explanation": "“Of course. Happy to help” vừa thân thiện vừa chuyên nghiệp. “Let me know if anything else comes up” mở lời hỗ trợ thêm mà không quá trang trọng."
         },
         {
           "id": 32,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "In a meeting, someone asks, 'Could you elaborate on what you mean by flexible hours?'",
+          "question": "In a discussion, someone says, “I see what you’re saying, but I’m not convinced that’s the best approach.” What’s a constructive reply?",
           "options": [
-            "I don't want to talk about time ever.",
-            "I mean employees can adjust their start and finish times within agreed limits.",
-            "Flexible means made of metal."
+            "I completely agree—we should go with it.",
+            "That's fair. What would you suggest instead?",
+            "Let's take a vote and move on."
           ],
           "correctAnswer": 1,
-          "explanation": "Elaborate on nghĩa là giải thích chi tiết hơn. Câu trả lời cần làm rõ ý nghĩa trong ngữ cảnh công việc."
+          "explanation": "“That’s fair” công nhận quan điểm của đối phương. Hỏi “What would you suggest instead?” giúp cuộc trao đổi chuyển sang tìm giải pháp thay vì tranh cãi."
         },
         {
           "id": 33,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "A teammate says, 'I don't want to jump to conclusions before we see the data.'",
+          "question": "Your manager messages, “Just a heads-up: the deadline’s been brought forward to Thursday.” What’s a natural response?",
           "options": [
-            "Let's decide without looking at anything.",
-            "Agreed. Let's wait until we have the full results.",
-            "Conclusions are at the airport."
+            "I thought we had until Friday.",
+            "I'll see what I can do.",
+            "Thanks for flagging that. I'll adjust my schedule."
           ],
-          "correctAnswer": 1,
-          "explanation": "Jump to conclusions nghĩa là kết luận quá vội. Đồng ý chờ dữ liệu là phản hồi hợp lý."
+          "correctAnswer": 2,
+          "explanation": "“Thanks for flagging that” là cách cảm ơn vì đã lưu ý một thông tin quan trọng, thường dùng trong môi trường công việc."
         },
         {
           "id": 34,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "Your manager says the budget may need to be revised.",
+          "question": "A colleague says, “I don’t mean to nitpick, but there are a few inconsistencies in this section.” What’s a professional response?",
           "options": [
-            "Budgets cannot be changed because they are paper.",
-            "I revised the weather yesterday.",
-            "That makes sense. Which areas should we review first?"
+            "Thanks for catching those. I'll take another look.",
+            "I don't think those are real issues.",
+            "Could you show me an example?"
           ],
-          "correctAnswer": 2,
-          "explanation": "Phản hồi này vừa ghi nhận ý kiến vừa hỏi bước tiếp theo để giải quyết vấn đề."
+          "correctAnswer": 0,
+          "explanation": "“Thanks for catching those” ghi nhận góp ý. “I’ll take another look” cho biết bạn sẽ kiểm tra và chỉnh sửa, không phản ứng phòng thủ."
         },
         {
           "id": 35,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "A colleague says, 'I have to take issue with the figures in this report.'",
+          "question": "Your team is running behind schedule. Someone asks, “Could we move the start time to 10:30?” You’re okay with that. What do you say?",
           "options": [
-            "The report has taken my lunch.",
-            "I understand your concern. Could you show me which figures you mean?",
-            "You are not allowed to have issues."
+            "I'd rather keep the original time.",
+            "That works for me. I'll let everyone else know.",
+            "Can we start at 11 instead?"
           ],
           "correctAnswer": 1,
-          "explanation": "Take issue with nghĩa là phản đối/không đồng tình. Yêu cầu chỉ rõ số liệu giúp thảo luận dựa trên bằng chứng."
+          "explanation": "“That works for me” xác nhận đề xuất phù hợp với bạn. Câu tiếp theo cho biết bạn sẽ thông báo lại cho những người liên quan."
         },
         {
           "id": 36,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "You need more time to finish a task. What is a professional request?",
+          "question": "A hotel receptionist says, “I’m afraid we’re fully booked tonight.” What’s a useful, polite response?",
           "options": [
-            "The deadline is a person.",
-            "Would it be possible to extend the deadline?",
-            "Give me more days or else."
+            "Could you check another room type for me?",
+            "That's disappointing. I was hoping to stay here.",
+            "I see. Could you recommend somewhere nearby?"
           ],
-          "correctAnswer": 1,
-          "explanation": "Would it be possible to...? là cách yêu cầu lịch sự. Extend the deadline nghĩa là gia hạn hạn chót."
+          "correctAnswer": 2,
+          "explanation": "“I see” thể hiện đã hiểu tình hình. Hỏi địa điểm gần đó là cách tiếp tục trao đổi thực tế và lịch sự."
         },
         {
           "id": 37,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "A colleague says, 'I was under the impression that the meeting started at ten.'",
+          "question": "A colleague says, “I thought we’d agreed to keep this meeting informal.” You realise the slides are too formal. What do you say?",
           "options": [
-            "Impressions are only for paintings.",
-            "I can see why you thought that. The time was changed to nine yesterday.",
-            "You should know everything without being told."
+            "You're right. I'll simplify the slides and keep it more conversational.",
+            "I thought the formal slides would be useful.",
+            "Would you like me to send the slides in advance?"
           ],
-          "correctAnswer": 1,
-          "explanation": "I was under the impression nghĩa là tôi đã tưởng/rằng. Câu trả lời phù hợp giải thích sự thay đổi nhẹ nhàng."
+          "correctAnswer": 0,
+          "explanation": "“You’re right” thừa nhận góp ý. “Keep it more conversational” nghĩa là làm cho buổi họp có tính trao đổi tự nhiên hơn, bớt nặng tính trình bày."
         },
         {
           "id": 38,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "At the end of a long workday, someone says, 'Let's call it a day.'",
+          "question": "A teammate asks, “Would you be open to revisiting the plan next week?” You agree. What sounds natural?",
           "options": [
-            "Agreed. We can pick this up tomorrow.",
-            "Let's phone the calendar.",
-            "I called the day last week."
+            "I'd rather settle it today.",
+            "Absolutely. Let's see where things stand on Monday.",
+            "I'm not sure we need to revisit it."
           ],
-          "correctAnswer": 0,
-          "explanation": "Call it a day nghĩa là kết thúc công việc trong ngày. Pick this up tomorrow nghĩa là tiếp tục vào ngày mai."
+          "correctAnswer": 1,
+          "explanation": "“Would you be open to...?” là cách đề xuất mềm mỏng. “Let’s see where things stand” nghĩa là cùng xem tình hình lúc đó như thế nào."
         },
         {
           "id": 39,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "Your manager asks you to keep them informed about progress.",
+          "question": "In a meeting, a manager asks, “I don’t want to put you on the spot, but do you have a view on this?” You have a few thoughts. What do you say?",
           "options": [
-            "Absolutely. I'll keep you updated as things develop.",
-            "I will put you inside the computer.",
-            "Progress is not allowed."
+            "I'd rather not say until I've thought it through.",
+            "I don't have a strong opinion either way.",
+            "I do, actually. A couple of things come to mind."
           ],
-          "correctAnswer": 0,
-          "explanation": "Keep someone updated/in the loop nghĩa là thường xuyên cập nhật thông tin cho họ."
+          "correctAnswer": 2,
+          "explanation": "“I do, actually” xác nhận bạn có ý kiến. “A couple of things come to mind” là cách mở đầu tự nhiên trước khi chia sẻ vài suy nghĩ."
         },
         {
           "id": 40,
           "difficulty": "B2 · Trung cấp cao",
-          "question": "A client says your proposal is promising but needs more detail.",
+          "question": "A coworker asks at the last minute, “Could you take this on by the end of the day?” You’re already overloaded. What’s a tactful response?",
           "options": [
-            "That's a fair point. I'll add a clearer implementation timeline.",
-            "A proposal cannot make promises.",
-            "Details are not important in any plan."
+            "I can help with part of it, but I can't take on the whole thing today.",
+            "I can take care of the whole thing, no problem.",
+            "Can you send me the details?"
           ],
           "correctAnswer": 0,
-          "explanation": "Đây là cách tiếp nhận góp ý tích cực và nêu hành động cụ thể để cải thiện đề xuất."
+          "explanation": "Câu trả lời đặt giới hạn rõ ràng nhưng vẫn đề nghị hỗ trợ một phần. Đây là cách từ chối khéo trong môi trường làm việc."
         },
         {
           "id": 41,
           "difficulty": "C1 · Nâng cao",
-          "question": "A colleague says, 'I take your point, but I'm not entirely convinced.'",
+          "question": "A friend says, “I wouldn’t read too much into her not replying yet.” What’s a natural response?",
           "options": [
-            "I take your point and put it in a box.",
-            "You must be convinced immediately.",
-            "That's fair. Which part would you like me to support with more evidence?"
+            "She should have replied by now.",
+            "True. She might just be tied up with something.",
+            "I'll message her again right away."
           ],
-          "correctAnswer": 2,
-          "explanation": "Câu trả lời thừa nhận sự hoài nghi và mời người kia nêu phần cần thêm bằng chứng."
+          "correctAnswer": 1,
+          "explanation": "“You might be right” hoặc “True” thể hiện đồng tình nhẹ nhàng. “Tied up” trong ngữ cảnh này nghĩa là đang bận."
         },
         {
           "id": 42,
           "difficulty": "C1 · Nâng cao",
-          "question": "Someone says, 'I wouldn't go so far as to call the project a failure.'",
+          "question": "During a discussion, someone says, “With respect, I think we’re missing the bigger picture.” What’s a constructive response?",
           "options": [
-            "Going far requires a train.",
-            "I agree. It has faced setbacks, but there are still useful outcomes.",
-            "Let's call every project a failure."
+            "I think we're on the right track as it is.",
+            "Can we leave that for another meeting?",
+            "That's a fair point. What do you think we're overlooking?"
           ],
-          "correctAnswer": 1,
-          "explanation": "I wouldn't go so far as to... là cách diễn đạt bất đồng nhẹ, tránh kết luận quá cực đoan."
+          "correctAnswer": 2,
+          "explanation": "“That’s a fair point” tiếp nhận ý kiến mà không cần đồng ý hoàn toàn. Câu hỏi tiếp theo mời người kia giải thích cụ thể vấn đề đang bị bỏ sót."
         },
         {
           "id": 43,
           "difficulty": "C1 · Nâng cao",
-          "question": "In a debate, someone says, 'For the sake of argument, let's assume the costs double.'",
+          "question": "You can’t attend an event and say, “I appreciate the invitation, but I’m going to have to sit this one out.” What’s a gracious reply from the organiser?",
           "options": [
-            "Even under that assumption, we should compare the long-term benefits.",
-            "Costs cannot be discussed hypothetically.",
-            "Arguments should always be about sports."
+            "No worries at all. Thanks for letting me know—hopefully next time.",
+            "Are you sure you can't make it?",
+            "We'll save you a seat anyway."
           ],
           "correctAnswer": 0,
-          "explanation": "For the sake of argument giới thiệu một giả định để thảo luận. Câu trả lời tiếp tục phân tích giả định đó."
+          "explanation": "“Sit this one out” là cách nói tự nhiên để từ chối tham gia lần này. “No worries at all” giúp người từ chối không cảm thấy áy náy."
         },
         {
           "id": 44,
           "difficulty": "C1 · Nâng cao",
-          "question": "You realize your earlier comment may have sounded rude. What should you say?",
+          "question": "A colleague says, “The proposal is compelling, although the timeline feels a little optimistic.” What’s a thoughtful response?",
           "options": [
-            "I may have given the wrong impression. I didn't mean to dismiss your work.",
-            "My impression is on the wall.",
-            "You should not understand my words."
+            "I think the deadline is perfectly realistic.",
+            "Agreed. We may need to build in a bit more time.",
+            "Let's not change anything for now."
           ],
-          "correctAnswer": 0,
-          "explanation": "Câu này nhận trách nhiệm về cách diễn đạt và làm rõ ý định mà không đổ lỗi cho người nghe."
+          "correctAnswer": 1,
+          "explanation": "“Build in a bit more time” nghĩa là dành thêm thời gian dự phòng. Phản hồi này tiếp nhận nhận xét và đưa ra hướng xử lý thực tế."
         },
         {
           "id": 45,
           "difficulty": "C1 · Nâng cao",
-          "question": "A colleague asks, 'Could you clarify the rationale behind this decision?'",
+          "question": "A teammate says, “I’m not sure we’re quite aligned on what success looks like.” What’s the best way to move the conversation forward?",
           "options": [
-            "Decisions do not need reasons.",
-            "Rationale is a type of calculator.",
-            "Certainly. The main consideration was reducing delays for customers."
+            "We're already clear enough, I think.",
+            "Success means different things to different people.",
+            "That's worth clarifying. Let's spell out the outcomes we're each expecting."
           ],
           "correctAnswer": 2,
-          "explanation": "Rationale nghĩa là cơ sở/lý do hợp lý đứng sau một quyết định."
+          "explanation": "“We're not aligned” nghĩa là chưa có cùng cách hiểu hoặc mục tiêu. “Spell out” là nói rõ, cụ thể hóa kỳ vọng để tránh hiểu lầm."
         },
         {
           "id": 46,
           "difficulty": "C1 · Nâng cao",
-          "question": "In a disagreement, you want to express respect while maintaining your view.",
+          "question": "A colleague says, “Let’s hold off on making a decision until we’ve heard back from legal.” What’s a natural response?",
           "options": [
-            "I understand your position, though I see the issue differently.",
-            "With all due disrespect, you're wrong.",
-            "I will not listen to any other view."
+            "Agreed. There's no point rushing it before we have their input.",
+            "We can decide now and adjust later.",
+            "Legal has already signed off on it."
           ],
           "correctAnswer": 0,
-          "explanation": "I understand your position, though... là cách bất đồng lịch sự, vẫn công nhận quan điểm của đối phương."
+          "explanation": "“Hold off on” nghĩa là tạm hoãn. “There’s no point rushing it” thể hiện đồng ý rằng chưa nên quyết định khi còn thiếu thông tin."
         },
         {
           "id": 47,
           "difficulty": "C1 · Nâng cao",
-          "question": "You need to ask a colleague for an opinion in front of others without pressuring them.",
+          "question": "Your manager says, “I’m happy for you to take the lead, provided we’re clear on the scope.” What’s an appropriate response?",
           "options": [
-            "Answer now or everyone will be angry.",
-            "I have already decided what you think.",
-            "I don't mean to put you on the spot, but would you be comfortable sharing your view?"
+            "I'll take care of everything and let you know.",
+            "Absolutely. Let's pin down the deliverables first.",
+            "I don't think we need to define anything yet."
           ],
-          "correctAnswer": 2,
-          "explanation": "Put someone on the spot nghĩa là đặt ai vào tình huống khó xử/bị yêu cầu trả lời đột ngột. Câu này giảm áp lực bằng cách xin phép."
+          "correctAnswer": 1,
+          "explanation": "“Pin down” nghĩa là xác định rõ. “Deliverables” là những kết quả/sản phẩm cụ thể cần bàn giao trong công việc."
         },
         {
           "id": 48,
           "difficulty": "C1 · Nâng cao",
-          "question": "A teammate says, 'I wouldn't rule out a change in the schedule.'",
+          "question": "A friend says, “I hope this doesn’t come across as criticism, but I think the introduction could be stronger.” What’s an open-minded response?",
           "options": [
-            "Rules are only found in classrooms.",
-            "We must rule out every possible option.",
-            "Agreed. It remains a possibility, depending on the client’s response."
+            "I don't really want to hear criticism right now.",
+            "Let's discuss this another time.",
+            "Not at all. I'd rather hear your honest feedback."
           ],
           "correctAnswer": 2,
-          "explanation": "Wouldn't rule out nghĩa là chưa loại trừ khả năng. Câu trả lời thừa nhận khả năng đó còn mở."
+          "explanation": "“I’d rather hear your honest feedback” cho thấy bạn sẵn sàng tiếp nhận góp ý thẳng thắn. Đây là phản hồi trưởng thành, tự nhiên."
         },
         {
           "id": 49,
           "difficulty": "C1 · Nâng cao",
-          "question": "During a discussion, you feel you and another person are misunderstanding each other.",
+          "question": "In a project review, someone says, “We’re treating the symptoms rather than addressing the underlying issue.” What’s a thoughtful reply?",
           "options": [
-            "Let's talk louder until we agree.",
-            "I think we're talking at cross purposes. Could we clarify what each of us means?",
-            "Cross purposes means crossing a street."
+            "That may be right. We should look at what's driving the problem.",
+            "I think we're already addressing the root cause.",
+            "Maybe we should just add another quick fix."
           ],
-          "correctAnswer": 1,
-          "explanation": "Talk at cross purposes nghĩa là hai bên đang nói lệch ý/hiểu sai nhau. Đề nghị làm rõ khái niệm giúp cuộc trao đổi tiến triển."
+          "correctAnswer": 0,
+          "explanation": "“What’s driving the problem” hỏi về nguyên nhân gốc rễ. Câu trả lời thể hiện bạn hiểu ý và đồng ý xem xét sâu hơn."
         },
         {
           "id": 50,
           "difficulty": "C1 · Nâng cao",
-          "question": "A colleague asks for your final opinion, but you need more evidence first.",
+          "question": "A colleague says, “I take your point, but I still have some reservations.” What’s a natural way to understand their concern?",
           "options": [
-            "Judgment should always be immediate.",
-            "I have decided without reading anything.",
-            "I'm inclined to reserve judgment until we've reviewed the full data."
+            "I think we've covered everything.",
+            "That's fair. Which part are you least comfortable with?",
+            "Let's just agree to disagree."
           ],
-          "correctAnswer": 2,
-          "explanation": "Reserve judgment nghĩa là tạm hoãn kết luận cho đến khi có đủ thông tin."
+          "correctAnswer": 1,
+          "explanation": "“I take your point” nghĩa là tôi hiểu ý bạn; “reservations” ở đây là những băn khoăn. Hỏi cụ thể phần họ chưa yên tâm là cách trao đổi xây dựng."
         }
       ]
     }
