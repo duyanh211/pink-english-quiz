@@ -2,7 +2,8 @@
 
 // ==========================================
 // PINK ENGLISH QUIZ - GAME LOGIC
-// Supports question sets with 3 options per question.
+// Reads question data from questions.json.
+// Displays a formula/structure card when a question includes grammarNote.
 // ==========================================
 
 const state = {
@@ -60,6 +61,13 @@ async function loadQuestions() {
                 if (!valid) {
                     throw new Error(`Câu ${questionIndex + 1} trong bộ "${set.title}" có dữ liệu không hợp lệ.`);
                 }
+
+                if (q.grammarNote && (
+                    typeof q.grammarNote.formula !== "string" ||
+                    typeof q.grammarNote.use !== "string"
+                )) {
+                    throw new Error(`Phần công thức của câu ${questionIndex + 1} trong bộ "${set.title}" không hợp lệ.`);
+                }
             });
         });
 
@@ -98,6 +106,104 @@ function renderSetList() {
     });
 }
 
+function removeGrammarNote() {
+    const oldNote = document.getElementById("grammar-note-card");
+    if (oldNote) oldNote.remove();
+}
+
+function renderGrammarNote(question) {
+    removeGrammarNote();
+
+    if (!question.grammarNote) return;
+
+    const note = question.grammarNote;
+    const card = document.createElement("section");
+    card.id = "grammar-note-card";
+    Object.assign(card.style, {
+        marginTop: "14px",
+        padding: "15px",
+        borderRadius: "12px",
+        border: "1px solid #EBC9DA",
+        background: "#FFFFFF",
+        color: "#654D5D"
+    });
+
+    const heading = document.createElement("h4");
+    heading.textContent = "📚 Công thức / cấu trúc cần nhớ";
+    Object.assign(heading.style, {
+        margin: "0 0 10px",
+        color: "#A64F79",
+        fontSize: "15px"
+    });
+
+    const formulaLabel = document.createElement("p");
+    formulaLabel.textContent = "CÔNG THỨC";
+    Object.assign(formulaLabel.style, {
+        margin: "0 0 5px",
+        fontSize: "11px",
+        fontWeight: "700",
+        letterSpacing: "0.5px",
+        color: "#A64F79"
+    });
+
+    const formula = document.createElement("div");
+    formula.textContent = note.formula;
+    Object.assign(formula.style, {
+        padding: "11px 12px",
+        borderRadius: "8px",
+        background: "#FFF3F8",
+        color: "#594252",
+        fontSize: "14px",
+        lineHeight: "1.65",
+        whiteSpace: "pre-line",
+        overflowWrap: "anywhere",
+        fontFamily: "Arial, sans-serif"
+    });
+
+    const useLabel = document.createElement("p");
+    useLabel.textContent = "CÁCH DÙNG";
+    Object.assign(useLabel.style, {
+        margin: "12px 0 4px",
+        fontSize: "11px",
+        fontWeight: "700",
+        letterSpacing: "0.5px",
+        color: "#A64F79"
+    });
+
+    const use = document.createElement("p");
+    use.textContent = note.use;
+    Object.assign(use.style, {
+        margin: "0",
+        fontSize: "13px",
+        lineHeight: "1.6"
+    });
+
+    card.append(heading, formulaLabel, formula, useLabel, use);
+
+    if (note.signals) {
+        const signalsLabel = document.createElement("p");
+        signalsLabel.textContent = "DẤU HIỆU NHẬN BIẾT";
+        Object.assign(signalsLabel.style, {
+            margin: "12px 0 4px",
+            fontSize: "11px",
+            fontWeight: "700",
+            letterSpacing: "0.5px",
+            color: "#A64F79"
+        });
+
+        const signals = document.createElement("p");
+        signals.textContent = note.signals;
+        Object.assign(signals.style, {
+            margin: "0",
+            fontSize: "13px",
+            lineHeight: "1.6"
+        });
+        card.append(signalsLabel, signals);
+    }
+
+    elements.explanation.appendChild(card);
+}
+
 function startQuiz(set) {
     state.currentSet = set;
     state.currentQuestionIndex = 0;
@@ -121,6 +227,7 @@ function renderQuestion() {
     elements.progress.style.width = `${(state.currentQuestionIndex / total) * 100}%`;
     elements.question.textContent = currentQuestion.question;
     elements.options.replaceChildren();
+    removeGrammarNote();
 
     const letters = ["A", "B", "C"];
     currentQuestion.options.forEach((option, index) => {
@@ -162,6 +269,10 @@ function checkAnswer(selectedIndex) {
         const selectedAnswer = currentQuestion.options[selectedIndex];
         elements.explanationText.textContent = `Your answer: ${selectedAnswer}. Correct answer: ${correctAnswer}. ${currentQuestion.explanation}`;
     }
+
+    // Display a formula/structure teaching card for grammar questions.
+    // It appears after either a correct or an incorrect answer.
+    renderGrammarNote(currentQuestion);
 
     elements.score.textContent = `Score: ${state.score}`;
     const total = state.currentSet.questions.length;

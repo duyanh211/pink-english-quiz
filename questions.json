@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "description": "Pink English Quiz question bank: 3 categories, 50 questions each, progressive A1-C1.",
+  "description": "150 English multiple-choice questions with Vietnamese explanations and grammar formula notes.",
   "sets": [
     {
       "id": "grammar_progressive",
@@ -18,7 +18,12 @@
             "go"
           ],
           "correctAnswer": 0,
-          "explanation": "She là ngôi thứ ba số ít. Ở thì hiện tại đơn, động từ go thêm -es thành goes."
+          "explanation": "She là ngôi thứ ba số ít. Ở thì hiện tại đơn, động từ go thêm -es thành goes.",
+          "grammarNote": {
+            "formula": "Khẳng định: S + V(s/es)\nPhủ định: S + do/does not + V nguyên mẫu\nNghi vấn: Do/Does + S + V nguyên mẫu?",
+            "use": "Diễn tả thói quen, lịch trình hoặc sự thật hiển nhiên. Với he/she/it, động từ khẳng định thêm -s/-es.",
+            "signals": "every day, usually, often, always, sometimes, never."
+          }
         },
         {
           "id": 2,
@@ -30,7 +35,12 @@
             "am"
           ],
           "correctAnswer": 2,
-          "explanation": "Với chủ ngữ I, động từ to be ở hiện tại là am."
+          "explanation": "Với chủ ngữ I, động từ to be ở hiện tại là am.",
+          "grammarNote": {
+            "formula": "I + am\nHe/She/It + is\nYou/We/They + are",
+            "use": "Động từ to be ở hiện tại đơn dùng để nói về danh tính, nghề nghiệp, trạng thái hoặc đặc điểm.",
+            "signals": "a student, happy, tired, at home (tùy ngữ cảnh)."
+          }
         },
         {
           "id": 3,
@@ -42,7 +52,12 @@
             "are"
           ],
           "correctAnswer": 2,
-          "explanation": "They là chủ ngữ số nhiều nên đi với are."
+          "explanation": "They là chủ ngữ số nhiều nên đi với are.",
+          "grammarNote": {
+            "formula": "Số ít: S + am/is\nSố nhiều: S + are\nPhủ định: S + am/is/are + not",
+            "use": "They là chủ ngữ số nhiều nên đi với are.",
+            "signals": "they, we, you và danh từ số nhiều."
+          }
         },
         {
           "id": 4,
@@ -54,7 +69,12 @@
             "is"
           ],
           "correctAnswer": 2,
-          "explanation": "An apple là danh từ đếm được số ít nên dùng There is."
+          "explanation": "An apple là danh từ đếm được số ít nên dùng There is.",
+          "grammarNote": {
+            "formula": "There is + danh từ đếm được số ít / danh từ không đếm được\nThere are + danh từ đếm được số nhiều",
+            "use": "Dùng There is/are để nói rằng có một hoặc nhiều người/vật ở đâu đó.",
+            "signals": "an apple (số ít) → There is; two apples (số nhiều) → There are."
+          }
         },
         {
           "id": 5,
@@ -66,7 +86,12 @@
             "liking"
           ],
           "correctAnswer": 1,
-          "explanation": "Sau trợ động từ doesn't, động từ chính dùng dạng nguyên mẫu like."
+          "explanation": "Sau trợ động từ doesn't, động từ chính dùng dạng nguyên mẫu like.",
+          "grammarNote": {
+            "formula": "S + do/does not (don’t/doesn’t) + V nguyên mẫu",
+            "use": "Ở hiện tại đơn, sau doesn’t động từ chính trở về dạng nguyên mẫu: doesn’t like, không phải doesn’t likes.",
+            "signals": "doesn’t, don’t."
+          }
         },
         {
           "id": 6,
@@ -78,7 +103,12 @@
             "go"
           ],
           "correctAnswer": 1,
-          "explanation": "Last Sunday chỉ thời điểm quá khứ; go có dạng quá khứ bất quy tắc là went."
+          "explanation": "Last Sunday chỉ thời điểm quá khứ; go có dạng quá khứ bất quy tắc là went.",
+          "grammarNote": {
+            "formula": "Khẳng định: S + V2/ed\nPhủ định: S + did not + V nguyên mẫu\nNghi vấn: Did + S + V nguyên mẫu?",
+            "use": "Diễn tả hành động đã xảy ra và kết thúc trong quá khứ. Động từ go là bất quy tắc: go → went.",
+            "signals": "yesterday, last week, last Sunday, ago, in 2020."
+          }
         },
         {
           "id": 7,
@@ -102,7 +132,12 @@
             "a few"
           ],
           "correctAnswer": 1,
-          "explanation": "Some thường được dùng trong lời mời hoặc lời đề nghị với danh từ không đếm được như water."
+          "explanation": "Some thường được dùng trong lời mời hoặc lời đề nghị với danh từ không đếm được như water.",
+          "grammarNote": {
+            "formula": "Would you like + danh từ?\nWould you like + to + V?",
+            "use": "Dùng để mời hoặc đề nghị điều gì một cách lịch sự. Some thường xuất hiện trong lời mời/đề nghị.",
+            "signals": "Would you like some tea? / Would you like to join us?"
+          }
         },
         {
           "id": 9,
@@ -114,7 +149,12 @@
             "Can"
           ],
           "correctAnswer": 2,
-          "explanation": "Can dùng để hỏi về khả năng. Câu hỏi đúng là Can you speak...?"
+          "explanation": "Can dùng để hỏi về khả năng. Câu hỏi đúng là Can you speak...?",
+          "grammarNote": {
+            "formula": "Câu hỏi: Can + S + V nguyên mẫu?\nKhẳng định: S + can + V nguyên mẫu.\nPhủ định: S + cannot/can’t + V nguyên mẫu.",
+            "use": "Can diễn tả khả năng hoặc xin phép. Sau can luôn dùng động từ nguyên mẫu không có to.",
+            "signals": "speak, swim, drive, play (động từ nguyên mẫu sau can)."
+          }
         },
         {
           "id": 10,
@@ -126,7 +166,12 @@
             "swims"
           ],
           "correctAnswer": 1,
-          "explanation": "Sau động từ khuyết thiếu can, dùng động từ nguyên mẫu không có to: swim."
+          "explanation": "Sau động từ khuyết thiếu can, dùng động từ nguyên mẫu không có to: swim.",
+          "grammarNote": {
+            "formula": "S + can + V nguyên mẫu (không có “to”)",
+            "use": "Sau động từ khuyết thiếu can, dùng V nguyên mẫu: can swim, can speak; không dùng can swims hoặc can to swim.",
+            "signals": "can, could, may, might, must, should + V nguyên mẫu."
+          }
         },
         {
           "id": 11,
@@ -138,7 +183,12 @@
             "for"
           ],
           "correctAnswer": 2,
-          "explanation": "For đi với khoảng thời gian, ở đây là five years. Since đi với mốc bắt đầu."
+          "explanation": "For đi với khoảng thời gian, ở đây là five years. Since đi với mốc bắt đầu.",
+          "grammarNote": {
+            "formula": "Khẳng định: S + have/has + V3/ed\nPhủ định: S + have/has not + V3/ed\nNghi vấn: Have/Has + S + V3/ed?",
+            "use": "Hiện tại hoàn thành diễn tả trải nghiệm hoặc hành động bắt đầu trong quá khứ và còn liên quan đến hiện tại. For đi với khoảng thời gian.",
+            "signals": "for five years, for two months, since 2021, already, yet, ever, never."
+          }
         },
         {
           "id": 12,
@@ -150,7 +200,12 @@
             "since"
           ],
           "correctAnswer": 2,
-          "explanation": "Since dùng với mốc thời gian bắt đầu cụ thể như 2021."
+          "explanation": "Since dùng với mốc thời gian bắt đầu cụ thể như 2021.",
+          "grammarNote": {
+            "formula": "S + have/has + V3/ed\nFor + khoảng thời gian; Since + mốc thời gian bắt đầu.",
+            "use": "Since 2021 nêu mốc bắt đầu cụ thể; for three years nêu khoảng thời gian kéo dài.",
+            "signals": "since 2021, since Monday, since I was young."
+          }
         },
         {
           "id": 13,
@@ -162,7 +217,12 @@
             "am cooking"
           ],
           "correctAnswer": 0,
-          "explanation": "Hành động đang diễn ra trong quá khứ bị một hành động khác xen vào: quá khứ tiếp diễn was cooking."
+          "explanation": "Hành động đang diễn ra trong quá khứ bị một hành động khác xen vào: quá khứ tiếp diễn was cooking.",
+          "grammarNote": {
+            "formula": "Khẳng định: S + was/were + V-ing\nPhủ định: S + was/were not + V-ing\nNghi vấn: Was/Were + S + V-ing?",
+            "use": "Quá khứ tiếp diễn diễn tả hành động đang xảy ra tại một thời điểm trong quá khứ. Một hành động ngắn ở quá khứ đơn có thể xen vào.",
+            "signals": "while, at 8 p.m. yesterday; thường gặp: was/were V-ing when + S + V2/ed."
+          }
         },
         {
           "id": 14,
@@ -174,7 +234,12 @@
             "enough"
           ],
           "correctAnswer": 1,
-          "explanation": "Cấu trúc too + tính từ + to-infinitive diễn tả quá mức để làm việc gì."
+          "explanation": "Cấu trúc too + tính từ + to-infinitive diễn tả quá mức để làm việc gì.",
+          "grammarNote": {
+            "formula": "too + tính từ/trạng từ + (for someone) + to + V",
+            "use": "Diễn tả quá mức nên không thể thực hiện hành động nào đó: too heavy to carry.",
+            "signals": "too ... to ..."
+          }
         },
         {
           "id": 15,
@@ -186,7 +251,12 @@
             "enough"
           ],
           "correctAnswer": 2,
-          "explanation": "Enough đứng trước danh từ để chỉ lượng đủ: enough time."
+          "explanation": "Enough đứng trước danh từ để chỉ lượng đủ: enough time.",
+          "grammarNote": {
+            "formula": "enough + danh từ\nTính từ/trạng từ + enough + to + V",
+            "use": "Enough đứng trước danh từ (enough time), nhưng đứng sau tính từ/trạng từ (old enough).",
+            "signals": "enough time, enough money, strong enough."
+          }
         },
         {
           "id": 16,
@@ -198,7 +268,12 @@
             "would learn"
           ],
           "correctAnswer": 2,
-          "explanation": "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu."
+          "explanation": "Câu điều kiện loại 2: If + quá khứ đơn, would + động từ nguyên mẫu.",
+          "grammarNote": {
+            "formula": "If + S + V2/ed, S + would + V nguyên mẫu.\nMệnh đề If có thể dùng were cho mọi chủ ngữ trong văn phong trang trọng.",
+            "use": "Câu điều kiện loại 2 nói về tình huống giả định hoặc khó xảy ra ở hiện tại/tương lai.",
+            "signals": "if I had..., if I were..., would + V."
+          }
         },
         {
           "id": 17,
@@ -210,7 +285,12 @@
             "built"
           ],
           "correctAnswer": 0,
-          "explanation": "Câu bị động quá khứ đơn có dạng was/were + quá khứ phân từ: was built."
+          "explanation": "Câu bị động quá khứ đơn có dạng was/were + quá khứ phân từ: was built.",
+          "grammarNote": {
+            "formula": "Bị động quá khứ đơn: S + was/were + V3/ed\nChủ động quá khứ đơn: S + V2/ed",
+            "use": "Dùng bị động khi nhấn mạnh đối tượng chịu tác động. The old bridge là vật được xây dựng, nên dùng was built.",
+            "signals": "in 1998, last year (khi câu ở quá khứ đơn); by + tác nhân nếu cần nêu người thực hiện."
+          }
         },
         {
           "id": 18,
@@ -222,7 +302,12 @@
             "use to"
           ],
           "correctAnswer": 0,
-          "explanation": "Used to + động từ nguyên mẫu diễn tả thói quen hoặc trạng thái trong quá khứ nay không còn."
+          "explanation": "Used to + động từ nguyên mẫu diễn tả thói quen hoặc trạng thái trong quá khứ nay không còn.",
+          "grammarNote": {
+            "formula": "Khẳng định: S + used to + V nguyên mẫu\nPhủ định: S + didn’t use to + V nguyên mẫu\nNghi vấn: Did + S + use to + V nguyên mẫu?",
+            "use": "Diễn tả thói quen hoặc trạng thái thường có trong quá khứ nhưng hiện tại không còn.",
+            "signals": "when I was a child, in the past, years ago."
+          }
         },
         {
           "id": 19,
@@ -234,7 +319,12 @@
             "is"
           ],
           "correctAnswer": 2,
-          "explanation": "Neither thường được xem là chủ ngữ số ít trong cấu trúc này, nên dùng is."
+          "explanation": "Neither thường được xem là chủ ngữ số ít trong cấu trúc này, nên dùng is.",
+          "grammarNote": {
+            "formula": "Neither of + danh từ/đại từ số nhiều + động từ số ít (theo quy tắc ngữ pháp truyền thống).",
+            "use": "Neither of nghĩa là không cái/người nào trong hai hoặc nhiều lựa chọn. Trong bài này, neither được xem là chủ ngữ số ít nên dùng is.",
+            "signals": "Neither of the answers is..., Neither of them has..."
+          }
         },
         {
           "id": 20,
@@ -246,7 +336,12 @@
             "don't have to"
           ],
           "correctAnswer": 0,
-          "explanation": "Mustn't diễn tả sự cấm đoán. Don't have to nghĩa là không cần thiết, khác nghĩa."
+          "explanation": "Mustn't diễn tả sự cấm đoán. Don't have to nghĩa là không cần thiết, khác nghĩa.",
+          "grammarNote": {
+            "formula": "S + must not (mustn’t) + V nguyên mẫu",
+            "use": "Mustn’t diễn tả sự cấm đoán. Không nhầm với don’t have to, nghĩa là không bắt buộc/không cần.",
+            "signals": "prohibited, forbidden, not allowed."
+          }
         },
         {
           "id": 21,
@@ -258,7 +353,12 @@
             "Despite"
           ],
           "correctAnswer": 2,
-          "explanation": "Despite đi với danh từ hoặc V-ing. Ở đây là Despite being tired (rút gọn)."
+          "explanation": "Despite đi với danh từ hoặc V-ing. Ở đây là Despite being tired (rút gọn).",
+          "grammarNote": {
+            "formula": "Despite / In spite of + danh từ / đại từ / V-ing\nAlthough / Though + S + V",
+            "use": "Despite mang nghĩa mặc dù và không đứng trực tiếp trước một mệnh đề đầy đủ nếu không có cấu trúc phù hợp.",
+            "signals": "Despite being tired; Although she was tired."
+          }
         },
         {
           "id": 22,
@@ -270,7 +370,12 @@
             "has already started"
           ],
           "correctAnswer": 1,
-          "explanation": "Một hành động xảy ra trước một thời điểm/hành động khác trong quá khứ dùng quá khứ hoàn thành."
+          "explanation": "Một hành động xảy ra trước một thời điểm/hành động khác trong quá khứ dùng quá khứ hoàn thành.",
+          "grammarNote": {
+            "formula": "Quá khứ hoàn thành (Past Perfect)\nKhẳng định: S + had + V3/ed\nPhủ định: S + had not (hadn’t) + V3/ed\nNghi vấn: Had + S + V3/ed?\n\nVí dụ: The film had already started before we arrived.",
+            "use": "Dùng quá khứ hoàn thành cho hành động xảy ra trước một thời điểm hoặc hành động khác trong quá khứ. Phim bắt đầu trước, chúng ta đến sau.",
+            "signals": "by the time, before, after, already, by + mốc thời gian trong quá khứ."
+          }
         },
         {
           "id": 23,
@@ -282,7 +387,12 @@
             "would study"
           ],
           "correctAnswer": 0,
-          "explanation": "Ước tiếc về quá khứ dùng wish + past perfect: wish I had studied."
+          "explanation": "Ước tiếc về quá khứ dùng wish + past perfect: wish I had studied.",
+          "grammarNote": {
+            "formula": "Ước tiếc về quá khứ: S + wish(es) + S + had + V3/ed\nVí dụ: I wish I had studied harder.",
+            "use": "Wish + Past Perfect diễn tả điều tiếc nuối về việc đã không xảy ra hoặc đã xảy ra khác trong quá khứ.",
+            "signals": "last month, yesterday, should have, regret (tùy ngữ cảnh)."
+          }
         },
         {
           "id": 24,
@@ -306,7 +416,12 @@
             "knew"
           ],
           "correctAnswer": 1,
-          "explanation": "Câu điều kiện loại 3 nói về điều không có thật trong quá khứ: If + past perfect, would have + V3."
+          "explanation": "Câu điều kiện loại 3 nói về điều không có thật trong quá khứ: If + past perfect, would have + V3.",
+          "grammarNote": {
+            "formula": "Điều kiện loại 3:\nIf + S + had + V3/ed, S + would have + V3/ed.\nPhủ định có thể dùng hadn’t / wouldn’t have.",
+            "use": "Diễn tả một điều kiện trái với thực tế trong quá khứ và kết quả giả định cũng ở quá khứ.",
+            "signals": "if I had known, would have left, yesterday (khi nói về giả định quá khứ)."
+          }
         },
         {
           "id": 26,
@@ -318,7 +433,12 @@
             "to postpone"
           ],
           "correctAnswer": 0,
-          "explanation": "Suggest thường đi với V-ing khi đề xuất một hành động: suggested postponing."
+          "explanation": "Suggest thường đi với V-ing khi đề xuất một hành động: suggested postponing.",
+          "grammarNote": {
+            "formula": "suggest + V-ing\nsuggest + that + S + (should) + V nguyên mẫu",
+            "use": "Sau suggest, có thể dùng V-ing hoặc mệnh đề that. Không dùng suggest + người + to V trong cấu trúc thông dụng này.",
+            "signals": "suggest doing something; suggest that we should do something."
+          }
         },
         {
           "id": 27,
@@ -330,7 +450,12 @@
             "in"
           ],
           "correctAnswer": 2,
-          "explanation": "Cụm cố định là be interested in + danh từ/V-ing."
+          "explanation": "Cụm cố định là be interested in + danh từ/V-ing.",
+          "grammarNote": {
+            "formula": "be interested in + danh từ / đại từ / V-ing",
+            "use": "In là giới từ, vì vậy động từ theo sau phải ở dạng V-ing: interested in learning.",
+            "signals": "interested in, good at, keen on, look forward to + V-ing."
+          }
         },
         {
           "id": 28,
@@ -342,7 +467,12 @@
             "will go"
           ],
           "correctAnswer": 0,
-          "explanation": "It's high time + chủ ngữ + quá khứ đơn diễn tả đã đến lúc nên làm gì."
+          "explanation": "It's high time + chủ ngữ + quá khứ đơn diễn tả đã đến lúc nên làm gì.",
+          "grammarNote": {
+            "formula": "It’s (high/about) time + S + V2/ed",
+            "use": "Cấu trúc này dùng quá khứ đơn nhưng mang nghĩa hiện tại: đã đến lúc ai đó nên làm gì.",
+            "signals": "It’s high time..., It’s about time..."
+          }
         },
         {
           "id": 29,
@@ -354,7 +484,12 @@
             "he is"
           ],
           "correctAnswer": 0,
-          "explanation": "Khi Not only đứng đầu câu, mệnh đề chính đảo trợ động từ/động từ lên trước chủ ngữ."
+          "explanation": "Khi Not only đứng đầu câu, mệnh đề chính đảo trợ động từ/động từ lên trước chủ ngữ.",
+          "grammarNote": {
+            "formula": "Not only + trợ động từ/động từ be + S + ..., but (also) + ...\nVí dụ: Not only was he late, but he also forgot the documents.",
+            "use": "Khi Not only đứng đầu câu, mệnh đề đầu phải đảo ngữ: trợ động từ hoặc be đứng trước chủ ngữ.",
+            "signals": "Not only đứng đầu câu."
+          }
         },
         {
           "id": 30,
@@ -366,7 +501,12 @@
             "because"
           ],
           "correctAnswer": 1,
-          "explanation": "Because of đi với cụm danh từ (the heavy rain); because đi với mệnh đề."
+          "explanation": "Because of đi với cụm danh từ (the heavy rain); because đi với mệnh đề.",
+          "grammarNote": {
+            "formula": "because of + danh từ / cụm danh từ / V-ing\nbecause + S + V",
+            "use": "Because of theo sau bởi cụm danh từ; because theo sau bởi một mệnh đề có chủ ngữ và động từ.",
+            "signals": "because of the heavy rain; because it rained heavily."
+          }
         },
         {
           "id": 31,
@@ -378,7 +518,12 @@
             "then"
           ],
           "correctAnswer": 0,
-          "explanation": "Cấu trúc đảo ngữ Hardly had + S + V3 when + mệnh đề quá khứ đơn."
+          "explanation": "Cấu trúc đảo ngữ Hardly had + S + V3 when + mệnh đề quá khứ đơn.",
+          "grammarNote": {
+            "formula": "Hardly + had + S + V3/ed + when + S + V2/ed",
+            "use": "Đảo ngữ nhấn mạnh hai hành động nối tiếp rất nhanh trong quá khứ. Hardly thường đi với when.",
+            "signals": "Hardly ... when; scarcely ... when."
+          }
         },
         {
           "id": 32,
@@ -390,7 +535,12 @@
             "Should"
           ],
           "correctAnswer": 1,
-          "explanation": "Đảo ngữ điều kiện loại 2: Were I to... tương đương If I were to..."
+          "explanation": "Đảo ngữ điều kiện loại 2: Were I to... tương đương If I were to...",
+          "grammarNote": {
+            "formula": "Điều kiện loại 2 đảo ngữ: Were + S + (to + V) ..., S + would + V.\nVí dụ: Were I to accept..., I would need...",
+            "use": "Lược bỏ if và đảo were lên trước chủ ngữ trong câu điều kiện giả định ở hiện tại/tương lai.",
+            "signals": "Were I to..., Were she..., If I were to..."
+          }
         },
         {
           "id": 33,
@@ -402,7 +552,12 @@
             "did I realize"
           ],
           "correctAnswer": 2,
-          "explanation": "Not until đứng đầu câu kéo theo đảo ngữ ở mệnh đề chính: did + chủ ngữ + động từ nguyên mẫu."
+          "explanation": "Not until đứng đầu câu kéo theo đảo ngữ ở mệnh đề chính: did + chủ ngữ + động từ nguyên mẫu.",
+          "grammarNote": {
+            "formula": "Not until + mốc/thời gian/mệnh đề + trợ động từ + S + V nguyên mẫu",
+            "use": "Khi Not until đứng đầu câu, mệnh đề chính phải đảo ngữ. Với quá khứ đơn dùng did + S + V nguyên mẫu.",
+            "signals": "Not until..., only after..., only when... (đứng đầu câu)."
+          }
         },
         {
           "id": 34,
@@ -414,7 +569,12 @@
             "having taken"
           ],
           "correctAnswer": 2,
-          "explanation": "Deny có thể đi với V-ing; having taken nhấn mạnh hành động đã xảy ra trước đó."
+          "explanation": "Deny có thể đi với V-ing; having taken nhấn mạnh hành động đã xảy ra trước đó.",
+          "grammarNote": {
+            "formula": "deny + V-ing\nhaving + V3/ed = hành động đã hoàn tất trước hành động/ý nghĩ được nói đến",
+            "use": "Deny thường đi với V-ing. Perfect gerund (having taken) nhấn mạnh việc lấy tập tin đã xảy ra trước thời điểm phủ nhận.",
+            "signals": "deny doing; deny having done."
+          }
         },
         {
           "id": 35,
@@ -426,7 +586,12 @@
             "that"
           ],
           "correctAnswer": 1,
-          "explanation": "Trong mệnh đề quan hệ không xác định có dấu phẩy, dùng which cho vật; không dùng that."
+          "explanation": "Trong mệnh đề quan hệ không xác định có dấu phẩy, dùng which cho vật; không dùng that.",
+          "grammarNote": {
+            "formula": "Danh từ chỉ vật + , which + mệnh đề bổ sung,\nTrong mệnh đề quan hệ không xác định, không dùng that.",
+            "use": "Which thay thế cho vật/ý trước đó. Dấu phẩy cho biết đây là mệnh đề quan hệ không xác định.",
+            "signals": "Dấu phẩy trước which."
+          }
         },
         {
           "id": 36,
@@ -438,7 +603,12 @@
             "will work"
           ],
           "correctAnswer": 1,
-          "explanation": "Tương lai hoàn thành tiếp diễn nhấn mạnh khoảng thời gian một hành động kéo dài đến một mốc tương lai."
+          "explanation": "Tương lai hoàn thành tiếp diễn nhấn mạnh khoảng thời gian một hành động kéo dài đến một mốc tương lai.",
+          "grammarNote": {
+            "formula": "Tương lai hoàn thành tiếp diễn (Future Perfect Continuous)\nKhẳng định: S + will have been + V-ing\nPhủ định: S + will not have been + V-ing\nNghi vấn: Will + S + have been + V-ing?\n\nVí dụ: By next June, she will have been working here for ten years.",
+            "use": "Nhấn mạnh khoảng thời gian một hành động sẽ kéo dài liên tục cho đến một mốc trong tương lai.",
+            "signals": "by next June, by the end of..., for ten years (tính đến một mốc tương lai)."
+          }
         },
         {
           "id": 37,
@@ -450,7 +620,12 @@
             "the speaker had made"
           ],
           "correctAnswer": 0,
-          "explanation": "Cấu trúc No sooner + had + S + V3 + than + quá khứ đơn yêu cầu đảo ngữ."
+          "explanation": "Cấu trúc No sooner + had + S + V3 + than + quá khứ đơn yêu cầu đảo ngữ.",
+          "grammarNote": {
+            "formula": "No sooner + had + S + V3/ed + than + S + V2/ed",
+            "use": "Đảo ngữ diễn tả một việc vừa xảy ra thì việc khác xảy ra ngay sau đó. No sooner đi với than.",
+            "signals": "No sooner ... than."
+          }
         },
         {
           "id": 38,
@@ -462,7 +637,12 @@
             "didn't tell"
           ],
           "correctAnswer": 2,
-          "explanation": "Would rather + chủ ngữ khác + quá khứ đơn diễn tả mong muốn ở hiện tại/tương lai."
+          "explanation": "Would rather + chủ ngữ khác + quá khứ đơn diễn tả mong muốn ở hiện tại/tương lai.",
+          "grammarNote": {
+            "formula": "S + would rather + S khác + V2/ed\nNếu cùng chủ ngữ: would rather + V nguyên mẫu.",
+            "use": "Would rather + chủ ngữ khác + quá khứ đơn diễn tả mong muốn hiện tại/tương lai, không phải quá khứ thật.",
+            "signals": "I’d rather you didn’t..., I’d rather he came..."
+          }
         },
         {
           "id": 39,
@@ -486,7 +666,12 @@
             "the least"
           ],
           "correctAnswer": 1,
-          "explanation": "Cấu trúc so sánh kép: The + comparative..., the + comparative..."
+          "explanation": "Cấu trúc so sánh kép: The + comparative..., the + comparative...",
+          "grammarNote": {
+            "formula": "The + so sánh hơn + S + V, the + so sánh hơn + S + V",
+            "use": "Cấu trúc so sánh kép: càng... thì càng... Less là dạng so sánh hơn của little.",
+            "signals": "The more..., the more...; The harder..., the better..."
+          }
         },
         {
           "id": 41,
@@ -498,7 +683,12 @@
             "would have made"
           ],
           "correctAnswer": 2,
-          "explanation": "Đảo ngữ điều kiện loại 3: Had it not been for... tương đương If it had not been for..."
+          "explanation": "Đảo ngữ điều kiện loại 3: Had it not been for... tương đương If it had not been for...",
+          "grammarNote": {
+            "formula": "Điều kiện loại 3 đảo ngữ:\nHad + S + V3/ed ..., S + would have + V3/ed.\nTương đương: If + S + had + V3/ed ...",
+            "use": "Bỏ if và đưa had lên trước chủ ngữ. Had it not been for... nghĩa là nếu không nhờ/không vì điều gì trong quá khứ.",
+            "signals": "Had it not been for..., Had I known..., Had they arrived..."
+          }
         },
         {
           "id": 42,
@@ -510,7 +700,12 @@
             "Were it not"
           ],
           "correctAnswer": 0,
-          "explanation": "Had it not been for... là dạng đảo ngữ điều kiện loại 3, nói về điều kiện trái với quá khứ."
+          "explanation": "Had it not been for... là dạng đảo ngữ điều kiện loại 3, nói về điều kiện trái với quá khứ.",
+          "grammarNote": {
+            "formula": "Had it not been for + danh từ/cụm danh từ, S + might/would have + V3/ed",
+            "use": "Đảo ngữ điều kiện loại 3, diễn tả một điều kiện trái với thực tế trong quá khứ.",
+            "signals": "Had it not been for... = If it had not been for..."
+          }
         },
         {
           "id": 43,
@@ -522,7 +717,12 @@
             "that they leaked"
           ],
           "correctAnswer": 1,
-          "explanation": "Cấu trúc bị động tường thuật: S + be believed + to have been + V3 khi hành động xảy ra trước thời điểm tin/nhận định."
+          "explanation": "Cấu trúc bị động tường thuật: S + be believed + to have been + V3 khi hành động xảy ra trước thời điểm tin/nhận định.",
+          "grammarNote": {
+            "formula": "S + am/is/are + believed + to + V\nS + am/is/are + believed + to have + V3/ed (hành động xảy ra trước)",
+            "use": "Bị động tường thuật. Dùng to have + V3 khi sự việc được tin là đã xảy ra trước thời điểm hiện tại/nhận định.",
+            "signals": "is believed to be; is believed to have been; are thought to have..."
+          }
         },
         {
           "id": 44,
@@ -534,7 +734,12 @@
             "she knew"
           ],
           "correctAnswer": 1,
-          "explanation": "Little đứng đầu câu mang nghĩa phủ định kéo theo đảo ngữ: did + chủ ngữ + động từ nguyên mẫu."
+          "explanation": "Little đứng đầu câu mang nghĩa phủ định kéo theo đảo ngữ: did + chủ ngữ + động từ nguyên mẫu.",
+          "grammarNote": {
+            "formula": "Little + trợ động từ + S + V nguyên mẫu\nVí dụ: Little did she know...",
+            "use": "Little đứng đầu câu với nghĩa gần như “không hề/ít ai biết”, tạo cấu trúc đảo ngữ.",
+            "signals": "Little did..., Rarely do..., Seldom have..."
+          }
         },
         {
           "id": 45,
@@ -546,7 +751,12 @@
             "have consulted"
           ],
           "correctAnswer": 1,
-          "explanation": "Would sooner / would rather + chủ ngữ khác + quá khứ đơn để diễn tả mong muốn ở hiện tại/tương lai."
+          "explanation": "Would sooner / would rather + chủ ngữ khác + quá khứ đơn để diễn tả mong muốn ở hiện tại/tương lai.",
+          "grammarNote": {
+            "formula": "S + would sooner / would rather + S khác + V2/ed",
+            "use": "Diễn tả mong muốn người khác làm hoặc không làm điều gì ở hiện tại/tương lai.",
+            "signals": "I’d sooner you consulted me; I’d rather you stayed."
+          }
         },
         {
           "id": 46,
@@ -582,7 +792,12 @@
             "completed"
           ],
           "correctAnswer": 0,
-          "explanation": "Sau các tính từ như essential/important trong mệnh đề that trang trọng, tiếng Anh dùng giả định thức với động từ nguyên mẫu."
+          "explanation": "Sau các tính từ như essential/important trong mệnh đề that trang trọng, tiếng Anh dùng giả định thức với động từ nguyên mẫu.",
+          "grammarNote": {
+            "formula": "It is + adjective (essential/important/necessary) + that + S + V nguyên mẫu\nVới be: that + S + be + ...",
+            "use": "Đây là subjunctive (giả định thức) trong văn phong trang trọng. Động từ giữ nguyên mẫu, không thêm -s ở ngôi thứ ba số ít.",
+            "signals": "It is essential that..., It is important that..., We recommend that..."
+          }
         },
         {
           "id": 49,
@@ -594,7 +809,12 @@
             "did we reach"
           ],
           "correctAnswer": 1,
-          "explanation": "Scarcely + had + chủ ngữ + V3 + when... là cấu trúc đảo ngữ nhấn mạnh hai hành động gần như liên tiếp trong quá khứ."
+          "explanation": "Scarcely + had + chủ ngữ + V3 + when... là cấu trúc đảo ngữ nhấn mạnh hai hành động gần như liên tiếp trong quá khứ.",
+          "grammarNote": {
+            "formula": "Scarcely + had + S + V3/ed + when + S + V2/ed",
+            "use": "Đảo ngữ nhấn mạnh hành động thứ hai xảy ra gần như ngay sau hành động thứ nhất trong quá khứ.",
+            "signals": "Scarcely ... when; Hardly ... when."
+          }
         },
         {
           "id": 50,
@@ -606,7 +826,12 @@
             "would adjust"
           ],
           "correctAnswer": 1,
-          "explanation": "Câu điều kiện loại 3 đảo ngữ: Had I been made aware... would have adjusted."
+          "explanation": "Câu điều kiện loại 3 đảo ngữ: Had I been made aware... would have adjusted.",
+          "grammarNote": {
+            "formula": "Điều kiện loại 3:\nIf + S + had been + V3/ed, S + would have + V3/ed.\nĐảo ngữ: Had + S + been + V3/ed, S + would have + V3/ed.",
+            "use": "Điều kiện trái với thực tế trong quá khứ. Mệnh đề If ở thể bị động dùng had been + V3.",
+            "signals": "Had I been told..., Had it been completed..., would have changed..."
+          }
         }
       ]
     },
