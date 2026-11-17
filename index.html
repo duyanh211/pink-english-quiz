@@ -1,367 +1,372 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#FCE7F3">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbf7f8">
+  <meta name="description" content="Practice natural everyday English conversations with Pink English.">
+  <title>Pink English — Speak naturally</title>
+  <style>
+    :root {
+      --bg: #fbf7f8;
+      --surface: #ffffff;
+      --surface-soft: #f7eff3;
+      --ink: #342b31;
+      --muted: #897b84;
+      --line: #eadfe5;
+      --pink: #c8799d;
+      --pink-dark: #a9577f;
+      --pink-soft: #f6e7ee;
+      --green: #347b59;
+      --green-soft: #e9f4ed;
+      --amber: #99631f;
+      --amber-soft: #fbf1df;
+      --red: #a54f56;
+      --red-soft: #faeaeb;
+      --shadow: 0 14px 40px rgba(73, 42, 58, .055);
+      --radius: 18px;
+    }
 
-    <title>Pink English Quiz</title>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
+    }
+    button { font: inherit; }
+    button:focus-visible, a:focus-visible { outline: 3px solid rgba(200,121,157,.35); outline-offset: 3px; }
+    .app-shell { width: min(100% - 32px, 980px); margin: 0 auto; padding-bottom: 104px; }
+    .topbar { display:flex; align-items:center; justify-content:space-between; gap:16px; padding:22px 0 18px; }
+    .brand { display:flex; align-items:center; gap:11px; text-decoration:none; color:inherit; }
+    .brand-mark { display:grid; place-items:center; width:42px; height:42px; border-radius:14px; background:var(--pink-soft); color:var(--pink-dark); font-size:21px; }
+    .brand-name { font-weight:760; letter-spacing:-.04em; font-size:19px; line-height:1.1; }
+    .brand-tagline { display:block; margin-top:3px; color:var(--muted); font-size:11px; letter-spacing:.01em; }
+    .top-actions { display:flex; align-items:center; gap:9px; }
+    .icon-button { display:inline-grid; place-items:center; width:39px; height:39px; border:1px solid var(--line); border-radius:13px; background:var(--surface); color:var(--muted); cursor:pointer; }
+    .icon-button:hover { border-color:#d9b9c8; color:var(--pink-dark); }
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    .page { display:none; animation:fade-in .18s ease-out; }
+    .page.active { display:block; }
+    @keyframes fade-in { from { opacity:.55; transform:translateY(4px); } to { opacity:1; transform:translateY(0); } }
+    .eyebrow { color:var(--pink-dark); font-size:11px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; }
+    h1,h2,h3,p { margin-top:0; }
+    h1 { margin-bottom:9px; font-size:clamp(28px,5vw,43px); line-height:1.12; letter-spacing:-.055em; }
+    h2 { margin-bottom:8px; font-size:23px; letter-spacing:-.035em; }
+    h3 { margin-bottom:5px; font-size:16px; letter-spacing:-.02em; }
+    .muted { color:var(--muted); }
+    .small { font-size:12px; }
+    .section-heading { display:flex; align-items:end; justify-content:space-between; gap:14px; margin:30px 0 14px; }
+    .section-heading h2 { margin:0; font-size:18px; }
+    .text-link { border:0; padding:5px 0; background:none; color:var(--pink-dark); font-size:13px; font-weight:700; cursor:pointer; }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #FFF5F9;
-            color: #594252;
-            min-height: 100vh;
-            padding: 24px 16px;
-        }
+    .hero { position:relative; overflow:hidden; display:grid; grid-template-columns:1.25fr .75fr; gap:20px; align-items:center; min-height:225px; margin-top:8px; padding:30px; border:1px solid #eedfe6; border-radius:24px; background:linear-gradient(118deg,#fff 0%,#fbf1f5 100%); box-shadow:var(--shadow); }
+    .hero::after { content:""; position:absolute; right:-55px; top:-90px; width:250px; height:250px; border-radius:50%; border:1px solid rgba(201,121,157,.18); box-shadow:0 0 0 28px rgba(201,121,157,.035),0 0 0 58px rgba(201,121,157,.025); }
+    .hero-copy { position:relative; z-index:1; }
+    .hero h1 { max-width:480px; margin-top:9px; }
+    .hero p { max-width:430px; margin-bottom:20px; color:var(--muted); font-size:14px; }
+    .hero-art { position:relative; z-index:1; display:grid; place-items:center; min-height:150px; }
+    .hero-orb { display:grid; place-items:center; width:142px; height:142px; border-radius:50%; background:linear-gradient(145deg,#f3dce7,#f9eef3); color:#ae6689; font-size:57px; box-shadow:inset 0 0 0 10px rgba(255,255,255,.5); }
+    .button { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:43px; padding:11px 17px; border:1px solid transparent; border-radius:13px; background:var(--pink); color:white; font-weight:750; font-size:13px; cursor:pointer; transition:.16s ease; }
+    .button:hover { background:var(--pink-dark); transform:translateY(-1px); }
+    .button:disabled { opacity:.5; cursor:not-allowed; transform:none; }
+    .button.secondary { background:#fff; border-color:var(--line); color:var(--ink); }
+    .button.secondary:hover { border-color:#d7b4c5; color:var(--pink-dark); background:#fffafd; }
+    .button.ghost { background:transparent; color:var(--pink-dark); border-color:transparent; }
+    .button.full { width:100%; }
+    .button.small-button { min-height:35px; padding:8px 12px; font-size:12px; }
 
-        button {
-            font-family: inherit;
-            cursor: pointer;
-        }
+    .stat-row { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:16px; }
+    .stat-card { min-width:0; padding:17px 18px; background:var(--surface); border:1px solid var(--line); border-radius:16px; }
+    .stat-value { display:block; margin-top:3px; font-size:24px; font-weight:780; letter-spacing:-.05em; }
+    .stat-label { color:var(--muted); font-size:11px; }
+    .content-card { padding:20px; border:1px solid var(--line); border-radius:var(--radius); background:var(--surface); box-shadow:var(--shadow); }
+    .feature-card { display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .feature-icon { flex:0 0 auto; display:grid; place-items:center; width:48px; height:48px; border-radius:15px; background:var(--pink-soft); font-size:22px; }
+    .feature-copy { flex:1; min-width:0; }
+    .feature-copy h3 { margin-bottom:3px; }
+    .feature-copy p { margin:0; color:var(--muted); font-size:12px; }
+    .card-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:13px; }
+    .scenario-card { display:flex; flex-direction:column; min-height:170px; padding:18px; border:1px solid var(--line); border-radius:17px; background:var(--surface); color:inherit; text-align:left; cursor:pointer; transition:.17s ease; }
+    .scenario-card:hover { border-color:#dcb9ca; box-shadow:var(--shadow); transform:translateY(-2px); }
+    .scenario-top { display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:17px; }
+    .scenario-symbol { display:grid; place-items:center; width:37px; height:37px; border-radius:12px; background:var(--surface-soft); font-size:17px; }
+    .pill { display:inline-flex; align-items:center; padding:4px 8px; border-radius:999px; background:var(--surface-soft); color:#826a77; font-size:10px; font-weight:750; white-space:nowrap; }
+    .pill.pink { color:var(--pink-dark); background:var(--pink-soft); }
+    .scenario-card h3 { font-size:15px; }
+    .scenario-card p { margin:0 0 14px; color:var(--muted); font-size:12px; }
+    .scenario-meta { display:flex; align-items:center; gap:10px; margin-top:auto; color:var(--muted); font-size:11px; }
+    .scenario-meta span { display:inline-flex; align-items:center; gap:4px; }
 
-        .app {
-            width: 100%;
-            max-width: 650px;
-            margin: 0 auto;
-        }
+    .page-heading { margin:10px 0 23px; }
+    .page-heading p { margin:0; max-width:620px; color:var(--muted); font-size:14px; }
+    .filter-row { display:flex; flex-wrap:wrap; gap:8px; margin:18px 0; }
+    .filter-chip { border:1px solid var(--line); border-radius:999px; padding:8px 13px; background:#fff; color:var(--muted); font-size:12px; font-weight:700; cursor:pointer; }
+    .filter-chip.active { border-color:#d8aec1; background:var(--pink-soft); color:var(--pink-dark); }
+    .quiz-library { display:grid; gap:10px; margin-top:30px; }
+    .quiz-row { display:flex; align-items:center; gap:13px; padding:14px 16px; border:1px solid var(--line); border-radius:15px; background:#fff; }
+    .quiz-row .feature-icon { width:40px; height:40px; font-size:18px; }
+    .quiz-row-copy { flex:1; min-width:0; }
+    .quiz-row-copy h3 { margin:0 0 2px; }
+    .quiz-row-copy p { margin:0; color:var(--muted); font-size:11px; }
 
-        header {
-            text-align: center;
-            margin-bottom: 28px;
-        }
+    .conversation-head { margin:6px 0 15px; }
+    .back-link { display:inline-flex; align-items:center; gap:6px; margin-bottom:17px; border:0; background:none; color:var(--muted); font-size:12px; font-weight:700; cursor:pointer; }
+    .back-link:hover { color:var(--pink-dark); }
+    .conversation-title-row { display:flex; align-items:start; justify-content:space-between; gap:14px; }
+    .conversation-title-row h1 { font-size:clamp(23px,4vw,32px); }
+    .progress-track { width:100%; height:6px; overflow:hidden; margin:15px 0 0; border-radius:100px; background:#eee5e9; }
+    .progress-fill { width:0; height:100%; border-radius:100px; background:var(--pink); transition:width .2s ease; }
+    .scenario-context { margin:15px 0 18px; padding:13px 15px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .scenario-context strong { display:block; margin-bottom:3px; font-size:11px; color:var(--pink-dark); text-transform:uppercase; letter-spacing:.08em; }
+    .scenario-context p { margin:0; color:var(--muted); font-size:12px; }
+    .chat-panel { padding:20px; border:1px solid var(--line); border-radius:20px; background:#fff; box-shadow:var(--shadow); }
+    .chat-log { display:grid; gap:12px; max-height:300px; overflow:auto; padding:2px 2px 12px; }
+    .chat-line { display:flex; align-items:end; gap:9px; max-width:88%; }
+    .chat-line.user { justify-self:end; flex-direction:row-reverse; }
+    .avatar { flex:0 0 auto; display:grid; place-items:center; width:29px; height:29px; border-radius:50%; background:var(--surface-soft); color:var(--pink-dark); font-size:11px; font-weight:800; }
+    .chat-line.user .avatar { background:var(--pink-soft); }
+    .bubble-wrap { min-width:0; }
+    .speaker-name { display:block; margin:0 0 4px 2px; color:var(--muted); font-size:10px; font-weight:700; }
+    .bubble { padding:11px 14px; border-radius:15px 15px 15px 4px; background:#f6f2f4; font-size:13px; line-height:1.55; overflow-wrap:anywhere; }
+    .chat-line.user .bubble { border-radius:15px 15px 4px 15px; background:var(--pink-soft); }
+    .bubble-tools { display:flex; justify-content:flex-start; margin-top:5px; }
+    .listen-button { border:0; padding:2px 4px; background:transparent; color:var(--muted); font-size:10px; cursor:pointer; }
+    .listen-button:hover { color:var(--pink-dark); }
+    .turn-prompt { margin:18px 0 12px; font-size:13px; font-weight:750; }
+    .choice-list { display:grid; gap:9px; }
+    .choice-button { display:flex; align-items:start; gap:11px; width:100%; padding:13px 14px; border:1px solid var(--line); border-radius:13px; background:#fff; color:var(--ink); text-align:left; cursor:pointer; transition:.14s ease; }
+    .choice-button:hover { border-color:#d7aec1; background:#fffafd; }
+    .choice-letter { flex:0 0 auto; display:grid; place-items:center; width:24px; height:24px; border-radius:8px; background:var(--surface-soft); color:var(--pink-dark); font-size:11px; font-weight:800; }
+    .choice-text { flex:1; padding-top:1px; font-size:13px; line-height:1.5; }
+    .feedback-card { margin-top:17px; padding:17px; border:1px solid var(--line); border-radius:15px; background:#fcfafb; }
+    .feedback-top { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:9px; }
+    .feedback-score { display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:800; }
+    .score-2 { color:var(--green); }
+    .score-1 { color:var(--amber); }
+    .score-0 { color:var(--red); }
+    .feedback-card p { margin:0; color:#62565d; font-size:12px; line-height:1.65; }
+    .phrase-box { margin-top:13px; padding:12px 13px; border-radius:12px; background:var(--pink-soft); }
+    .phrase-box .label { color:var(--pink-dark); font-size:9px; font-weight:850; letter-spacing:.1em; text-transform:uppercase; }
+    .phrase-box strong { display:block; margin-top:4px; font-size:14px; }
+    .phrase-box span { display:block; margin-top:2px; color:var(--muted); font-size:11px; }
+    .feedback-actions { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:14px; }
 
-        .logo {
-            font-size: 38px;
-            margin-bottom: 8px;
-        }
+    .summary-hero { padding:28px 22px; border:1px solid var(--line); border-radius:21px; background:linear-gradient(135deg,#fff,#fbf0f5); text-align:center; }
+    .summary-icon { display:grid; place-items:center; width:62px; height:62px; margin:0 auto 14px; border-radius:20px; background:var(--pink-soft); color:var(--pink-dark); font-size:26px; }
+    .summary-score { margin:11px 0 4px; color:var(--pink-dark); font-size:38px; font-weight:820; letter-spacing:-.06em; }
+    .summary-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin:14px 0; }
+    .summary-stat { padding:12px 8px; border:1px solid var(--line); border-radius:13px; background:#fff; }
+    .summary-stat strong { display:block; font-size:19px; }
+    .summary-stat span { color:var(--muted); font-size:10px; }
+    .phrase-list { display:grid; gap:9px; }
+    .saved-item { display:flex; align-items:start; justify-content:space-between; gap:12px; padding:15px; border:1px solid var(--line); border-radius:14px; background:#fff; }
+    .saved-item strong { display:block; font-size:13px; }
+    .saved-item p { margin:3px 0 0; color:var(--muted); font-size:11px; }
+    .remove-button { border:0; background:transparent; color:#a48d99; cursor:pointer; }
+    .empty-state { padding:35px 20px; border:1px dashed #ddcbd4; border-radius:16px; color:var(--muted); text-align:center; }
+    .empty-state .empty-icon { margin-bottom:8px; font-size:28px; }
+    .progress-list { display:grid; gap:12px; }
+    .progress-item { padding:16px; border:1px solid var(--line); border-radius:15px; background:#fff; }
+    .progress-item-top { display:flex; justify-content:space-between; gap:10px; margin-bottom:8px; }
+    .progress-item strong { font-size:13px; }
+    .progress-item span { color:var(--muted); font-size:11px; }
+    .small-track { height:7px; overflow:hidden; border-radius:99px; background:#f0e8ec; }
+    .small-track div { height:100%; border-radius:99px; background:var(--pink); }
 
-        header h1 {
-            color: #B65F89;
-            font-size: 28px;
-            margin-bottom: 8px;
-        }
+    .quiz-question { margin:20px 0; font-size:22px; line-height:1.45; letter-spacing:-.025em; }
+    .quiz-option.correct { border-color:#9bc9ad; background:var(--green-soft); color:var(--green); }
+    .quiz-option.wrong { border-color:#e0b1a1; background:var(--amber-soft); color:var(--amber); }
+    .quiz-option:disabled { cursor:default; }
+    .note-card { margin-top:13px; padding:14px; border:1px solid #ead8e1; border-radius:13px; background:#fff8fb; }
+    .note-card h4 { margin:0 0 8px; color:var(--pink-dark); font-size:13px; }
+    .note-card p { margin:0 0 7px; color:#62565d; font-size:12px; white-space:pre-line; }
+    .note-card p:last-child { margin-bottom:0; }
+    .notice { padding:14px 16px; border:1px solid #ead8e1; border-radius:13px; background:#fff8fb; color:#765a69; font-size:12px; }
+    .bottom-nav { position:fixed; z-index:20; left:50%; bottom:12px; transform:translateX(-50%); display:grid; grid-template-columns:repeat(4,1fr); width:min(calc(100% - 24px),520px); padding:7px; border:1px solid rgba(226,211,220,.95); border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 12px 40px rgba(58,37,48,.12); backdrop-filter:blur(14px); }
+    .nav-button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; min-height:48px; border:0; border-radius:12px; background:transparent; color:#9a8c94; font-size:10px; font-weight:700; cursor:pointer; }
+    .nav-button .nav-icon { font-size:17px; line-height:1; }
+    .nav-button.active { background:var(--pink-soft); color:var(--pink-dark); }
+    .toast { position:fixed; z-index:50; left:50%; bottom:88px; transform:translate(-50%,10px); padding:10px 14px; border-radius:12px; background:#342b31; color:white; font-size:12px; opacity:0; pointer-events:none; transition:.2s; }
+    .toast.show { opacity:1; transform:translate(-50%,0); }
+    .site-footer { padding:26px 0 8px; color:#aa9ba3; text-align:center; font-size:10px; }
+    .hidden { display:none !important; }
 
-        header p {
-            color: #A88B9B;
-            font-size: 14px;
-        }
-
-        .panel {
-            background: #FFFFFF;
-            border: 1px solid #F3DCE8;
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 8px 25px rgba(185, 112, 148, 0.08);
-        }
-
-        .section-title {
-            font-size: 20px;
-            color: #A64F79;
-            margin-bottom: 18px;
-        }
-
-        .set-list {
-            display: grid;
-            gap: 12px;
-        }
-
-        .set-card {
-            width: 100%;
-            border: 1px solid #F0D6E3;
-            background: #FFFAFC;
-            border-radius: 14px;
-            padding: 17px;
-            text-align: left;
-            transition: 0.2s;
-        }
-
-        .set-card:hover {
-            background: #FCE7F3;
-            border-color: #DFA5C2;
-            transform: translateY(-2px);
-        }
-
-        .set-card h3 {
-            color: #A64F79;
-            margin-bottom: 7px;
-            font-size: 16px;
-        }
-
-        .set-card p {
-            color: #9E8795;
-            font-size: 13px;
-        }
-
-        .quiz-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 18px;
-            font-size: 14px;
-        }
-
-        .score {
-            color: #B65F89;
-            font-weight: bold;
-        }
-
-        .progress-track {
-            width: 100%;
-            height: 8px;
-            background: #F7E5EE;
-            border-radius: 20px;
-            overflow: hidden;
-            margin-bottom: 26px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            width: 0;
-            background: #D985AE;
-            transition: width 0.3s;
-        }
-
-        .question {
-            font-size: 23px;
-            line-height: 1.5;
-            color: #604558;
-            margin-bottom: 24px;
-        }
-
-        .options {
-            display: grid;
-            gap: 12px;
-        }
-
-        .option {
-            width: 100%;
-            padding: 16px;
-            border: 2px solid #F0DCE6;
-            background: #FFFAFC;
-            color: #654D5D;
-            border-radius: 12px;
-            text-align: left;
-            font-size: 16px;
-            transition: 0.2s;
-        }
-
-        .option:hover:not(:disabled) {
-            border-color: #D58BAE;
-            background: #FFF0F6;
-        }
-
-        .option:disabled {
-            cursor: default;
-        }
-
-        .option.correct {
-            background: #DCF4E2;
-            border-color: #57AE70;
-            color: #237A3C;
-        }
-
-        .option.wrong {
-            background: #FFEDD5;
-            border-color: #E9A04D;
-            color: #A45D14;
-        }
-
-        .explanation {
-            display: none;
-            margin-top: 22px;
-            padding: 18px;
-            background: #FFF3F8;
-            border-radius: 12px;
-            border-left: 4px solid #D985AE;
-        }
-
-        .explanation h3 {
-            color: #A64F79;
-            margin-bottom: 8px;
-        }
-
-        .explanation p {
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        .main-button {
-            width: 100%;
-            margin-top: 22px;
-            padding: 15px;
-            background: #D985AE;
-            color: white;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 12px;
-            transition: 0.2s;
-        }
-
-        .main-button:hover {
-            background: #BC6993;
-        }
-
-        .result {
-            text-align: center;
-            padding: 25px 5px;
-        }
-
-        .result-icon {
-            font-size: 60px;
-            margin-bottom: 15px;
-        }
-
-        .result h2 {
-            color: #A64F79;
-            margin-bottom: 12px;
-        }
-
-        .result-score {
-            font-size: 38px;
-            font-weight: bold;
-            color: #D17BA5;
-            margin: 18px 0;
-        }
-
-        .secondary-button {
-            width: 100%;
-            margin-top: 10px;
-            padding: 13px;
-            background: white;
-            color: #A64F79;
-            border: 1px solid #DFA5C2;
-            border-radius: 12px;
-            font-size: 15px;
-        }
-
-        .secondary-button:hover {
-            background: #FFF0F6;
-        }
-
-        .hidden {
-            display: none !important;
-        }
-
-        footer {
-            text-align: center;
-            color: #B59DAC;
-            font-size: 12px;
-            margin-top: 24px;
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 18px 12px;
-            }
-
-            .panel {
-                padding: 18px;
-            }
-
-            header h1 {
-                font-size: 25px;
-            }
-
-            .question {
-                font-size: 20px;
-            }
-        }
-    </style>
+    @media (max-width:680px) {
+      .app-shell { width:min(100% - 24px,600px); }
+      .topbar { padding-top:15px; }
+      .hero { grid-template-columns:1fr; min-height:0; padding:23px; }
+      .hero-art { display:none; }
+      .hero h1 { font-size:31px; }
+      .stat-row { gap:8px; }
+      .stat-card { padding:13px 12px; }
+      .stat-value { font-size:21px; }
+      .card-grid { grid-template-columns:1fr; }
+      .scenario-card { min-height:145px; }
+      .chat-panel { padding:14px; }
+      .chat-line { max-width:96%; }
+      .conversation-title-row { display:block; }
+      .conversation-title-row .pill { margin-top:6px; }
+      .feedback-actions { align-items:stretch; flex-direction:column; }
+      .feedback-actions .button { width:100%; }
+    }
+    @media (min-width:681px) {
+      .app-shell { padding-bottom:115px; }
+      .bottom-nav { bottom:18px; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto !important; animation-duration:.01ms !important; transition-duration:.01ms !important; } }
+  </style>
 </head>
-
 <body>
-
-<div class="app">
-
-    <header>
-        <div class="logo">🌸</div>
-        <h1>Pink English Quiz</h1>
-        <p>Learn English, one question at a time!</p>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Pink English home" data-nav="home">
+        <span class="brand-mark">p.</span>
+        <span><span class="brand-name">pink english</span><span class="brand-tagline">Speak naturally. Learn confidently.</span></span>
+      </a>
+      <div class="top-actions">
+        <span class="pill" id="header-streak">Your practice space</span>
+      </div>
     </header>
 
-    <!-- Màn hình chọn bộ câu hỏi -->
-    <section id="home-screen" class="panel">
-        <h2 class="section-title">Choose your quiz 💗</h2>
-
-        <div id="set-list" class="set-list">
-            <p>Loading question sets...</p>
-        </div>
-    </section>
-
-    <!-- Màn hình chơi -->
-    <section id="quiz-screen" class="panel hidden">
-
-        <div class="quiz-top">
-            <span id="question-number">Question 1</span>
-            <span id="score" class="score">Score: 0</span>
+    <main>
+      <!-- HOME -->
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <span class="eyebrow">Everyday English, made practical</span>
+            <h1>Say it naturally.<br>Feel more confident.</h1>
+            <p>Practice real conversations, learn useful expressions, and find the words for everyday moments.</p>
+            <button class="button" data-action="go-practice">Explore conversations <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="hero-art" aria-hidden="true"><div class="hero-orb">“ ”</div></div>
         </div>
 
-        <div class="progress-track">
-            <div id="progress" class="progress-fill"></div>
+        <div class="stat-row" id="home-stats">
+          <div class="stat-card"><span class="stat-label">Conversations</span><strong class="stat-value" id="home-completed">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Saved phrases</span><strong class="stat-value" id="home-saved">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Practice score</span><strong class="stat-value" id="home-accuracy">—</strong></div>
         </div>
 
-        <h2 id="question" class="question">
-            Question goes here
-        </h2>
-
-        <div id="options" class="options">
-            <!-- JavaScript sẽ tạo 3 đáp án ở đây -->
+        <div class="section-heading"><div><span class="eyebrow">Pick up where you left off</span><h2>For your next practice</h2></div></div>
+        <div class="content-card feature-card" id="featured-card">
+          <div class="feature-icon">☕</div>
+          <div class="feature-copy"><h3>Ordering at a Coffee Shop</h3><p>Practice ordering politely and naturally.</p></div>
+          <button class="button small-button" data-action="start-featured">Start</button>
         </div>
 
-        <div id="explanation" class="explanation">
-            <h3>💡 Explanation</h3>
-            <p id="explanation-text"></p>
+        <div class="section-heading"><div><span class="eyebrow">Practice by situation</span><h2>Popular conversations</h2></div><button class="text-link" data-action="go-practice">View all →</button></div>
+        <div class="card-grid" id="home-scenarios"></div>
+
+        <div class="section-heading"><div><span class="eyebrow">A little grammar goes a long way</span><h2>Quick practice</h2></div><button class="text-link" data-action="go-practice">See topics →</button></div>
+        <div class="content-card feature-card">
+          <div class="feature-icon">Aa</div>
+          <div class="feature-copy"><h3>Grammar & Vocabulary</h3><p>Short quizzes to support your communication skills.</p></div>
+          <button class="button secondary small-button" data-action="go-quiz-library">Browse</button>
         </div>
+      </section>
 
-        <button id="next-button" class="main-button hidden">
-            Next Question →
-        </button>
-
-    </section>
-
-    <!-- Màn hình kết quả -->
-    <section id="result-screen" class="panel hidden">
-        <div class="result">
-            <div class="result-icon">🏆</div>
-
-            <h2>Quiz Completed!</h2>
-
-            <p>Your final score:</p>
-
-            <div id="final-score" class="result-score">
-                0 / 0
-            </div>
-
-            <p id="result-message"></p>
+      <!-- PRACTICE LIBRARY -->
+      <section class="page" id="page-practice">
+        <div class="page-heading"><span class="eyebrow">Practice</span><h1>Choose a situation.</h1><p>Step into everyday moments and practice choosing a response that fits the context and tone.</p></div>
+        <div class="filter-row" id="category-filters"></div>
+        <div class="card-grid" id="conversation-library"></div>
+        <div class="quiz-library" id="quiz-library">
+          <div class="section-heading"><div><span class="eyebrow">More ways to learn</span><h2>Grammar & Vocabulary</h2></div></div>
+          <div id="quiz-set-list"></div>
         </div>
+      </section>
 
-        <button id="retry-button" class="main-button">
-            Try Again ↻
-        </button>
+      <!-- CONVERSATION PLAYER -->
+      <section class="page" id="page-conversation">
+        <div class="conversation-head">
+          <button class="back-link" data-action="back-to-practice">← Back to practice</button>
+          <div class="conversation-title-row"><div><span class="eyebrow" id="conversation-category">DAILY LIFE</span><h1 id="conversation-title">Conversation title</h1></div><span class="pill" id="conversation-level">A1</span></div>
+          <div class="progress-track"><div class="progress-fill" id="conversation-progress"></div></div>
+          <div class="small muted" id="conversation-step-label" style="margin-top:7px">Turn 1</div>
+        </div>
+        <div class="scenario-context"><strong>Situation</strong><p id="conversation-setting"></p><p style="margin-top:6px"><b>Goal:</b> <span id="conversation-goal"></span></p></div>
+        <div class="chat-panel">
+          <div class="chat-log" id="conversation-log" aria-live="polite"></div>
+          <div id="current-turn">
+            <div class="turn-prompt">How would you respond?</div>
+            <div class="choice-list" id="conversation-choices"></div>
+          </div>
+          <div id="conversation-feedback" class="hidden"></div>
+        </div>
+      </section>
 
-        <button id="home-button" class="secondary-button">
-            Back to Quiz Selection
-        </button>
-    </section>
+      <!-- CONVERSATION RESULT -->
+      <section class="page" id="page-conversation-result">
+        <div class="summary-hero">
+          <div class="summary-icon">✦</div>
+          <span class="eyebrow">Conversation complete</span>
+          <h1 style="font-size:30px;margin-top:7px" id="result-title">Well done!</h1>
+          <p class="muted" id="result-subtitle">You completed the conversation.</p>
+          <div class="summary-score" id="result-score">8 / 8</div>
+          <p class="muted small" id="result-score-caption">Naturalness score</p>
+        </div>
+        <div class="summary-stats" id="result-stats"></div>
+        <div class="section-heading"><div><span class="eyebrow">Take it with you</span><h2>Useful expressions</h2></div></div>
+        <div class="phrase-list" id="result-phrases"></div>
+        <div style="display:grid;gap:9px;margin-top:20px"><button class="button full" data-action="restart-conversation">Practice again</button><button class="button secondary full" data-action="back-to-practice">Choose another situation</button></div>
+      </section>
 
-    <footer>
-        Made with 💗 for English learners
-    </footer>
+      <!-- SAVED PHRASES -->
+      <section class="page" id="page-saved">
+        <div class="page-heading"><span class="eyebrow">Your phrasebook</span><h1>Saved expressions.</h1><p>Keep useful phrases close so you can use them again in real conversations.</p></div>
+        <div class="phrase-list" id="saved-phrases"></div>
+      </section>
 
-</div>
+      <!-- PROGRESS -->
+      <section class="page" id="page-progress">
+        <div class="page-heading"><span class="eyebrow">Your progress</span><h1>Small steps add up.</h1><p>Your practice history is saved in this browser on this device.</p></div>
+        <div class="stat-row">
+          <div class="stat-card"><span class="stat-label">Completed</span><strong class="stat-value" id="progress-completed">0</strong></div>
+          <div class="stat-card"><span class="stat-label">Average score</span><strong class="stat-value" id="progress-average">—</strong></div>
+          <div class="stat-card"><span class="stat-label">Phrases saved</span><strong class="stat-value" id="progress-saved">0</strong></div>
+        </div>
+        <div class="section-heading"><div><span class="eyebrow">By category</span><h2>Practice overview</h2></div></div>
+        <div class="progress-list" id="category-progress"></div>
+        <div class="section-heading"><div><span class="eyebrow">Recent activity</span><h2>History</h2></div></div>
+        <div class="phrase-list" id="progress-history"></div>
+      </section>
 
-<script src="./app.js" defer></script>
+      <!-- LEGACY GRAMMAR / VOCAB QUIZ -->
+      <section class="page" id="page-quiz">
+        <div class="conversation-head">
+          <button class="back-link" data-action="back-to-practice">← Back to practice</button>
+          <div class="conversation-title-row"><div><span class="eyebrow" id="quiz-set-level">A1–C1</span><h1 id="quiz-set-title">Grammar</h1></div><span class="pill" id="quiz-counter">1 / 50</span></div>
+          <div class="progress-track"><div class="progress-fill" id="quiz-progress"></div></div>
+        </div>
+        <div class="chat-panel">
+          <div class="small muted" id="quiz-topic"></div>
+          <h2 class="quiz-question" id="quiz-question"></h2>
+          <div class="choice-list" id="quiz-options"></div>
+          <div id="quiz-feedback" class="hidden"></div>
+        </div>
+      </section>
 
+      <section class="page" id="page-quiz-result">
+        <div class="summary-hero"><div class="summary-icon">✓</div><span class="eyebrow">Quick practice complete</span><h1 style="font-size:30px;margin-top:7px">Nice work!</h1><div class="summary-score" id="quiz-final-score">0 / 10</div><p class="muted small">Correct answers</p></div>
+        <div style="display:grid;gap:9px;margin-top:20px"><button class="button full" data-action="retry-quiz">Try again</button><button class="button secondary full" data-action="back-to-practice">Choose another topic</button></div>
+      </section>
+    </main>
+
+    <footer class="site-footer">Pink English · Practice real-life English, one conversation at a time.</footer>
+  </div>
+
+  <nav class="bottom-nav" aria-label="Main navigation">
+    <button class="nav-button active" data-nav="home"><span class="nav-icon">⌂</span><span>Home</span></button>
+    <button class="nav-button" data-nav="practice"><span class="nav-icon">▤</span><span>Practice</span></button>
+    <button class="nav-button" data-nav="saved"><span class="nav-icon">♡</span><span>Saved</span></button>
+    <button class="nav-button" data-nav="progress"><span class="nav-icon">◷</span><span>Progress</span></button>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./app.js" defer></script>
 </body>
 </html>

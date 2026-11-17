@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "description": "150 English multiple-choice questions with Vietnamese explanations and grammar formula notes.",
+  "version": "2.0.0",
+  "description": "Pink English: grammar and vocabulary quizzes plus natural multi-turn conversation practice.",
   "sets": [
     {
       "id": "grammar_progressive",
@@ -2050,6 +2050,890 @@
           "explanation": "“I take your point” nghĩa là tôi hiểu ý bạn; “reservations” ở đây là những băn khoăn. Hỏi cụ thể phần họ chưa yên tâm là cách trao đổi xây dựng."
         }
       ]
+    }
+  ],
+  "conversations": [
+    {
+      "id": "first-meeting-a1",
+      "title": "Meeting Someone for the First Time",
+      "category": "Daily Life",
+      "level": "A1",
+      "setting": "You're at a friend's get-together. Someone comes over to introduce themselves.",
+      "goal": "Introduce yourself and keep a friendly first conversation going.",
+      "estimatedMinutes": 4,
+      "tags": [
+        "introductions",
+        "small talk",
+        "getting to know people"
+      ],
+      "otherSpeaker": "Alex",
+      "startAt": "intro",
+      "nodes": {
+        "intro": {
+          "speaker": "Alex",
+          "line": "Hey, I'm Alex. I don't think we've met before.",
+          "choices": [
+            {
+              "text": "Hey, I'm Sam. Nice to meet you!",
+              "score": 2,
+              "tone": "Friendly and natural",
+              "feedback": "Đây là cách giới thiệu ngắn gọn, thân thiện. Khi gặp ai lần đầu, “Nice to meet you” là phản hồi rất thông dụng.",
+              "phrase": "Nice to meet you!",
+              "translation": "Rất vui được gặp bạn!",
+              "nextReply": "Nice to meet you too!",
+              "next": "connection"
+            },
+            {
+              "text": "My name is Sam. How are you today?",
+              "score": 1,
+              "tone": "Polite, but a little formal",
+              "feedback": "Câu này đúng và lịch sự. Tuy nhiên, trong một buổi gặp mặt thân mật, “Hey, I'm Sam” thường tự nhiên và gần gũi hơn.",
+              "phrase": "Hey, I'm…",
+              "translation": "Chào, mình là…",
+              "nextReply": "Likewise!",
+              "next": "connection"
+            },
+            {
+              "text": "Yes, we haven't met.",
+              "score": 0,
+              "tone": "Understandable, but awkward",
+              "feedback": "Người nghe vẫn hiểu ý, nhưng câu trả lời lặp lại ý “chưa gặp nhau” và không đáp lại lời giới thiệu. Hãy giới thiệu tên hoặc chào lại.",
+              "phrase": "I don't think we've met.",
+              "translation": "Mình nghĩ là chúng ta chưa từng gặp nhau.",
+              "nextReply": "Right, nice to meet you!",
+              "next": "connection"
+            }
+          ]
+        },
+        "connection": {
+          "speaker": "Alex",
+          "line": "How do you know Jamie?",
+          "choices": [
+            {
+              "text": "We used to work together. We were on the same team.",
+              "score": 2,
+              "tone": "Natural and conversational",
+              "feedback": "“We used to work together” diễn tả hai người từng làm chung. Thêm một chi tiết ngắn giúp cuộc trò chuyện dễ tiếp tục.",
+              "phrase": "We used to work together.",
+              "translation": "Bọn mình từng làm chung.",
+              "nextReply": "Oh, nice.",
+              "next": "work"
+            },
+            {
+              "text": "Jamie is a friend from work.",
+              "score": 1,
+              "tone": "Clear and natural enough",
+              "feedback": "Câu này dễ hiểu. Nếu muốn nói rõ hai người từng làm chung trước đây, “We used to work together” chính xác hơn.",
+              "phrase": "Jamie is a friend from work.",
+              "translation": "Jamie là bạn mình quen từ chỗ làm.",
+              "nextReply": "That sounds great!",
+              "next": "work"
+            },
+            {
+              "text": "I know Jamie because we have a relationship of work.",
+              "score": 0,
+              "tone": "Unnatural wording",
+              "feedback": "“A relationship of work” không phải cách diễn đạt tự nhiên. Có thể dùng “We work together” hoặc “We used to work together”.",
+              "phrase": "We work together.",
+              "translation": "Bọn mình làm chung.",
+              "nextReply": "Got it.",
+              "next": "work"
+            }
+          ]
+        },
+        "work": {
+          "speaker": "Alex",
+          "line": "Oh, nice! What do you do these days?",
+          "choices": [
+            {
+              "text": "I'm a graphic designer. Mostly branding and websites.",
+              "score": 2,
+              "tone": "Natural and engaging",
+              "feedback": "“What do you do?” thường hỏi về công việc. Nói “I'm a…” rồi thêm chi tiết giúp cuộc trò chuyện tự nhiên hơn.",
+              "phrase": "I'm a…",
+              "translation": "Mình làm nghề…",
+              "nextReply": "That sounds interesting.",
+              "next": "followup"
+            },
+            {
+              "text": "I work as a graphic designer.",
+              "score": 1,
+              "tone": "Clear and correct",
+              "feedback": "Câu này đúng. Cách trả lời “I'm a graphic designer” ngắn và tự nhiên hơn trong small talk.",
+              "phrase": "I work as a…",
+              "translation": "Mình làm nghề…",
+              "nextReply": "Oh, cool.",
+              "next": "followup"
+            },
+            {
+              "text": "I am doing a job about design.",
+              "score": 0,
+              "tone": "Not idiomatic",
+              "feedback": "Cách nói “doing a job about design” không tự nhiên. Dùng “I work in design” hoặc “I'm a designer”.",
+              "phrase": "I work in design.",
+              "translation": "Mình làm trong lĩnh vực thiết kế.",
+              "nextReply": "I see!",
+              "next": "followup"
+            }
+          ]
+        },
+        "followup": {
+          "speaker": "Alex",
+          "line": "Do you enjoy it?",
+          "choices": [
+            {
+              "text": "Yeah, I do. It's creative, so I never get bored.",
+              "score": 2,
+              "tone": "Friendly and natural",
+              "feedback": "“Yeah, I do” là câu đáp tự nhiên cho câu hỏi Yes/No. Phần giải thích thêm khiến cuộc trò chuyện có cảm xúc.",
+              "phrase": "Yeah, I do.",
+              "translation": "Ừ, mình thích chứ.",
+              "nextReply": "That's great. It was really nice chatting with you, Sam!",
+              "next": null
+            },
+            {
+              "text": "Yes, I enjoy my occupation very much.",
+              "score": 1,
+              "tone": "Correct, but formal",
+              "feedback": "Đúng ngữ pháp nhưng “my occupation” khá trang trọng trong trò chuyện xã giao. “Yeah, I do. I really enjoy it” gần gũi hơn.",
+              "phrase": "I really enjoy it.",
+              "translation": "Mình thực sự thích công việc đó.",
+              "nextReply": "Glad to hear that! It was nice chatting with you.",
+              "next": null
+            },
+            {
+              "text": "Yes, it is a work that I am enjoying.",
+              "score": 0,
+              "tone": "Awkward phrasing",
+              "feedback": "“A work” không phù hợp khi nói chung về công việc. Hãy nói “I enjoy it” hoặc “I really like my job”.",
+              "phrase": "I really like my job.",
+              "translation": "Mình rất thích công việc của mình.",
+              "nextReply": "I see. Well, it was nice chatting with you!",
+              "next": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "coffee-shop-a2",
+      "title": "Ordering at a Coffee Shop",
+      "category": "Food & Shopping",
+      "level": "A2",
+      "setting": "You're ordering a drink at a busy coffee shop in the US.",
+      "goal": "Order politely, choose a size, and say whether it's for here or to go.",
+      "estimatedMinutes": 5,
+      "tags": [
+        "ordering food",
+        "polite requests",
+        "coffee"
+      ],
+      "otherSpeaker": "Barista",
+      "startAt": "order",
+      "nodes": {
+        "order": {
+          "speaker": "Barista",
+          "line": "Hey! What can I get started for you?",
+          "choices": [
+            {
+              "text": "Could I get an iced latte, please?",
+              "score": 2,
+              "tone": "Natural and polite",
+              "feedback": "“Could I get…?” là cách gọi món phổ biến, lịch sự nhưng không quá kiểu cách trong quán cà phê.",
+              "phrase": "Could I get…?",
+              "translation": "Cho mình gọi… được không?",
+              "nextReply": "Sure thing.",
+              "next": "size"
+            },
+            {
+              "text": "I'll have an iced latte, please.",
+              "score": 2,
+              "tone": "Natural and confident",
+              "feedback": "“I'll have…” cũng là cách gọi món rất tự nhiên, thể hiện bạn đã chọn món.",
+              "phrase": "I'll have…",
+              "translation": "Mình dùng… nhé.",
+              "nextReply": "You got it.",
+              "next": "size"
+            },
+            {
+              "text": "Give me one iced latte.",
+              "score": 0,
+              "tone": "Too direct for this setting",
+              "feedback": "Câu này giống mệnh lệnh. Trong dịch vụ, thêm “Could I get…” hoặc “Can I have…” sẽ thân thiện hơn.",
+              "phrase": "Can I have…?",
+              "translation": "Cho mình… được không?",
+              "nextReply": "Okay.",
+              "next": "size"
+            }
+          ]
+        },
+        "size": {
+          "speaker": "Barista",
+          "line": "What size would you like?",
+          "choices": [
+            {
+              "text": "A medium, please.",
+              "score": 2,
+              "tone": "Natural and concise",
+              "feedback": "Đây là cách trả lời ngắn gọn, tự nhiên. Có thể lược bỏ “I'd like” vì ngữ cảnh đã rõ.",
+              "phrase": "A medium, please.",
+              "translation": "Cho mình cỡ vừa nhé.",
+              "nextReply": "Got it.",
+              "next": "milk"
+            },
+            {
+              "text": "Medium size, I think.",
+              "score": 1,
+              "tone": "Understandable and casual",
+              "feedback": "Người nghe hiểu, nhưng “A medium, please” là cách gọi kích cỡ gọn và tự nhiên hơn.",
+              "phrase": "A medium, please.",
+              "translation": "Cho mình cỡ vừa nhé.",
+              "nextReply": "No problem.",
+              "next": "milk"
+            },
+            {
+              "text": "I want the size that is in the middle.",
+              "score": 0,
+              "tone": "Unnecessarily wordy",
+              "feedback": "Cách nói này vòng vo. Tên kích cỡ “small, medium, large” đã đủ để trả lời.",
+              "phrase": "A medium.",
+              "translation": "Cỡ vừa.",
+              "nextReply": "All right.",
+              "next": "milk"
+            }
+          ]
+        },
+        "milk": {
+          "speaker": "Barista",
+          "line": "Would you like regular or oat milk?",
+          "choices": [
+            {
+              "text": "Oat milk, please. Does that cost extra?",
+              "score": 2,
+              "tone": "Natural and useful",
+              "feedback": "Bạn trả lời trực tiếp lựa chọn rồi hỏi thêm về phụ phí. “Does that cost extra?” rất tự nhiên khi hỏi có tính thêm tiền không.",
+              "phrase": "Does that cost extra?",
+              "translation": "Cái đó có tính thêm phí không?",
+              "nextReply": "Sure.",
+              "next": "extra"
+            },
+            {
+              "text": "I prefer the milk made from oats.",
+              "score": 1,
+              "tone": "Clear, but less natural here",
+              "feedback": "Câu này đúng nghĩa nhưng quá mô tả. Khi nhân viên đưa ra hai lựa chọn, chỉ cần “Oat milk, please.”",
+              "phrase": "Oat milk, please.",
+              "translation": "Sữa yến mạch nhé.",
+              "nextReply": "Absolutely.",
+              "next": "extra"
+            },
+            {
+              "text": "What is oat?",
+              "score": 0,
+              "tone": "Doesn't answer the choice",
+              "feedback": "Đây là câu hỏi hợp lệ nếu bạn chưa biết oat milk là gì, nhưng cách hỏi đầy đủ là “What is oat milk?”.",
+              "phrase": "What is oat milk?",
+              "translation": "Sữa yến mạch là gì vậy?",
+              "nextReply": "No worries.",
+              "next": "extra"
+            }
+          ]
+        },
+        "extra": {
+          "speaker": "Barista",
+          "line": "There's a small extra charge for oat milk. Is that okay?",
+          "choices": [
+            {
+              "text": "That's fine, thanks.",
+              "score": 2,
+              "tone": "Natural and relaxed",
+              "feedback": "“That's fine” xác nhận rằng bạn đồng ý. “Thanks” làm câu nói thân thiện hơn.",
+              "phrase": "That's fine.",
+              "translation": "Vậy cũng được nhé.",
+              "nextReply": "No problem.",
+              "next": "pickup"
+            },
+            {
+              "text": "I accept this additional payment.",
+              "score": 1,
+              "tone": "Too formal for a café",
+              "feedback": "Câu này đúng nhưng giống văn bản hoặc giao dịch trang trọng. “That's fine” tự nhiên hơn trong hội thoại.",
+              "phrase": "That's fine.",
+              "translation": "Vậy cũng được nhé.",
+              "nextReply": "Of course.",
+              "next": "pickup"
+            },
+            {
+              "text": "No, I don't like extra charges, goodbye.",
+              "score": 0,
+              "tone": "Abrupt and confrontational",
+              "feedback": "Nếu không muốn trả thêm, bạn có thể lịch sự đổi sang regular milk: “In that case, regular milk is fine.”",
+              "phrase": "In that case, regular milk is fine.",
+              "translation": "Vậy thì sữa thường cũng được.",
+              "nextReply": "That is okay.",
+              "next": "pickup"
+            }
+          ]
+        },
+        "pickup": {
+          "speaker": "Barista",
+          "line": "Is that for here or to go?",
+          "choices": [
+            {
+              "text": "To go, please.",
+              "score": 2,
+              "tone": "Natural and concise",
+              "feedback": "“For here or to go?” là câu hỏi quen thuộc ở quán ăn, quán cà phê. “To go” nghĩa là mang đi.",
+              "phrase": "To go, please.",
+              "translation": "Cho mình mang đi nhé.",
+              "nextReply": "You got it. I'll have that ready in a minute!",
+              "next": null
+            },
+            {
+              "text": "I'll take it away.",
+              "score": 1,
+              "tone": "Understandable; regional wording",
+              "feedback": "Câu này được hiểu và phổ biến trong một số biến thể tiếng Anh, đặc biệt Anh-Anh. Ở Mỹ, “To go, please” phổ biến hơn.",
+              "phrase": "To go, please.",
+              "translation": "Cho mình mang đi nhé.",
+              "nextReply": "Sure! We'll have that ready shortly.",
+              "next": null
+            },
+            {
+              "text": "I will not drink it here.",
+              "score": 0,
+              "tone": "Unnatural for ordering",
+              "feedback": "Câu này diễn đạt dài và không giống cách trả lời thông thường. Chỉ cần “To go, please.”",
+              "phrase": "To go, please.",
+              "translation": "Cho mình mang đi nhé.",
+              "nextReply": "Got it. We'll call your name when it's ready.",
+              "next": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "weekend-plans-a2",
+      "title": "Making Plans with a Friend",
+      "category": "Social Life",
+      "level": "A2",
+      "setting": "A friend texts you on Thursday to make plans for the weekend.",
+      "goal": "Suggest a time, respond flexibly, and confirm plans casually.",
+      "estimatedMinutes": 4,
+      "tags": [
+        "making plans",
+        "texting",
+        "friends"
+      ],
+      "otherSpeaker": "Jamie",
+      "startAt": "availability",
+      "nodes": {
+        "availability": {
+          "speaker": "Jamie",
+          "line": "Hey! Are you free to do something this weekend?",
+          "choices": [
+            {
+              "text": "Yeah, I'm free on Saturday. What's up?",
+              "score": 2,
+              "tone": "Friendly and natural",
+              "feedback": "Đây là cách phản hồi thân thiện, vừa xác nhận thời gian rảnh vừa mở lời để người kia đề xuất kế hoạch.",
+              "phrase": "What's up?",
+              "translation": "Có chuyện gì thế? / Bạn định làm gì?",
+              "nextReply": "Nice! I was thinking we could hang out this weekend.",
+              "next": "suggestion"
+            },
+            {
+              "text": "I have availability during the weekend.",
+              "score": 1,
+              "tone": "Correct, but overly formal",
+              "feedback": "“Have availability” thường gặp trong ngữ cảnh công việc. Nói với bạn bè thì “I'm free” tự nhiên hơn.",
+              "phrase": "I'm free on Saturday.",
+              "translation": "Thứ Bảy mình rảnh.",
+              "nextReply": "Sounds good. I had a couple of ideas.",
+              "next": "suggestion"
+            },
+            {
+              "text": "What do you want from me?",
+              "score": 0,
+              "tone": "Sounds defensive",
+              "feedback": "Câu này có thể khiến người kia nghĩ bạn khó chịu. “What's up?” hoặc “What did you have in mind?” thân thiện hơn.",
+              "phrase": "What did you have in mind?",
+              "translation": "Bạn đang nghĩ đến kế hoạch gì?",
+              "nextReply": "No pressure—I just thought it would be fun to catch up.",
+              "next": "suggestion"
+            }
+          ]
+        },
+        "suggestion": {
+          "speaker": "Jamie",
+          "line": "Would you rather grab lunch or catch a movie?",
+          "choices": [
+            {
+              "text": "Lunch sounds good! Do you have a place in mind?",
+              "score": 2,
+              "tone": "Natural and engaged",
+              "feedback": "“Sounds good” là cách đồng ý thân mật rất phổ biến. Câu hỏi tiếp theo giúp hai người chốt kế hoạch.",
+              "phrase": "Sounds good!",
+              "translation": "Nghe hay đấy! / Được đó!",
+              "nextReply": "I know a new Thai place downtown.",
+              "next": "place"
+            },
+            {
+              "text": "I agree with your proposal of lunch.",
+              "score": 1,
+              "tone": "Too formal for a friend",
+              "feedback": "Không sai, nhưng “agree with your proposal” giống ngôn ngữ cuộc họp. “Lunch sounds good” tự nhiên hơn.",
+              "phrase": "Lunch sounds good.",
+              "translation": "Đi ăn trưa nghe được đó.",
+              "nextReply": "We could also check out that new place downtown.",
+              "next": "place"
+            },
+            {
+              "text": "Movies are not a food.",
+              "score": 0,
+              "tone": "Misses the conversational point",
+              "feedback": "Người bạn đang đưa ra hai lựa chọn. Nếu thích ăn trưa, hãy chọn trực tiếp thay vì phản hồi theo nghĩa đen.",
+              "phrase": "I'd rather grab lunch.",
+              "translation": "Mình thích đi ăn trưa hơn.",
+              "nextReply": "Maybe we can find somewhere nice nearby.",
+              "next": "place"
+            }
+          ]
+        },
+        "place": {
+          "speaker": "Jamie",
+          "line": "Want to try the new Thai place?",
+          "choices": [
+            {
+              "text": "I'm in! What time works for you?",
+              "score": 2,
+              "tone": "Casual and enthusiastic",
+              "feedback": "“I'm in!” là cách nói thân mật để thể hiện bạn tham gia/đồng ý. “What time works for you?” giúp chốt thời gian.",
+              "phrase": "I'm in!",
+              "translation": "Mình đi nhé!",
+              "nextReply": "Great! Saturday works for me.",
+              "next": "time"
+            },
+            {
+              "text": "I will participate in this activity.",
+              "score": 1,
+              "tone": "Unusually formal",
+              "feedback": "“Participate in this activity” nghe giống hoạt động chính thức. “I'm in” phù hợp hơn với bạn bè.",
+              "phrase": "I'm in.",
+              "translation": "Mình đi nhé.",
+              "nextReply": "Perfect, let us make it happen.",
+              "next": "time"
+            },
+            {
+              "text": "I don't know the restaurant, so I cannot.",
+              "score": 0,
+              "tone": "Unnecessarily negative",
+              "feedback": "Bạn có thể hỏi thêm về quán thay vì từ chối ngay: “What's it like?” hoặc “Have you been there before?”.",
+              "phrase": "What's it like?",
+              "translation": "Chỗ đó thế nào?",
+              "nextReply": "No worries—we can pick another day.",
+              "next": "time"
+            }
+          ]
+        },
+        "time": {
+          "speaker": "Jamie",
+          "line": "How about 12:30?",
+          "choices": [
+            {
+              "text": "Perfect. See you there!",
+              "score": 2,
+              "tone": "Natural and concise",
+              "feedback": "“Perfect” xác nhận kế hoạch rất tự nhiên. “See you there!” kết thúc việc sắp xếp lịch hẹn thân thiện.",
+              "phrase": "See you there!",
+              "translation": "Hẹn gặp bạn ở đó nhé!",
+              "nextReply": "Awesome. I'll text you the address. See you Saturday!",
+              "next": null
+            },
+            {
+              "text": "12:30 is acceptable for me.",
+              "score": 1,
+              "tone": "A little stiff",
+              "feedback": "Câu này đúng, nhưng “acceptable for me” khá cứng. “That works for me” là cách xác nhận thời gian tự nhiên hơn.",
+              "phrase": "That works for me.",
+              "translation": "Giờ đó hợp với mình.",
+              "nextReply": "Great! I'll send you the address.",
+              "next": null
+            },
+            {
+              "text": "I will arrive at the location at 12:30 p.m.",
+              "score": 0,
+              "tone": "Overly formal",
+              "feedback": "Câu này giống thông báo lịch trình. Trong tin nhắn bạn bè, dùng “Perfect” hoặc “See you then” là đủ.",
+              "phrase": "See you then.",
+              "translation": "Vậy hẹn gặp lúc đó nhé.",
+              "nextReply": "Sounds good. See you Saturday!",
+              "next": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "reschedule-meeting-b1",
+      "title": "Rescheduling a Work Meeting",
+      "category": "Workplace",
+      "level": "B1",
+      "setting": "A colleague messages you because an urgent task has come up before your scheduled meeting.",
+      "goal": "Respond professionally, suggest alternatives, and confirm a new time.",
+      "estimatedMinutes": 5,
+      "tags": [
+        "workplace",
+        "scheduling",
+        "professional tone"
+      ],
+      "otherSpeaker": "Taylor",
+      "startAt": "request",
+      "nodes": {
+        "request": {
+          "speaker": "Taylor",
+          "line": "Hi, something urgent has come up. Would it be possible to move our 2 p.m. meeting?",
+          "choices": [
+            {
+              "text": "Of course. Would tomorrow morning work instead?",
+              "score": 2,
+              "tone": "Professional and cooperative",
+              "feedback": "“Of course” thể hiện sự linh hoạt. “Would … work instead?” là cách đề xuất thời gian thay thế lịch sự trong công việc.",
+              "phrase": "Would tomorrow morning work instead?",
+              "translation": "Chuyển sang sáng mai có được không?",
+              "nextReply": "Thanks for being flexible.",
+              "next": "time"
+            },
+            {
+              "text": "Okay, we can change the meeting.",
+              "score": 1,
+              "tone": "Clear but less collaborative",
+              "feedback": "Câu này hiểu được nhưng chưa đề xuất thời gian cụ thể. Chủ động đưa ra phương án thay thế giúp trao đổi hiệu quả hơn.",
+              "phrase": "We can reschedule.",
+              "translation": "Chúng ta có thể dời lịch.",
+              "nextReply": "I appreciate that.",
+              "next": "time"
+            },
+            {
+              "text": "You should have told me earlier.",
+              "score": 0,
+              "tone": "Confrontational",
+              "feedback": "Câu này thể hiện sự trách móc ngay lập tức. Trước tiên có thể xử lý việc dời lịch, sau đó trao đổi riêng nếu cần.",
+              "phrase": "Thanks for letting me know.",
+              "translation": "Cảm ơn bạn đã báo cho mình.",
+              "nextReply": "Thanks for understanding.",
+              "next": "time"
+            }
+          ]
+        },
+        "time": {
+          "speaker": "Taylor",
+          "line": "Would 10 a.m. work for you?",
+          "choices": [
+            {
+              "text": "Yes, 10 works for me. I'll update the invite.",
+              "score": 2,
+              "tone": "Clear and professional",
+              "feedback": "“10 works for me” xác nhận thời gian tự nhiên. “I'll update the invite” cho biết bạn sẽ cập nhật lời mời lịch.",
+              "phrase": "That works for me.",
+              "translation": "Thời gian đó phù hợp với mình.",
+              "nextReply": "Great, thanks for confirming.",
+              "next": "agenda"
+            },
+            {
+              "text": "I think 10 o'clock is possible.",
+              "score": 1,
+              "tone": "Understandable but hesitant",
+              "feedback": "Câu này nghe chưa chắc chắn. Nếu bạn đã đồng ý, “10 works for me” rõ ràng hơn.",
+              "phrase": "10 works for me.",
+              "translation": "10 giờ phù hợp với mình.",
+              "nextReply": "Perfect, I will update my calendar.",
+              "next": "agenda"
+            },
+            {
+              "text": "I don't know. Maybe 10, maybe not.",
+              "score": 0,
+              "tone": "Unclear",
+              "feedback": "Nếu chưa chắc chắn, hãy đề nghị kiểm tra lịch và phản hồi sau. Nếu đã biết mình rảnh, nên xác nhận trực tiếp.",
+              "phrase": "Let me check my calendar and get back to you.",
+              "translation": "Để mình kiểm tra lịch rồi phản hồi bạn.",
+              "nextReply": "No problem—just let me know once you decide.",
+              "next": "agenda"
+            }
+          ]
+        },
+        "agenda": {
+          "speaker": "Taylor",
+          "line": "Could you include the latest agenda when you update the invite?",
+          "choices": [
+            {
+              "text": "Absolutely. I'll attach the updated agenda as well.",
+              "score": 2,
+              "tone": "Helpful and professional",
+              "feedback": "“Absolutely” thể hiện sự sẵn lòng. “As well” cho biết bạn sẽ đính kèm agenda cùng lời mời đã cập nhật.",
+              "phrase": "I'll attach it as well.",
+              "translation": "Mình cũng sẽ đính kèm nó.",
+              "nextReply": "Perfect, that will help me prepare.",
+              "next": "close"
+            },
+            {
+              "text": "Okay, I can do that.",
+              "score": 1,
+              "tone": "Natural and brief",
+              "feedback": "Câu này hoàn toàn ổn trong công việc. Thêm chi tiết “I'll attach the updated agenda” sẽ rõ hành động hơn.",
+              "phrase": "I can do that.",
+              "translation": "Mình làm được việc đó.",
+              "nextReply": "Thanks, I appreciate it.",
+              "next": "close"
+            },
+            {
+              "text": "The agenda is your responsibility.",
+              "score": 0,
+              "tone": "Uncooperative",
+              "feedback": "Câu này có thể tạo căng thẳng. Nếu việc đó không thuộc trách nhiệm của bạn, nên làm rõ nhẹ nhàng và đề nghị cách phối hợp.",
+              "phrase": "I can send you the latest version I have.",
+              "translation": "Mình có thể gửi bạn bản mới nhất mình đang có.",
+              "nextReply": "Understood. I will share the latest version I have.",
+              "next": "close"
+            }
+          ]
+        },
+        "close": {
+          "speaker": "Taylor",
+          "line": "Thanks for being flexible. I'll see you tomorrow at 10.",
+          "choices": [
+            {
+              "text": "Sounds good. See you tomorrow!",
+              "score": 2,
+              "tone": "Natural professional closing",
+              "feedback": "“Sounds good” phù hợp để kết thúc trao đổi sau khi hai bên đã thống nhất kế hoạch.",
+              "phrase": "Sounds good.",
+              "translation": "Nghe ổn đấy / Thống nhất nhé.",
+              "nextReply": "See you then!",
+              "next": null
+            },
+            {
+              "text": "Acknowledged. Meeting moved.",
+              "score": 1,
+              "tone": "Very brief and robotic",
+              "feedback": "Câu này có thể xuất hiện trong tin nhắn ngắn, nhưng hơi lạnh. “Sounds good. See you tomorrow” tạo cảm giác hợp tác hơn.",
+              "phrase": "See you tomorrow.",
+              "translation": "Hẹn gặp bạn ngày mai.",
+              "nextReply": "Thanks again. Talk tomorrow!",
+              "next": null
+            },
+            {
+              "text": "I hope this does not happen again.",
+              "score": 0,
+              "tone": "Unnecessarily negative here",
+              "feedback": "Nếu việc đổi lịch lặp lại thường xuyên, có thể trao đổi riêng. Ở đây hai bên vừa thống nhất lịch mới, nên kết thúc tích cực sẽ phù hợp hơn.",
+              "phrase": "Thanks for letting me know.",
+              "translation": "Cảm ơn bạn đã báo cho mình.",
+              "nextReply": "Understood. Thanks for your understanding.",
+              "next": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "disagree-meeting-b2",
+      "title": "Disagreeing Politely in a Meeting",
+      "category": "Workplace",
+      "level": "B2",
+      "setting": "Your team is discussing a proposal. You see a potential problem and want to offer another approach without dismissing a colleague's idea.",
+      "goal": "Acknowledge an idea, express a different view, and suggest a constructive alternative.",
+      "estimatedMinutes": 5,
+      "tags": [
+        "meetings",
+        "disagreement",
+        "critical thinking"
+      ],
+      "otherSpeaker": "Morgan",
+      "startAt": "proposal",
+      "nodes": {
+        "proposal": {
+          "speaker": "Morgan",
+          "line": "I think we should launch the new feature next week. It'll help us get ahead of the competition.",
+          "choices": [
+            {
+              "text": "I can see the appeal, but I'm a little concerned about the testing timeline.",
+              "score": 2,
+              "tone": "Diplomatic and specific",
+              "feedback": "“I can see the appeal, but…” ghi nhận ưu điểm trước khi nêu băn khoăn. Đây là cách bất đồng mang tính xây dựng.",
+              "phrase": "I can see the appeal, but…",
+              "translation": "Mình hiểu điểm hấp dẫn của đề xuất, nhưng…",
+              "nextReply": "I had not considered the testing timeline. Can you explain?",
+              "next": "concern"
+            },
+            {
+              "text": "I'm not sure that's the best idea.",
+              "score": 1,
+              "tone": "Polite but vague",
+              "feedback": "Câu này lịch sự hơn lời bác bỏ trực tiếp, nhưng chưa nêu lý do. Bổ sung mối lo cụ thể sẽ giúp cuộc thảo luận tiến triển.",
+              "phrase": "I'm not sure that's the best approach.",
+              "translation": "Mình chưa chắc đó là cách tiếp cận tốt nhất.",
+              "nextReply": "That is a fair point. What is the main risk?",
+              "next": "concern"
+            },
+            {
+              "text": "That's a bad idea. We can't do that.",
+              "score": 0,
+              "tone": "Too blunt and dismissive",
+              "feedback": "Cách nói này phủ nhận ý kiến mà không đưa ra lý do. Nên phản hồi vào rủi ro hoặc dữ liệu thay vì đánh giá ý tưởng là tệ.",
+              "phrase": "I have a concern about…",
+              "translation": "Mình có một băn khoăn về…",
+              "nextReply": "I see. Could you walk me through the concern?",
+              "next": "concern"
+            }
+          ]
+        },
+        "concern": {
+          "speaker": "Morgan",
+          "line": "What is the biggest risk you see with the current timeline?",
+          "choices": [
+            {
+              "text": "We haven't completed the security review, and rushing it could create problems later.",
+              "score": 2,
+              "tone": "Clear and evidence-focused",
+              "feedback": "Bạn nêu vấn đề cụ thể và hệ quả có thể xảy ra. Phản hồi dựa trên rủi ro thay vì cảm tính rất phù hợp trong họp chuyên môn.",
+              "phrase": "Rushing it could create problems later.",
+              "translation": "Làm vội có thể gây ra vấn đề về sau.",
+              "nextReply": "That makes sense. What would you suggest instead?",
+              "next": "alternative"
+            },
+            {
+              "text": "There are some things that are not ready yet.",
+              "score": 1,
+              "tone": "Understandable but too general",
+              "feedback": "Ý có thể hiểu, nhưng “some things” khá mơ hồ. Nêu rõ security review chưa hoàn tất sẽ thuyết phục hơn.",
+              "phrase": "The security review isn't complete yet.",
+              "translation": "Phần rà soát bảo mật vẫn chưa hoàn tất.",
+              "nextReply": "I understand. Is there a practical alternative?",
+              "next": "alternative"
+            },
+            {
+              "text": "I just have a bad feeling about it.",
+              "score": 0,
+              "tone": "Too subjective for this discussion",
+              "feedback": "Trong cuộc họp quyết định thời điểm ra mắt, nên đưa ra rủi ro có thể kiểm chứng thay vì chỉ nói cảm giác.",
+              "phrase": "My main concern is…",
+              "translation": "Mối lo chính của mình là…",
+              "nextReply": "Thanks for explaining. What do you recommend?",
+              "next": "alternative"
+            }
+          ]
+        },
+        "alternative": {
+          "speaker": "Morgan",
+          "line": "What timeline would you recommend instead?",
+          "choices": [
+            {
+              "text": "What if we move the launch to the following week and use the extra time for testing?",
+              "score": 2,
+              "tone": "Constructive suggestion",
+              "feedback": "“What if we…?” là cách đề xuất mềm mại, mời người khác cùng cân nhắc thay vì áp đặt.",
+              "phrase": "What if we…?",
+              "translation": "Hay là chúng ta… thì sao?",
+              "nextReply": "A one-week delay might be manageable.",
+              "next": "tradeoff"
+            },
+            {
+              "text": "We should wait until everything is perfect.",
+              "score": 1,
+              "tone": "Cautious but unrealistic",
+              "feedback": "Ý định thận trọng dễ hiểu, nhưng “everything is perfect” không có tiêu chí rõ ràng. Đưa ra mốc thời gian và mục tiêu kiểm thử cụ thể tốt hơn.",
+              "phrase": "We may need a little more time.",
+              "translation": "Có lẽ chúng ta cần thêm một chút thời gian.",
+              "nextReply": "That could be a reasonable option.",
+              "next": "tradeoff"
+            },
+            {
+              "text": "Just cancel the launch.",
+              "score": 0,
+              "tone": "Too extreme",
+              "feedback": "Đây là quyết định quá mạnh so với vấn đề được nêu. Bạn đang đề xuất dời lịch chứ chưa có lý do để hủy hoàn toàn.",
+              "phrase": "Could we push the launch back by a week?",
+              "translation": "Chúng ta có thể lùi ngày ra mắt một tuần không?",
+              "nextReply": "I see why you would prefer that.",
+              "next": "tradeoff"
+            }
+          ]
+        },
+        "tradeoff": {
+          "speaker": "Morgan",
+          "line": "A one-week delay might be manageable, but we'd need to keep the sales team informed.",
+          "choices": [
+            {
+              "text": "Agreed. I can draft a short update outlining the reason and the revised date.",
+              "score": 2,
+              "tone": "Collaborative and action-oriented",
+              "feedback": "“Agreed” xác nhận sự đồng thuận. Đề xuất hành động cụ thể giúp biến thảo luận thành bước tiếp theo.",
+              "phrase": "I can draft a short update.",
+              "translation": "Mình có thể soạn một bản cập nhật ngắn.",
+              "nextReply": "That sounds like a good next step.",
+              "next": "close"
+            },
+            {
+              "text": "The sales team should already know this.",
+              "score": 1,
+              "tone": "Potentially defensive",
+              "feedback": "Câu này có thể đúng nhưng nghe như đẩy trách nhiệm. Một đề xuất phối hợp cụ thể sẽ hữu ích hơn.",
+              "phrase": "Let's make sure the sales team is informed.",
+              "translation": "Hãy đảm bảo đội sales được cập nhật.",
+              "nextReply": "Agreed. Let us make sure the right people are informed.",
+              "next": "close"
+            },
+            {
+              "text": "That's not my job.",
+              "score": 0,
+              "tone": "Uncooperative",
+              "feedback": "Câu này đóng lại cơ hội phối hợp. Nếu không phụ trách truyền thông, hãy làm rõ vai trò và đề nghị người phù hợp tham gia.",
+              "phrase": "Who would be best placed to inform them?",
+              "translation": "Ai là người phù hợp nhất để thông báo cho họ?",
+              "nextReply": "Fair enough. We can clarify who owns that update.",
+              "next": "close"
+            }
+          ]
+        },
+        "close": {
+          "speaker": "Morgan",
+          "line": "Sounds good. Let's review the test results on Friday and confirm the launch date then.",
+          "choices": [
+            {
+              "text": "That works for me. I'll share the update after we've confirmed the date.",
+              "score": 2,
+              "tone": "Clear and aligned",
+              "feedback": "“That works for me” xác nhận kế hoạch. Bạn cũng làm rõ thời điểm gửi thông tin để tránh thông báo một ngày chưa được chốt.",
+              "phrase": "That works for me.",
+              "translation": "Mình thấy kế hoạch đó ổn.",
+              "nextReply": "Perfect. Thanks for raising the concern early.",
+              "next": null
+            },
+            {
+              "text": "Okay, we will see what happens.",
+              "score": 1,
+              "tone": "Casual but noncommittal",
+              "feedback": "Câu này không sai nhưng thiếu xác nhận về bước tiếp theo. “Let's revisit this on Friday” rõ ràng hơn.",
+              "phrase": "Let's revisit this on Friday.",
+              "translation": "Chúng ta sẽ xem lại việc này vào thứ Sáu.",
+              "nextReply": "Sure. Let's touch base then.",
+              "next": null
+            },
+            {
+              "text": "Fine. Do whatever you want.",
+              "score": 0,
+              "tone": "Sounds irritated or dismissive",
+              "feedback": "Câu này thể hiện thái độ không hài lòng và có thể phá vỡ sự hợp tác. Nếu đồng ý với kế hoạch, hãy xác nhận trực tiếp.",
+              "phrase": "Sounds good. Let's review it on Friday.",
+              "translation": "Được đấy. Thứ Sáu chúng ta xem lại nhé.",
+              "nextReply": "Thanks. Talk to you then.",
+              "next": null
+            }
+          ]
+        }
+      }
     }
   ]
 }
