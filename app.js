@@ -1482,23 +1482,6 @@ function setWordChainMessage(message, type = "info") {
   box.textContent = message;
 }
 
-function renderWordChainWordDetail(word) {
-  const box = $("#wordchain-word-detail");
-  if (!box) return;
-  box.replaceChildren();
-  const detail = state.wordDetails[word];
-  box.classList.remove("hidden");
-  const title = makeElement("strong", "", detail?.meaning ? `${word} · ${detail.meaning}` : word);
-  const example = makeElement("p", "", detail?.example || "Từ này hợp lệ trong danh sách offline. Nghĩa chi tiết chưa có trong phần tra cứu rút gọn.");
-  const tools = makeElement("div");
-  tools.style.marginTop = "7px";
-  const listen = makeElement("button", "wordchain-small-button", "▶ Listen");
-  listen.type = "button";
-  listen.addEventListener("click", () => speak(word));
-  tools.appendChild(listen);
-  box.append(title, example, tools);
-}
-
 function renderWordChainGame() {
   const game = getWordChainProfile().activeGame;
   if (!game) return;
@@ -1564,11 +1547,20 @@ function submitWordChainWord(event) {
   game.currentWord = word;
   game.playerWords += 1;
   input.value = "";
-  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
-  setWordChainMessage(detail?.meaning
-    ? `Valid word! ${word} means “${detail.meaning}”.`
-    : "Valid word! Looking up its Vietnamese meaning…", "success");
-  renderWordChainWordDetail(word);
+  if (game.mode === "solo") {
+    setWordChainMessage(`Valid word! Next word starts with ${word.at(-1).toUpperCase()}.`, "success");
+    renderWordChainWordDetail(word);
+  } else {
+    // In computer mode, only the computer's reply is explained.
+    const detailBox = $("#wordchain-word-detail");
+    if (detailBox) {
+      // Invalidate any pending lookup for the previous computer word.
+      state.wordDetailRequestId += 1;
+      detailBox.replaceChildren();
+      detailBox.classList.add("hidden");
+    }
+    setWordChainMessage("Valid word! The computer is choosing its reply…", "success");
+  }
   saveWordChainGame();
   renderWordChainGame();
 
@@ -1651,10 +1643,10 @@ function playWordChainBotMove() {
     finishWordChainGame("computer", `The built-in list has no unused word beginning with ${word.at(-1).toUpperCase()}. The computer wins this round.`);
     return;
   }
-  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
-  setWordChainMessage(detail?.meaning
-    ? `Computer played ${word.toUpperCase()} — ${detail.meaning}. Your turn: ${word.at(-1).toUpperCase()}.`
-    : `Computer played ${word.toUpperCase()}. Looking up its meaning… Your turn: ${word.at(-1).toUpperCase()}.`, "info");
+  setWordChainMessage(
+    `Computer played ${word.toUpperCase()}. Your turn: ${word.at(-1).toUpperCase()}.`,
+    "info"
+  );
   renderWordChainWordDetail(word);
   saveWordChainGame();
 }
