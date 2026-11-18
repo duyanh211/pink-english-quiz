@@ -2935,5 +2935,12 @@
         }
       }
     }
-  ]
+  ],
+  "appConfig": {
+    "version": "2.1",
+    "quizSessionSize": 10,
+    "quizRandomMode": "pure",
+    "quizResumeMode": "auto",
+    "progressStorage": "localStorage"
+  }
 }

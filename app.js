@@ -9,6 +9,9 @@
  */
 
 const STORAGE_KEY = "pinkEnglish.profile.v2";
+const QUIZ_SESSION_SIZE = 10;
+const QUIZ_RANDOM_MODE = "pure"; // Uniform random sample without replacement inside each session.
+const QUIZ_RESUME_MODE = "auto"; // Restore the saved session when the same quiz set is opened.
 const state = {
   data: null,
   page: "home",
@@ -23,17 +26,22 @@ const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 function loadProfile() {
+  const emptyProfile = { savedPhrases: [], history: [], quizSessions: {} };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { savedPhrases: [], history: [] };
+    if (!raw) return emptyProfile;
     const parsed = JSON.parse(raw);
     return {
+      // Keep all data from the previous app version and add quiz sessions safely.
       savedPhrases: Array.isArray(parsed.savedPhrases) ? parsed.savedPhrases : [],
-      history: Array.isArray(parsed.history) ? parsed.history : []
+      history: Array.isArray(parsed.history) ? parsed.history : [],
+      quizSessions: parsed.quizSessions && typeof parsed.quizSessions === "object" && !Array.isArray(parsed.quizSessions)
+        ? parsed.quizSessions
+        : {}
     };
   } catch (error) {
     console.warn("Could not read saved learning progress:", error);
-    return { savedPhrases: [], history: [] };
+    return emptyProfile;
   }
 }
 
@@ -184,6 +192,7 @@ function renderHome() {
   state.data.conversations.slice(0, 2).forEach(conversation => {
     container.appendChild(createScenarioCard(conversation));
   });
+  renderQuizResumeCards();
 }
 
 function createScenarioCard(conversation) {
@@ -238,10 +247,18 @@ function renderPractice() {
     const icon = makeElement("div", "feature-icon", set.id.toLowerCase().includes("grammar") ? "Aa" : "文");
     const copy = makeElement("div", "quiz-row-copy");
     copy.append(makeElement("h3", "", set.title), makeElement("p", "", `${set.questions.length} câu · ${set.level || "A1–C1"}`));
-    const button = makeElement("button", "button secondary small-button", "Practice");
+    const saved = getSavedQuizSession(set.id, set);
+    const progressLabel = saved
+      ? `Đang học dở · ${getAnsweredCount(saved)}/${saved.questionOrder.length} câu đã trả lời`
+      : `Random ${Math.min(QUIZ_SESSION_SIZE, set.questions.length)} câu · Tự lưu tiến độ`;
+    copy.appendChild(makeElement("span", "quiz-session-meta", progressLabel));
+
+    const actions = makeElement("div", "quiz-row-actions");
+    const button = makeElement("button", "button secondary small-button", saved ? "Continue" : `Start ${Math.min(QUIZ_SESSION_SIZE, set.questions.length)}`);
     button.type = "button";
     button.addEventListener("click", () => startQuiz(set.id));
-    row.append(icon, copy, button);
+    actions.appendChild(button);
+    row.append(icon, copy, actions);
     quizList.appendChild(row);
   });
 }
@@ -568,54 +585,184 @@ function renderProgress() {
   }
 }
 
+function getQuestionKey(question, index) {
+  return String(question.id ?? `index-${index}`);
+}
+
+function shuffleArray(items) {
+  const result = [...items];
+  // Fisher–Yates gives each ordering an equal chance.
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function getAnsweredCount(session) {
+  return Array.isArray(session?.answers) ? session.answers.filter(Boolean).length : 0;
+}
+
+function getSavedQuizSession(setId, set = null) {
+  const session = state.profile.quizSessions?.[setId];
+  if (!session || !Array.isArray(session.questionOrder) || !session.questionOrder.length || !Array.isArray(session.answers)) return null;
+  if (set) {
+    const currentKeys = new Set(set.questions.map((question, index) => getQuestionKey(question, index)));
+    if (session.questionOrder.some(key => !currentKeys.has(String(key)))) return null;
+  }
+  return session;
+}
+
+function saveActiveQuizSession() {
+  const quiz = state.activeQuiz;
+  if (!quiz?.session || !quiz.setId) return;
+  state.profile.quizSessions[quiz.setId] = {
+    ...quiz.session,
+    updatedAt: new Date().toISOString()
+  };
+  saveProfile();
+}
+
+function renderQuizResumeCards() {
+  const section = $("#quiz-resume-section");
+  const container = $("#quiz-resume-list");
+  if (!section || !container) return;
+  container.replaceChildren();
+  const openSessions = getQuizSets()
+    .map(set => ({ set, session: getSavedQuizSession(set.id, set) }))
+    .filter(item => item.session);
+  section.classList.toggle("hidden", openSessions.length === 0);
+
+  openSessions.forEach(({ set, session }) => {
+    const total = session.questionOrder.length;
+    const answered = getAnsweredCount(session);
+    const card = makeElement("div", "resume-card");
+    const icon = makeElement("div", "feature-icon", set.id.toLowerCase().includes("grammar") ? "Aa" : "文");
+    const copy = makeElement("div", "resume-card-copy");
+    copy.append(
+      makeElement("strong", "", set.title),
+      makeElement("span", "", `${answered}/${total} câu đã trả lời · Tự động lưu`)
+    );
+    const track = makeElement("div", "small-track");
+    const fill = makeElement("div");
+    fill.style.width = `${Math.round(answered / Math.max(total, 1) * 100)}%`;
+    track.appendChild(fill);
+    copy.appendChild(track);
+    const button = makeElement("button", "button secondary small-button", "Continue");
+    button.type = "button";
+    button.addEventListener("click", () => startQuiz(set.id));
+    card.append(icon, copy, button);
+    container.appendChild(card);
+  });
+}
+
+function createQuizSession(set) {
+  const count = Math.min(QUIZ_SESSION_SIZE, set.questions.length);
+  const allKeys = set.questions.map((question, index) => getQuestionKey(question, index));
+  // Pure random: no weighting by previous answers; no duplicates within this 10-question session.
+  const randomizedKeys = QUIZ_RANDOM_MODE === "pure" ? shuffleArray(allKeys) : allKeys;
+  const questionOrder = randomizedKeys.slice(0, count);
+  return {
+    setId: set.id,
+    questionOrder,
+    index: 0,
+    answers: Array(count).fill(null),
+    startedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+}
+
+function getCurrentQuizQuestion(quiz) {
+  const key = String(quiz.session.questionOrder[quiz.session.index]);
+  return quiz.set.questions.find((question, index) => getQuestionKey(question, index) === key);
+}
+
+function getQuizScore(session) {
+  return session.answers.reduce((total, answer) => total + (answer?.isCorrect ? 1 : 0), 0);
+}
+
 function startQuiz(setId) {
   const set = getQuizSets().find(item => item.id === setId);
   if (!set) return showToast("Không tìm thấy bộ câu hỏi.");
-  state.activeQuiz = { set, index: 0, score: 0, answered: false };
+
+  // Auto-resume the stored session for this set. A new random sample is created only when none exists.
+  let session = QUIZ_RESUME_MODE === "auto" ? getSavedQuizSession(setId, set) : null;
+  if (!session) {
+    session = createQuizSession(set);
+    state.profile.quizSessions[setId] = session;
+    saveProfile();
+  } else {
+    session.index = Math.min(Math.max(Number(session.index) || 0, 0), session.questionOrder.length - 1);
+    session.answers = Array.from({ length: session.questionOrder.length }, (_, index) => session.answers[index] || null);
+    state.profile.quizSessions[setId] = session;
+  }
+
+  state.activeQuiz = { setId, set, session, answered: false, score: getQuizScore(session) };
+  state.lastQuizSetId = setId;
   renderQuizQuestion();
+  renderPractice();
+  renderHome();
   showPage("quiz", "practice");
 }
 
 function renderQuizQuestion() {
   const quiz = state.activeQuiz;
   if (!quiz) return;
-  const question = quiz.set.questions[quiz.index];
+  const session = quiz.session;
+  const question = getCurrentQuizQuestion(quiz);
+  if (!question) {
+    delete state.profile.quizSessions[quiz.setId];
+    saveProfile();
+    state.activeQuiz = null;
+    showToast("Không tìm thấy câu hỏi trong phiên học. Hãy bắt đầu lượt mới.");
+    goToPractice();
+    return;
+  }
+
+  const total = session.questionOrder.length;
+  const answer = session.answers[session.index];
+  const score = getQuizScore(session);
+  quiz.answered = Boolean(answer);
+  quiz.score = score;
   $("#quiz-set-title").textContent = quiz.set.title;
-  $("#quiz-set-level").textContent = question.difficulty || quiz.set.level || "Practice";
-  $("#quiz-counter").textContent = `${quiz.index + 1} / ${quiz.set.questions.length}`;
-  $("#quiz-progress").style.width = `${quiz.index / quiz.set.questions.length * 100}%`;
-  $("#quiz-topic").textContent = `Score: ${quiz.score}`;
+  $("#quiz-set-level").textContent = question.difficulty || question.level || quiz.set.level || "Practice";
+  $("#quiz-counter").textContent = `${session.index + 1} / ${total}`;
+  const completedSlots = session.index + (answer ? 1 : 0);
+  $("#quiz-progress").style.width = `${completedSlots / total * 100}%`;
+  $("#quiz-topic").textContent = `Quick practice · ${total} câu · Score: ${score}/${getAnsweredCount(session)}`;
+  $("#quiz-save-note").textContent = "✓ Tiến độ được tự động lưu trên thiết bị này.";
   $("#quiz-question").textContent = question.question;
+
   const options = $("#quiz-options");
   options.replaceChildren();
   question.options.forEach((option, index) => {
     const button = makeElement("button", "choice-button quiz-option");
     button.type = "button";
     button.append(makeElement("span", "choice-letter", String.fromCharCode(65 + index)), makeElement("span", "choice-text", option));
-    button.addEventListener("click", () => answerQuiz(index));
+    if (answer) {
+      button.disabled = true;
+      if (index === question.correctAnswer) button.classList.add("correct");
+      if (index === answer.selectedIndex && !answer.isCorrect) button.classList.add("wrong");
+    } else {
+      button.addEventListener("click", () => answerQuiz(index));
+    }
     options.appendChild(button);
   });
-  $("#quiz-feedback").classList.add("hidden");
-  $("#quiz-feedback").replaceChildren();
-  quiz.answered = false;
-}
-
-function answerQuiz(selectedIndex) {
-  const quiz = state.activeQuiz;
-  if (!quiz || quiz.answered) return;
-  quiz.answered = true;
-  const question = quiz.set.questions[quiz.index];
-  const buttons = $$(".quiz-option", $("#quiz-options"));
-  buttons.forEach(button => { button.disabled = true; });
-  buttons[question.correctAnswer]?.classList.add("correct");
-  if (selectedIndex === question.correctAnswer) quiz.score += 1;
-  else buttons[selectedIndex]?.classList.add("wrong");
 
   const feedback = $("#quiz-feedback");
+  feedback.classList.add("hidden");
+  feedback.replaceChildren();
+  if (answer) renderQuizFeedback(question, answer);
+  saveActiveQuizSession();
+}
+
+function renderQuizFeedback(question, answer) {
+  const feedback = $("#quiz-feedback");
   feedback.classList.remove("hidden");
+  feedback.replaceChildren();
   const card = makeElement("div", "feedback-card");
   card.append(
-    makeElement("div", `feedback-score ${selectedIndex === question.correctAnswer ? "score-2" : "score-0"}`, selectedIndex === question.correctAnswer ? "Correct answer" : `Correct: ${question.options[question.correctAnswer]}`),
+    makeElement("div", `feedback-score ${answer.isCorrect ? "score-2" : "score-0"}`, answer.isCorrect ? "Correct answer" : `Correct: ${question.options[question.correctAnswer]}`),
     makeElement("p", "", question.explanation)
   );
   if (question.grammarNote) {
@@ -626,45 +773,87 @@ function answerQuiz(selectedIndex) {
     if (question.grammarNote.signals) note.append(makeElement("p", "", `DẤU HIỆU\n${question.grammarNote.signals}`));
     card.appendChild(note);
   }
-  const next = makeElement("button", "button full", quiz.index === quiz.set.questions.length - 1 ? "See results →" : "Next question →");
+  const next = makeElement("button", "button full", quizSessionIsLastQuestion() ? "Finish 10-question session →" : "Next question →");
   next.type = "button";
   next.style.marginTop = "13px";
   next.addEventListener("click", nextQuizQuestion);
   card.appendChild(next);
   feedback.appendChild(card);
-  $("#quiz-topic").textContent = `Score: ${quiz.score}`;
+}
+
+function quizSessionIsLastQuestion() {
+  const quiz = state.activeQuiz;
+  return Boolean(quiz && quiz.session.index === quiz.session.questionOrder.length - 1);
+}
+
+function answerQuiz(selectedIndex) {
+  const quiz = state.activeQuiz;
+  if (!quiz || quiz.answered) return;
+  const question = getCurrentQuizQuestion(quiz);
+  if (!question || !Number.isInteger(selectedIndex) || selectedIndex < 0 || selectedIndex > 2) return;
+  const isCorrect = selectedIndex === question.correctAnswer;
+  quiz.session.answers[quiz.session.index] = {
+    questionId: getQuestionKey(question, quiz.set.questions.indexOf(question)),
+    selectedIndex,
+    isCorrect,
+    answeredAt: new Date().toISOString()
+  };
+  quiz.answered = true;
+  quiz.score = getQuizScore(quiz.session);
+  saveActiveQuizSession();
+  renderQuizQuestion();
+  renderPractice();
+  renderHome();
 }
 
 function nextQuizQuestion() {
   const quiz = state.activeQuiz;
   if (!quiz || !quiz.answered) return;
-  if (quiz.index < quiz.set.questions.length - 1) {
-    quiz.index += 1;
+  if (quiz.session.index < quiz.session.questionOrder.length - 1) {
+    quiz.session.index += 1;
+    saveActiveQuizSession();
     renderQuizQuestion();
   } else {
-    const total = quiz.set.questions.length;
-    const percent = Math.round(quiz.score / total * 100);
-    state.profile.history.unshift({
-      type: "quiz",
-      title: quiz.set.title,
-      category: quiz.set.title,
-      score: quiz.score,
-      maxScore: total,
-      percent,
-      completedAt: new Date().toISOString()
-    });
-    state.profile.history = state.profile.history.slice(0, 100);
-    saveProfile();
-    $("#quiz-final-score").textContent = `${quiz.score} / ${total}`;
-    renderProgress();
-    renderHome();
-    showPage("quiz-result", "practice");
+    completeQuizSession();
   }
 }
 
+function completeQuizSession() {
+  const quiz = state.activeQuiz;
+  if (!quiz) return;
+  const total = quiz.session.questionOrder.length;
+  const score = getQuizScore(quiz.session);
+  const percent = Math.round(score / total * 100);
+  const record = {
+    type: "quiz",
+    setId: quiz.setId,
+    title: quiz.set.title,
+    category: quiz.set.title,
+    score,
+    maxScore: total,
+    percent,
+    totalQuestions: total,
+    questionIds: [...quiz.session.questionOrder],
+    completedAt: new Date().toISOString()
+  };
+  state.profile.history.unshift(record);
+  state.profile.history = state.profile.history.slice(0, 100);
+  delete state.profile.quizSessions[quiz.setId];
+  state.lastQuizSetId = quiz.setId;
+  state.activeQuiz = null;
+  saveProfile();
+  $("#quiz-final-score").textContent = `${score} / ${total}`;
+  const caption = $("#quiz-result-caption");
+  if (caption) caption.textContent = `10-question random session · ${percent}% accuracy`;
+  renderProgress();
+  renderHome();
+  renderPractice();
+  showPage("quiz-result", "practice");
+}
+
 function retryQuiz() {
-  if (!state.activeQuiz) return;
-  startQuiz(state.activeQuiz.set.id);
+  const setId = state.lastQuizSetId || state.activeQuiz?.setId;
+  if (setId) startQuiz(setId);
 }
 
 function goToPractice() {
@@ -706,5 +895,10 @@ document.addEventListener("click", event => {
     else { renderHome(); showPage("home", "home"); }
   }
 });
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") saveActiveQuizSession();
+});
+window.addEventListener("pagehide", saveActiveQuizSession);
 
 loadData();

@@ -185,6 +185,16 @@
     .note-card h4 { margin:0 0 8px; color:var(--pink-dark); font-size:13px; }
     .note-card p { margin:0 0 7px; color:#62565d; font-size:12px; white-space:pre-line; }
     .note-card p:last-child { margin-bottom:0; }
+    .quiz-save-note { margin-top:7px; color:var(--muted); font-size:10px; }
+    .resume-list { display:grid; gap:9px; }
+    .resume-card { display:flex; align-items:center; gap:13px; padding:15px; border:1px solid #e8d5df; border-radius:15px; background:#fff; }
+    .resume-card-copy { flex:1; min-width:0; }
+    .resume-card-copy strong { display:block; font-size:13px; }
+    .resume-card-copy span { display:block; margin-top:3px; color:var(--muted); font-size:11px; }
+    .resume-card .small-track { margin-top:8px; }
+    .quiz-row { flex-wrap:wrap; }
+    .quiz-row-actions { display:flex; align-items:center; gap:7px; }
+    .quiz-session-meta { display:block; margin-top:5px; color:var(--pink-dark); font-size:10px; font-weight:700; }
     .notice { padding:14px 16px; border:1px solid #ead8e1; border-radius:13px; background:#fff8fb; color:#765a69; font-size:12px; }
     .bottom-nav { position:fixed; z-index:20; left:50%; bottom:12px; transform:translateX(-50%); display:grid; grid-template-columns:repeat(4,1fr); width:min(calc(100% - 24px),520px); padding:7px; border:1px solid rgba(226,211,220,.95); border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 12px 40px rgba(58,37,48,.12); backdrop-filter:blur(14px); }
     .nav-button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; min-height:48px; border:0; border-radius:12px; background:transparent; color:#9a8c94; font-size:10px; font-weight:700; cursor:pointer; }
@@ -212,6 +222,8 @@
       .conversation-title-row .pill { margin-top:6px; }
       .feedback-actions { align-items:stretch; flex-direction:column; }
       .feedback-actions .button { width:100%; }
+      .quiz-row-actions { width:100%; }
+      .quiz-row-actions .button { flex:1; }
     }
     @media (min-width:681px) {
       .app-shell { padding-bottom:115px; }
@@ -224,7 +236,7 @@
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#home" aria-label="Pink English home" data-nav="home">
-        <span class="brand-mark">A</span>
+        <span class="brand-mark">p.</span>
         <span><span class="brand-name">pink english</span><span class="brand-tagline">Speak naturally. Learn confidently.</span></span>
       </a>
       <div class="top-actions">
@@ -261,7 +273,12 @@
         <div class="section-heading"><div><span class="eyebrow">Practice by situation</span><h2>Popular conversations</h2></div><button class="text-link" data-action="go-practice">View all →</button></div>
         <div class="card-grid" id="home-scenarios"></div>
 
-        <div class="section-heading"><div><span class="eyebrow">A little grammar goes a long way</span><h2>Quick practice</h2></div><button class="text-link" data-action="go-practice">See topics →</button></div>
+        <div id="quiz-resume-section" class="hidden">
+          <div class="section-heading"><div><span class="eyebrow">Pick up where you left off</span><h2>Your open quiz sessions</h2></div></div>
+          <div id="quiz-resume-list" class="resume-list"></div>
+        </div>
+
+        <div class="section-heading"><div><span class="eyebrow">A little grammar goes a long way</span><h2>Quick practice</h2></div><button class="text-link" data-action="go-quiz-library">See topics →</button></div>
         <div class="content-card feature-card">
           <div class="feature-icon">Aa</div>
           <div class="feature-copy"><h3>Grammar & Vocabulary</h3><p>Short quizzes to support your communication skills.</p></div>
@@ -344,6 +361,7 @@
         </div>
         <div class="chat-panel">
           <div class="small muted" id="quiz-topic"></div>
+          <div class="quiz-save-note" id="quiz-save-note">✓ Your progress is saved automatically on this device.</div>
           <h2 class="quiz-question" id="quiz-question"></h2>
           <div class="choice-list" id="quiz-options"></div>
           <div id="quiz-feedback" class="hidden"></div>
@@ -351,7 +369,7 @@
       </section>
 
       <section class="page" id="page-quiz-result">
-        <div class="summary-hero"><div class="summary-icon">✓</div><span class="eyebrow">Quick practice complete</span><h1 style="font-size:30px;margin-top:7px">Nice work!</h1><div class="summary-score" id="quiz-final-score">0 / 10</div><p class="muted small">Correct answers</p></div>
+        <div class="summary-hero"><div class="summary-icon">✓</div><span class="eyebrow">Quick practice complete</span><h1 style="font-size:30px;margin-top:7px">Nice work!</h1><div class="summary-score" id="quiz-final-score">0 / 10</div><p class="muted small" id="quiz-result-caption">10-question random session</p></div>
         <div style="display:grid;gap:9px;margin-top:20px"><button class="button full" data-action="retry-quiz">Try again</button><button class="button secondary full" data-action="back-to-practice">Choose another topic</button></div>
       </section>
     </main>
