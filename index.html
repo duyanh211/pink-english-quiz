@@ -225,6 +225,22 @@
     .wordchain-detail { margin-top:10px; padding:12px; border-radius:12px; background:#faf6f8; }
     .wordchain-detail strong { display:block; font-size:13px; }
     .wordchain-detail p { margin:3px 0 0; color:var(--muted); font-size:11px; }
+    .wordchain-detail .dictionary-meta { margin-top:5px; font-size:10px; }
+    .dictionary-senses { display:grid; gap:8px; margin-top:9px; }
+    .dictionary-sense-group { display:grid; gap:3px; }
+    .dictionary-pos { color:var(--pink-dark); font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; }
+    .dictionary-sense-group p { color:var(--ink); font-size:12px; line-height:1.55; }
+    .dictionary-gloss { margin-top:8px !important; font-style:italic; }
+    .dictionary-examples { display:grid; gap:3px; margin-top:9px; padding-top:8px; border-top:1px solid var(--line); }
+    .dictionary-examples p { color:var(--ink); font-size:11px; }
+    .dictionary-examples .dictionary-example-vi { color:var(--muted); }
+    .dictionary-quality-note { margin-top:9px !important; font-size:10px !important; }
+    .dictionary-loading { color:var(--muted); }
+    .dictionary-attribution { max-width:720px; margin:9px auto 0; text-align:left; }
+    .dictionary-attribution summary { display:inline-block; cursor:pointer; color:var(--muted); text-decoration:underline; text-underline-offset:3px; }
+    .dictionary-attribution-content { margin:8px auto 0; padding:12px; border:1px solid var(--line); border-radius:12px; background:#fff; color:var(--muted); line-height:1.6; }
+    .dictionary-attribution-content p { margin:3px 0; }
+    .dictionary-attribution-content a { color:var(--pink-dark); }
     .wordchain-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
     .wordchain-actions .button { flex:1; }
     .wordchain-resume { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px; border:1px solid #dfc1d1; border-radius:14px; background:#fff9fc; }
@@ -279,7 +295,7 @@
   <div class="app-shell">
     <header class="topbar">
       <a class="brand" href="#home" aria-label="Pink English home" data-nav="home">
-        <span class="brand-mark">PK</span>
+        <span class="brand-mark">p.</span>
         <span><span class="brand-name">pink english</span><span class="brand-tagline">Speak naturally. Learn confidently.</span></span>
       </a>
       <div class="top-actions">
@@ -528,7 +544,20 @@
       </section>
     </main>
 
-    <footer class="site-footer">Pink English · Practice real-life English, one conversation at a time.</footer>
+    <footer class="site-footer">
+      Pink English · Practice real-life English, one conversation at a time.
+      <details class="dictionary-attribution">
+        <summary>Dictionary data &amp; credits</summary>
+        <div class="dictionary-attribution-content">
+          <p>Dữ liệu từ điển: Từ điển Anh–Việt thichhoc.com (thichhoc-dict), giấy phép CC BY-SA 4.0.</p>
+          <p><a href="https://github.com/thichhoc-org/thichhoc-dict" target="_blank" rel="noopener noreferrer">https://github.com/thichhoc-org/thichhoc-dict</a></p>
+          <p>Nguồn gốc: WordNet 3.1 (Princeton), CMUdict (CMU), Wiktionary.</p>
+          <p>Giữ nguyên, không chỉnh sửa.</p>
+          <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Xem giấy phép CC BY-SA 4.0</a> · <a href="https://github.com/thichhoc-org/thichhoc-dict/blob/main/dict-en-vi/LICENSE-DATA" target="_blank" rel="noopener noreferrer">Điều khoản dữ liệu và ghi nguồn đầy đủ</a></p>
+          <p>Ghi chú chất lượng: nghĩa tiếng Việt do mô hình ngôn ngữ tạo và hiện chưa được con người kiểm duyệt toàn bộ; hãy xem là tài liệu tham khảo.</p>
+        </div>
+      </details>
+    </footer>
   </div>
 
   <nav class="bottom-nav" aria-label="Main navigation">

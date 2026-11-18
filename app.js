@@ -24,7 +24,12 @@ const state = {
   wordsByFirstLetter: new Map(),
   wordDetails: {},
   wordDictionaryReady: false,
-  wordChainTimer: null
+  wordChainTimer: null,
+  dictionaryShardCache: new Map(),
+  dictionaryGroupPromises: new Map(),
+  dictionaryDetailsCache: {},
+  dictionaryLookupPromises: new Map(),
+  wordDetailRequestId: 0
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
@@ -923,14 +928,451 @@ async function loadWordDictionary() {
     state.wordsByFirstLetter.get(letter).push(word);
   }
   state.wordDetails = payload.details && typeof payload.details === "object" ? payload.details : {};
+  state.dictionaryDetailsCache = loadThichHocDetailCache();
   state.wordDictionaryReady = true;
 
   const status = $("#wordchain-dictionary-status");
-  if (status) status.textContent = `Offline dictionary ready · ${normalizedWords.length.toLocaleString("en-US")} words · Shared across all levels.`;
+  if (status) status.textContent = `Offline word validation ready · ${normalizedWords.length.toLocaleString("en-US")} words. Vietnamese meanings are looked up online on demand and cached on this device.`;
   const start = $("#wordchain-start");
   if (start) {
     start.disabled = false;
     start.textContent = "Start Word Chain →";
+  }
+}
+
+// ---------------------------------------------------------------------------
+// THICHHOC EN–VI DICTIONARY (lazy lookup; no 155k-entry download at startup)
+// Source data: thichhoc-dict JSONL shards, CC BY-SA 4.0.
+// The app keeps the original word list for offline gameplay and fetches only
+// the relevant dictionary shards when a player asks for a word's meaning.
+// ---------------------------------------------------------------------------
+const THICHHOC_ENTRIES_BASE = "https://raw.githubusercontent.com/thichhoc-org/thichhoc-dict/main/dict-en-vi/data/entries/";
+const THICHHOC_CACHE_KEY = "pinkEnglish.thichhocMeaningCache.v1";
+const THICHHOC_CACHE_LIMIT = 1200;
+
+const THICHHOC_POS_LABELS = {
+  n: "Danh từ", v: "Động từ", adj: "Tính từ", adv: "Trạng từ",
+  prep: "Giới từ", conj: "Liên từ", pron: "Đại từ", det: "Từ hạn định",
+  intj: "Thán từ", abbr: "Từ viết tắt", phr: "Cụm từ"
+};
+
+// A small set of common irregular forms, plus regular suffix candidates below.
+// These candidates help resolve entries whose inflection starts with a different
+// letter from the dictionary headword (e.g. ran -> run).
+const THICHHOC_IRREGULAR_BASES = {
+  am: "be", is: "be", are: "be", was: "be", were: "be", been: "be", being: "be",
+  has: "have", had: "have", having: "have",
+  does: "do", did: "do", done: "do", doing: "do",
+  went: "go", gone: "go", going: "go",
+  ran: "run", running: "run",
+  ate: "eat", eaten: "eat", eating: "eat",
+  saw: "see", seen: "see", seeing: "see",
+  spoke: "speak", spoken: "speak", speaking: "speak",
+  wrote: "write", written: "write", writing: "write",
+  took: "take", taken: "take", taking: "take",
+  gave: "give", given: "give", giving: "give",
+  came: "come", coming: "come",
+  became: "become", become: "become",
+  bought: "buy", buying: "buy",
+  brought: "bring", bringing: "bring",
+  thought: "think", thinking: "think",
+  taught: "teach", teaching: "teach",
+  caught: "catch", catching: "catch",
+  made: "make", making: "make",
+  knew: "know", known: "know", knowing: "know",
+  found: "find", finding: "find",
+  felt: "feel", feeling: "feel",
+  left: "leave", leaving: "leave",
+  kept: "keep", keeping: "keep",
+  slept: "sleep", sleeping: "sleep",
+  stood: "stand", standing: "stand",
+  understood: "understand", understanding: "understand",
+  broke: "break", broken: "break", breaking: "break",
+  chose: "choose", chosen: "choose", choosing: "choose",
+  drove: "drive", driven: "drive", driving: "drive",
+  flew: "fly", flown: "fly", flying: "fly",
+  grew: "grow", grown: "grow", growing: "grow",
+  threw: "throw", thrown: "throw", throwing: "throw",
+  drew: "draw", drawn: "draw", drawing: "draw",
+  fell: "fall", fallen: "fall", falling: "fall",
+  got: "get", gotten: "get", getting: "get",
+  held: "hold", holding: "hold",
+  met: "meet", meeting: "meet",
+  paid: "pay", paying: "pay",
+  read: "read", reading: "read",
+  rode: "ride", ridden: "ride", riding: "ride",
+  rose: "rise", risen: "rise", rising: "rise",
+  sent: "send", sending: "send",
+  shook: "shake", shaken: "shake", shaking: "shake",
+  sang: "sing", sung: "sing", singing: "sing",
+  sank: "sink", sunk: "sink", sinking: "sink",
+  stole: "steal", stolen: "steal", stealing: "steal",
+  swam: "swim", swum: "swim", swimming: "swim",
+  wore: "wear", worn: "wear", wearing: "wear",
+  won: "win", winning: "win",
+  sold: "sell", selling: "sell",
+  told: "tell", telling: "tell",
+  sat: "sit", sitting: "sit",
+  began: "begin", begun: "begin", beginning: "begin",
+  drank: "drink", drunk: "drink", drinking: "drink",
+  chose: "choose", chosen: "choose"
+};
+
+function loadThichHocDetailCache() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(THICHHOC_CACHE_KEY) || "{}");
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch (error) {
+    console.warn("Could not read cached dictionary meanings:", error);
+    return {};
+  }
+}
+
+function saveThichHocDetailCache(word, detail) {
+  state.dictionaryDetailsCache[word] = detail;
+  const keys = Object.keys(state.dictionaryDetailsCache);
+  if (keys.length > THICHHOC_CACHE_LIMIT) {
+    for (const oldKey of keys.slice(0, keys.length - THICHHOC_CACHE_LIMIT)) {
+      delete state.dictionaryDetailsCache[oldKey];
+    }
+  }
+  try {
+    localStorage.setItem(THICHHOC_CACHE_KEY, JSON.stringify(state.dictionaryDetailsCache));
+  } catch (error) {
+    console.warn("Could not persist dictionary meaning cache:", error);
+  }
+}
+
+async function fetchThichHocShard(filename) {
+  if (state.dictionaryShardCache.has(filename)) return state.dictionaryShardCache.get(filename);
+
+  const request = (async () => {
+    const response = await fetch(`${THICHHOC_ENTRIES_BASE}${filename}`, { cache: "force-cache" });
+    if (response.status === 404) return { missing: true, entries: [] };
+    if (!response.ok) throw new Error(`Từ điển thichhoc trả về HTTP ${response.status} khi tải ${filename}.`);
+
+    const text = await response.text();
+    const entries = [];
+    for (const line of text.split(/\r?\n/)) {
+      if (!line.trim()) continue;
+      try {
+        const entry = JSON.parse(line);
+        if (entry && entry.lang === "en-vi" && entry.headword) entries.push(entry);
+      } catch (error) {
+        console.warn(`Bỏ qua một dòng JSONL không hợp lệ trong ${filename}.`, error);
+      }
+    }
+    return { missing: false, entries };
+  })();
+
+  state.dictionaryShardCache.set(filename, request);
+  try {
+    return await request;
+  } catch (error) {
+    state.dictionaryShardCache.delete(filename); // Let the user retry after a transient network error.
+    throw error;
+  }
+}
+
+async function loadThichHocTierOneEntries() {
+  const cacheKey = "__freq-tier1__";
+  if (state.dictionaryGroupPromises.has(cacheKey)) return state.dictionaryGroupPromises.get(cacheKey);
+
+  const promise = (async () => {
+    const plain = await fetchThichHocShard("freq-tier1.jsonl");
+    if (!plain.missing) return plain.entries;
+
+    const all = [];
+    for (let part = 1; part <= 10; part += 1) {
+      const filename = `freq-tier1-${String(part).padStart(2, "0")}.jsonl`;
+      const shard = await fetchThichHocShard(filename);
+      if (shard.missing) break;
+      all.push(...shard.entries);
+    }
+    return all;
+  })();
+
+  state.dictionaryGroupPromises.set(cacheKey, promise);
+  try {
+    return await promise;
+  } catch (error) {
+    state.dictionaryGroupPromises.delete(cacheKey);
+    throw error;
+  }
+}
+
+async function loadThichHocGeneralLetter(letter) {
+  const normalizedLetter = String(letter || "").toLowerCase();
+  if (!/^[a-z]$/.test(normalizedLetter)) return [];
+  const cacheKey = `general-${normalizedLetter}`;
+  if (state.dictionaryGroupPromises.has(cacheKey)) return state.dictionaryGroupPromises.get(cacheKey);
+
+  const promise = (async () => {
+    const plain = await fetchThichHocShard(`${cacheKey}.jsonl`);
+    if (!plain.missing) return plain.entries;
+
+    const all = [];
+    for (let part = 1; part <= 20; part += 1) {
+      const filename = `${cacheKey}-${String(part).padStart(2, "0")}.jsonl`;
+      const shard = await fetchThichHocShard(filename);
+      if (shard.missing) break;
+      all.push(...shard.entries);
+    }
+    return all;
+  })();
+
+  state.dictionaryGroupPromises.set(cacheKey, promise);
+  try {
+    return await promise;
+  } catch (error) {
+    state.dictionaryGroupPromises.delete(cacheKey);
+    throw error;
+  }
+}
+
+function getDictionaryLookupCandidates(word) {
+  const candidates = new Set([word]);
+  const irregular = THICHHOC_IRREGULAR_BASES[word];
+  if (irregular) candidates.add(irregular);
+
+  if (word.length > 4) {
+    if (/ies$/.test(word)) candidates.add(`${word.slice(0, -3)}y`);
+    if (/ied$/.test(word)) candidates.add(`${word.slice(0, -3)}y`);
+    if (/ves$/.test(word)) {
+      candidates.add(`${word.slice(0, -3)}f`);
+      candidates.add(`${word.slice(0, -3)}fe`);
+    }
+    if (/ing$/.test(word)) {
+      const stem = word.slice(0, -3);
+      candidates.add(stem);
+      candidates.add(`${stem}e`);
+      if (/(.)\1$/.test(stem)) candidates.add(stem.slice(0, -1));
+    }
+    if (/ed$/.test(word)) {
+      const stem = word.slice(0, -2);
+      candidates.add(stem);
+      candidates.add(`${stem}e`);
+      if (/(.)\1$/.test(stem)) candidates.add(stem.slice(0, -1));
+    }
+    if (/es$/.test(word)) candidates.add(word.slice(0, -2));
+    if (/s$/.test(word)) candidates.add(word.slice(0, -1));
+    if (/er$/.test(word)) {
+      const stem = word.slice(0, -2);
+      candidates.add(stem);
+      candidates.add(`${stem}e`);
+    }
+    if (/est$/.test(word)) {
+      const stem = word.slice(0, -3);
+      candidates.add(stem);
+      candidates.add(`${stem}e`);
+    }
+  }
+  return [...candidates].filter(candidate => /^[a-z]{2,24}$/.test(candidate));
+}
+
+function entryMatchesWord(entry, word) {
+  const headword = String(entry.headword || "").toLowerCase();
+  if (headword === word) return true;
+  const forms = [
+    ...(Array.isArray(entry.inflections) ? entry.inflections : []),
+    ...(Array.isArray(entry.variants) ? entry.variants : [])
+  ].map(form => String(form).toLowerCase());
+  // Never invent a relationship merely because a guessed stem exists:
+  // the source entry must explicitly list the queried inflection/variant.
+  return forms.includes(word);
+}
+
+function buildThichHocWordDetail(word, entries) {
+  const uniqueEntries = [...new Map(entries.map(entry => [entry.id || `${entry.headword}:${entry.pos}`, entry])).values()];
+  if (!uniqueEntries.length) return null;
+
+  const meaningGroups = [];
+  const byPos = new Map();
+  const pronunciations = [];
+  const examples = [];
+  const englishGlosses = [];
+  const matchedHeadwords = [];
+
+  for (const entry of uniqueEntries) {
+    const pos = String(entry.pos || "other");
+    if (!byPos.has(pos)) {
+      const group = { pos, label: THICHHOC_POS_LABELS[pos] || pos, senses: [] };
+      byPos.set(pos, group);
+      meaningGroups.push(group);
+    }
+    const group = byPos.get(pos);
+    for (const sense of Array.isArray(entry.senses_vi) ? entry.senses_vi : []) {
+      if (typeof sense === "string" && sense.trim() && !group.senses.includes(sense.trim())) group.senses.push(sense.trim());
+    }
+    if (entry.pron && !pronunciations.includes(entry.pron)) pronunciations.push(entry.pron);
+    if (entry.headword && !matchedHeadwords.includes(entry.headword)) matchedHeadwords.push(entry.headword);
+    for (const gloss of Array.isArray(entry.gloss_en) ? entry.gloss_en : []) {
+      if (typeof gloss === "string" && gloss.trim() && !englishGlosses.includes(gloss.trim())) englishGlosses.push(gloss.trim());
+    }
+    for (const example of Array.isArray(entry.examples) ? entry.examples : []) {
+      if (example && example.src && !examples.some(item => item.src === example.src)) {
+        examples.push({ src: example.src, vi: example.vi || "" });
+      }
+    }
+  }
+
+  const allSenses = meaningGroups.flatMap(group => group.senses);
+  if (!allSenses.length) return null;
+
+  return {
+    source: "thichhoc-dict",
+    headword: matchedHeadwords[0] || word,
+    query: word,
+    pronunciation: pronunciations[0] || "",
+    pronunciations,
+    meaningGroups,
+    englishGlosses: englishGlosses.slice(0, 3),
+    examples: examples.slice(0, 2),
+    reviewed: uniqueEntries.length > 0 && uniqueEntries.every(entry => entry.reviewed === true),
+    isInflection: (matchedHeadwords[0] || word).toLowerCase() !== word,
+    matchedHeadwords
+  };
+}
+
+async function lookupThichHocWord(rawWord) {
+  const word = String(rawWord || "").trim().toLowerCase();
+  if (!/^[a-z]{2,24}$/.test(word)) return null;
+
+  if (state.dictionaryDetailsCache[word]) return state.dictionaryDetailsCache[word];
+  if (state.dictionaryLookupPromises.has(word)) return state.dictionaryLookupPromises.get(word);
+
+  const promise = (async () => {
+    const candidates = getDictionaryLookupCandidates(word);
+    const matches = new Map();
+
+    // Search the alphabetic group first. This keeps most lookups focused on
+    // one or a few relevant letter shards instead of loading the common tier.
+    const letters = [...new Set(candidates.map(candidate => candidate[0]))];
+    const groups = await Promise.all(letters.map(letter => loadThichHocGeneralLetter(letter)));
+    for (const entries of groups) {
+      for (const entry of entries) {
+        if (entryMatchesWord(entry, word)) matches.set(entry.id || `${entry.headword}:${entry.pos}`, entry);
+      }
+    }
+
+    // Frequent headwords live in a separate tier-1 group. Only fetch it when
+    // the relevant alphabetic group did not contain the requested word.
+    if (!matches.size) {
+      const tierOne = await loadThichHocTierOneEntries();
+      for (const entry of tierOne) {
+        if (entryMatchesWord(entry, word)) matches.set(entry.id || `${entry.headword}:${entry.pos}`, entry);
+      }
+    }
+
+    const detail = buildThichHocWordDetail(word, [...matches.values()]);
+    if (detail) saveThichHocDetailCache(word, detail);
+    return detail;
+  })();
+
+  state.dictionaryLookupPromises.set(word, promise);
+  try {
+    return await promise;
+  } finally {
+    state.dictionaryLookupPromises.delete(word);
+  }
+}
+
+function renderLegacyWordDetail(box, word, detail, listenButton) {
+  box.append(
+    makeElement("strong", "", detail?.meaning ? `${word} · ${detail.meaning}` : word),
+    makeElement("p", "", detail?.example || "Từ hợp lệ trong danh sách offline.")
+  );
+  box.appendChild(listenButton);
+}
+
+async function renderWordChainWordDetail(word) {
+  const box = $("#wordchain-word-detail");
+  if (!box) return;
+  const requestId = ++state.wordDetailRequestId;
+  box.replaceChildren();
+  box.classList.remove("hidden");
+
+  const listen = makeElement("button", "wordchain-small-button", "▶ Listen");
+  listen.type = "button";
+  listen.addEventListener("click", () => speak(word));
+
+  // Preserve the 61 hand-curated meanings already bundled with words.json.
+  const localDetail = state.wordDetails[word];
+  if (localDetail?.meaning) {
+    renderLegacyWordDetail(box, word, localDetail, listen);
+    return;
+  }
+
+  box.appendChild(makeElement("strong", "", word));
+  box.appendChild(makeElement("p", "dictionary-loading", "Đang tra nghĩa tiếng Việt từ thichhoc-dict…"));
+  box.appendChild(listen);
+
+  try {
+    const detail = await lookupThichHocWord(word);
+    if (requestId !== state.wordDetailRequestId) return;
+    box.replaceChildren();
+    box.appendChild(makeElement("strong", "", detail?.headword || word));
+
+    if (!detail) {
+      box.appendChild(makeElement("p", "", "Từ này hợp lệ trong danh sách chơi offline, nhưng chưa tìm thấy mục từ tương ứng trong từ điển thichhoc-dict."));
+      const retry = makeElement("button", "wordchain-small-button", "↻ Tra lại");
+      retry.type = "button";
+      retry.addEventListener("click", () => {
+        delete state.dictionaryDetailsCache[word];
+        state.dictionaryGroupPromises.clear();
+        state.dictionaryShardCache.clear();
+        renderWordChainWordDetail(word);
+      });
+      box.append(retry, listen);
+      return;
+    }
+
+    if (detail.isInflection) {
+      box.appendChild(makeElement("p", "dictionary-meta", `Dạng từ: ${word} → ${detail.headword}`));
+    }
+    const metaParts = [];
+    if (detail.pronunciation) metaParts.push(detail.pronunciation);
+    if (detail.meaningGroups?.length) metaParts.push(detail.meaningGroups.map(group => group.label).join(" · "));
+    if (metaParts.length) box.appendChild(makeElement("p", "dictionary-meta", metaParts.join("  ·  ")));
+
+    const sensesWrap = makeElement("div", "dictionary-senses");
+    for (const group of detail.meaningGroups || []) {
+      if (!group.senses.length) continue;
+      const groupWrap = makeElement("div", "dictionary-sense-group");
+      groupWrap.appendChild(makeElement("span", "dictionary-pos", group.label));
+      groupWrap.appendChild(makeElement("p", "", group.senses.join("; ")));
+      sensesWrap.appendChild(groupWrap);
+    }
+    if (sensesWrap.childElementCount) box.appendChild(sensesWrap);
+
+    if (detail.englishGlosses?.length) {
+      box.appendChild(makeElement("p", "dictionary-gloss", `English gloss: ${detail.englishGlosses.join("; ")}`));
+    }
+    if (detail.examples?.length) {
+      const examplesWrap = makeElement("div", "dictionary-examples");
+      examplesWrap.appendChild(makeElement("span", "dictionary-pos", "Ví dụ"));
+      detail.examples.forEach(example => {
+        const line = makeElement("p", "", example.src);
+        examplesWrap.appendChild(line);
+        if (example.vi) examplesWrap.appendChild(makeElement("p", "dictionary-example-vi", example.vi));
+      });
+      box.appendChild(examplesWrap);
+    }
+
+    box.appendChild(makeElement("p", "dictionary-quality-note", detail.reviewed
+      ? "Nguồn từ điển: thichhoc-dict · mục từ đã được đánh dấu review."
+      : "Bản dịch tham khảo từ thichhoc-dict; dữ liệu hiện ở trạng thái beta và chưa được con người kiểm duyệt."));
+    box.appendChild(listen);
+  } catch (error) {
+    if (requestId !== state.wordDetailRequestId) return;
+    console.warn("Thichhoc dictionary lookup failed:", error);
+    box.replaceChildren();
+    box.appendChild(makeElement("strong", "", word));
+    box.appendChild(makeElement("p", "", "Từ đã hợp lệ trong danh sách offline, nhưng hiện chưa tải được nghĩa bổ sung. Hãy kết nối Internet rồi thử tra lại."));
+    const retry = makeElement("button", "wordchain-small-button", "↻ Thử lại");
+    retry.type = "button";
+    retry.addEventListener("click", () => renderWordChainWordDetail(word));
+    box.append(retry, listen);
   }
 }
 
@@ -1122,8 +1564,10 @@ function submitWordChainWord(event) {
   game.currentWord = word;
   game.playerWords += 1;
   input.value = "";
-  const detail = state.wordDetails[word];
-  setWordChainMessage(detail ? `Valid word! ${word} means “${detail.meaning}”.` : "Valid word! Nice connection.", "success");
+  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
+  setWordChainMessage(detail?.meaning
+    ? `Valid word! ${word} means “${detail.meaning}”.`
+    : "Valid word! Looking up its Vietnamese meaning…", "success");
   renderWordChainWordDetail(word);
   saveWordChainGame();
   renderWordChainGame();
@@ -1207,8 +1651,10 @@ function playWordChainBotMove() {
     finishWordChainGame("computer", `The built-in list has no unused word beginning with ${word.at(-1).toUpperCase()}. The computer wins this round.`);
     return;
   }
-  const detail = state.wordDetails[word];
-  setWordChainMessage(detail ? `Computer played ${word.toUpperCase()} — ${detail.meaning}. Your turn: ${word.at(-1).toUpperCase()}.` : `Computer played ${word.toUpperCase()}. Your turn: ${word.at(-1).toUpperCase()}.`, "info");
+  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
+  setWordChainMessage(detail?.meaning
+    ? `Computer played ${word.toUpperCase()} — ${detail.meaning}. Your turn: ${word.at(-1).toUpperCase()}.`
+    : `Computer played ${word.toUpperCase()}. Looking up its meaning… Your turn: ${word.at(-1).toUpperCase()}.`, "info");
   renderWordChainWordDetail(word);
   saveWordChainGame();
 }
