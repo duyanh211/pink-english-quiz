@@ -1,0 +1,8 @@
+Pink English Word Chain dictionary notes
+
+The bundled words.json is a 20,000-entry offline game lexicon. The selected headwords are derived from the CMU Pronouncing Dictionary (CMUdict) and filtered/ranked with a frequency list.
+CMUdict copyright: Copyright (C) 1993-2015 Carnegie Mellon University. All rights reserved. CMU's distribution terms permit use and redistribution with acknowledgment; retain the corresponding license notice when redistributing derived material.
+
+CMUdict project: https://github.com/cmusphinx/cmudict
+The dictionary is not exhaustive. If a valid English word is missing, the app reports 'not in the built-in list' rather than claiming the word is not English.
+The CEFR level does not restrict a player's accepted word. All users use the same global dictionary.

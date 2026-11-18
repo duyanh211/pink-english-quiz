@@ -19,14 +19,19 @@ const state = {
   activeConversation: null,
   lastConversation: null,
   activeQuiz: null,
-  profile: loadProfile()
+  profile: loadProfile(),
+  wordDictionary: new Set(),
+  wordsByFirstLetter: new Map(),
+  wordDetails: {},
+  wordDictionaryReady: false,
+  wordChainTimer: null
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 function loadProfile() {
-  const emptyProfile = { savedPhrases: [], history: [], quizSessions: {} };
+  const emptyProfile = { savedPhrases: [], history: [], quizSessions: {}, wordChain: { activeGame: null, gamesPlayed: 0, totalPlayerWords: 0, bestChain: 0, history: [] } };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return emptyProfile;
@@ -37,7 +42,16 @@ function loadProfile() {
       history: Array.isArray(parsed.history) ? parsed.history : [],
       quizSessions: parsed.quizSessions && typeof parsed.quizSessions === "object" && !Array.isArray(parsed.quizSessions)
         ? parsed.quizSessions
-        : {}
+        : {},
+      wordChain: parsed.wordChain && typeof parsed.wordChain === "object" && !Array.isArray(parsed.wordChain)
+        ? {
+            activeGame: parsed.wordChain.activeGame && typeof parsed.wordChain.activeGame === "object" ? parsed.wordChain.activeGame : null,
+            gamesPlayed: Number(parsed.wordChain.gamesPlayed) || 0,
+            totalPlayerWords: Number(parsed.wordChain.totalPlayerWords) || 0,
+            bestChain: Number(parsed.wordChain.bestChain) || 0,
+            history: Array.isArray(parsed.wordChain.history) ? parsed.wordChain.history : []
+          }
+        : emptyProfile.wordChain
     };
   } catch (error) {
     console.warn("Could not read saved learning progress:", error);
@@ -159,10 +173,19 @@ async function loadData() {
     const data = await response.json();
     validateData(data);
     state.data = data;
+    try {
+      await loadWordDictionary();
+    } catch (dictionaryError) {
+      console.warn("Word Chain dictionary could not be loaded:", dictionaryError);
+      state.wordDictionaryReady = false;
+      const status = $("#wordchain-dictionary-status");
+      if (status) status.textContent = "Word Chain dictionary could not be loaded. Check that words.json is beside index.html.";
+    }
     renderHome();
     renderPractice();
     renderSaved();
     renderProgress();
+    renderWordChainHome();
   } catch (error) {
     console.error("Pink English data error:", error);
     homeScenarios.replaceChildren();
@@ -861,6 +884,424 @@ function goToPractice() {
   showPage("practice", "practice");
 }
 
+
+// ==========================================
+// WORD CHAIN — offline dictionary + local game
+// ==========================================
+
+const WORDCHAIN_START_WORDS = [
+  "apple", "table", "orange", "house", "music", "friend", "book", "school", "water", "garden",
+  "family", "travel", "happy", "people", "computer", "coffee", "bread", "dream", "story", "river",
+  "energy", "yellow", "window", "flower", "night", "green", "earth", "team", "milk", "door"
+];
+
+function getWordChainProfile() {
+  if (!state.profile.wordChain || typeof state.profile.wordChain !== "object") {
+    state.profile.wordChain = { activeGame: null, gamesPlayed: 0, totalPlayerWords: 0, bestChain: 0, history: [] };
+  }
+  return state.profile.wordChain;
+}
+
+async function loadWordDictionary() {
+  const response = await fetch("./words.json", { cache: "no-store" });
+  if (!response.ok) throw new Error(`Không tải được words.json (HTTP ${response.status}).`);
+  const payload = await response.json();
+  if (!payload || !Array.isArray(payload.words)) throw new Error("words.json thiếu mảng words.");
+
+  const normalizedWords = [...new Set(payload.words
+    .filter(word => typeof word === "string")
+    .map(word => word.trim().toLowerCase())
+    .filter(word => /^[a-z]{2,24}$/.test(word)))];
+
+  if (normalizedWords.length < 1000) throw new Error("Từ điển có quá ít từ hợp lệ.");
+
+  state.wordDictionary = new Set(normalizedWords);
+  state.wordsByFirstLetter = new Map();
+  for (const word of normalizedWords) {
+    const letter = word[0];
+    if (!state.wordsByFirstLetter.has(letter)) state.wordsByFirstLetter.set(letter, []);
+    state.wordsByFirstLetter.get(letter).push(word);
+  }
+  state.wordDetails = payload.details && typeof payload.details === "object" ? payload.details : {};
+  state.wordDictionaryReady = true;
+
+  const status = $("#wordchain-dictionary-status");
+  if (status) status.textContent = `Offline dictionary ready · ${normalizedWords.length.toLocaleString("en-US")} words · Shared across all levels.`;
+  const start = $("#wordchain-start");
+  if (start) {
+    start.disabled = false;
+    start.textContent = "Start Word Chain →";
+  }
+}
+
+function randomItem(items) {
+  return items[Math.floor(Math.random() * items.length)];
+}
+
+function availableWordsFor(letter, usedWords) {
+  const words = state.wordsByFirstLetter.get(letter) || [];
+  return words.filter(word => !usedWords.has(word));
+}
+
+function makeWordChainGame(mode, difficulty) {
+  const seeds = WORDCHAIN_START_WORDS.filter(word => state.wordDictionary.has(word) && availableWordsFor(word.at(-1), new Set([word])).length > 0);
+  if (!seeds.length) throw new Error("Không tìm được từ bắt đầu phù hợp trong từ điển.");
+  const seed = randomItem(seeds);
+  return {
+    id: `wc-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
+    mode,
+    difficulty: mode === "solo" ? "solo" : difficulty,
+    currentWord: seed,
+    words: [{ word: seed, by: "start", at: new Date().toISOString() }],
+    usedWords: [seed],
+    currentTurn: "player",
+    status: "playing",
+    playerWords: 0,
+    computerWords: 0,
+    hintsUsed: 0,
+    startedAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString()
+  };
+}
+
+function startWordChainGame() {
+  if (!state.wordDictionaryReady) return showToast("Từ điển chưa sẵn sàng. Hãy tải lại trang.");
+  const mode = $("#wordchain-mode").value;
+  const difficulty = $("#wordchain-difficulty").value;
+  try {
+    const game = makeWordChainGame(mode, difficulty);
+    getWordChainProfile().activeGame = game;
+    saveProfile();
+    renderWordChainGame();
+    showPage("wordchain", "wordchain");
+  } catch (error) {
+    showToast(error.message || "Không thể bắt đầu trò chơi.");
+  }
+}
+
+function renderWordChainHome() {
+  const profile = getWordChainProfile();
+  const game = profile.activeGame;
+  const resume = $("#wordchain-resume");
+  if (resume) {
+    resume.classList.toggle("hidden", !game || game.status !== "playing");
+    if (game && game.status === "playing") {
+      $("#wordchain-resume-title").textContent = game.mode === "computer" ? "Player vs Computer" : "Solo Practice";
+      $("#wordchain-resume-meta").textContent = `${game.words.length} words in chain · Next letter: ${game.currentWord.at(-1).toUpperCase()} · Automatically saved`;
+    }
+  }
+  $("#wordchain-games-played").textContent = String(profile.gamesPlayed);
+  $("#wordchain-total-words").textContent = String(profile.totalPlayerWords);
+  $("#wordchain-best-chain").textContent = String(profile.bestChain);
+
+  const recent = $("#wordchain-recent");
+  if (!recent) return;
+  recent.replaceChildren();
+  if (!profile.history.length) {
+    recent.appendChild(makeElement("div", "empty-state", "Your completed Word Chain games will appear here."));
+    return;
+  }
+  profile.history.slice(0, 5).forEach(record => {
+    const row = makeElement("div", "saved-item");
+    const copy = makeElement("div");
+    const outcome = record.mode === "solo" ? "Solo practice" : record.winner === "player" ? "You won" : record.winner === "computer" ? "Computer won" : "Practice ended";
+    copy.append(makeElement("strong", "", outcome), makeElement("p", "", `${record.totalWords} words · ${formatDate(record.completedAt)}`));
+    row.append(copy, makeElement("span", "pill pink", `${record.playerWords} yours`));
+    recent.appendChild(row);
+  });
+}
+
+function resumeWordChainGame() {
+  const game = getWordChainProfile().activeGame;
+  if (!game || game.status !== "playing") return showToast("Không có ván chơi đang dở.");
+  // Repair older or partial local states before rendering.
+  if (!Array.isArray(game.words) || !Array.isArray(game.usedWords)) return showToast("Dữ liệu ván chơi không hợp lệ. Hãy bắt đầu ván mới.");
+  renderWordChainGame();
+  showPage("wordchain", "wordchain");
+  if (game.currentTurn === "computer") scheduleWordChainBotMove();
+}
+
+function saveWordChainGame() {
+  const profile = getWordChainProfile();
+  if (state.wordChainTimer) {
+    window.clearTimeout(state.wordChainTimer);
+    state.wordChainTimer = null;
+  }
+  const game = profile.activeGame;
+  if (!game || game.status !== "playing") return;
+  game.updatedAt = new Date().toISOString();
+  saveProfile();
+}
+
+function setWordChainMessage(message, type = "info") {
+  const box = $("#wordchain-message");
+  if (!box) return;
+  box.className = `wordchain-feedback ${type}`;
+  box.textContent = message;
+}
+
+function renderWordChainWordDetail(word) {
+  const box = $("#wordchain-word-detail");
+  if (!box) return;
+  box.replaceChildren();
+  const detail = state.wordDetails[word];
+  box.classList.remove("hidden");
+  const title = makeElement("strong", "", detail?.meaning ? `${word} · ${detail.meaning}` : word);
+  const example = makeElement("p", "", detail?.example || "Từ này hợp lệ trong danh sách offline. Nghĩa chi tiết chưa có trong phần tra cứu rút gọn.");
+  const tools = makeElement("div");
+  tools.style.marginTop = "7px";
+  const listen = makeElement("button", "wordchain-small-button", "▶ Listen");
+  listen.type = "button";
+  listen.addEventListener("click", () => speak(word));
+  tools.appendChild(listen);
+  box.append(title, example, tools);
+}
+
+function renderWordChainGame() {
+  const game = getWordChainProfile().activeGame;
+  if (!game) return;
+  $("#wordchain-home").classList.add("hidden");
+  $("#wordchain-game").classList.remove("hidden");
+  $("#wordchain-result").classList.add("hidden");
+  $("#wordchain-mode-label").textContent = game.mode === "computer" ? "PLAYER VS COMPUTER" : "SOLO PRACTICE";
+  $("#wordchain-turn-label").textContent = game.currentTurn === "computer" ? "Computer is thinking…" : "Your turn.";
+  $("#wordchain-difficulty-label").textContent = game.mode === "solo" ? "Solo" : game.difficulty[0].toUpperCase() + game.difficulty.slice(1);
+  $("#wordchain-current-word").textContent = game.currentWord.toUpperCase();
+  $("#wordchain-required-letter").textContent = game.currentWord.at(-1).toUpperCase();
+  $("#wordchain-chain-count").textContent = `${game.words.length} ${game.words.length === 1 ? "word" : "words"} in the chain`;
+  $("#wordchain-score-label").textContent = game.mode === "solo"
+    ? `Your words: ${game.playerWords}`
+    : `You: ${game.playerWords} · Computer: ${game.computerWords}`;
+
+  const isPlayerTurn = game.currentTurn === "player";
+  $("#wordchain-input").disabled = !isPlayerTurn;
+  $("#wordchain-submit").disabled = !isPlayerTurn;
+  $("#wordchain-hint").disabled = !isPlayerTurn;
+  if (!isPlayerTurn) setWordChainMessage("Computer is choosing a word…", "info");
+  else if (!$("#wordchain-message").textContent.trim()) setWordChainMessage(`Your word must start with ${game.currentWord.at(-1).toUpperCase()}.`, "info");
+
+  const history = $("#wordchain-history");
+  history.replaceChildren();
+  game.words.forEach((entry, index) => {
+    const token = makeElement("span", `wordchain-token ${entry.by}`, `${index + 1}. ${entry.word.toUpperCase()}`);
+    history.appendChild(token);
+  });
+  const hints = $("#wordchain-hints");
+  hints.classList.add("hidden");
+  hints.replaceChildren();
+  renderWordChainHome();
+}
+
+function validateWordChainInput(rawWord, game) {
+  const word = String(rawWord || "").trim().toLowerCase();
+  if (!word) return { valid: false, reason: "empty", message: "Enter a word to continue." };
+  if (!/^[a-z]{2,24}$/.test(word)) return { valid: false, reason: "format", message: "Use 2–24 English letters only. No spaces, numbers or hyphens." };
+  if (!state.wordDictionary.has(word)) return { valid: false, reason: "not-found", message: "This word is not in the built-in list. It may still be a valid English word; the offline list is not complete. Try another word for now." };
+  const used = new Set(game.usedWords);
+  if (used.has(word)) return { valid: false, reason: "duplicate", message: "That word has already been used in this chain." };
+  const required = game.currentWord.at(-1);
+  if (word[0] !== required) return { valid: false, reason: "letter", message: `The next word must start with ${required.toUpperCase()}.` };
+  return { valid: true, word };
+}
+
+function submitWordChainWord(event) {
+  event.preventDefault();
+  const game = getWordChainProfile().activeGame;
+  if (!game || game.status !== "playing" || game.currentTurn !== "player") return;
+  const input = $("#wordchain-input");
+  const result = validateWordChainInput(input.value, game);
+  if (!result.valid) {
+    setWordChainMessage(result.message, result.reason === "not-found" ? "warning" : "error");
+    input.focus();
+    return;
+  }
+
+  const word = result.word;
+  game.words.push({ word, by: "player", at: new Date().toISOString() });
+  game.usedWords.push(word);
+  game.currentWord = word;
+  game.playerWords += 1;
+  input.value = "";
+  const detail = state.wordDetails[word];
+  setWordChainMessage(detail ? `Valid word! ${word} means “${detail.meaning}”.` : "Valid word! Nice connection.", "success");
+  renderWordChainWordDetail(word);
+  saveWordChainGame();
+  renderWordChainGame();
+
+  if (game.mode === "computer") {
+    const botCandidates = availableWordsFor(game.currentWord.at(-1), new Set(game.usedWords));
+    if (!botCandidates.length) {
+      finishWordChainGame("player", "The computer has no unused word for the required letter.");
+      return;
+    }
+    game.currentTurn = "computer";
+    saveWordChainGame();
+    renderWordChainGame();
+    scheduleWordChainBotMove();
+  } else {
+    const nextCandidates = availableWordsFor(game.currentWord.at(-1), new Set(game.usedWords));
+    if (!nextCandidates.length) {
+      finishWordChainGame("none", "No unused word in the built-in list starts with this letter. Your practice chain has reached its end.");
+      return;
+    }
+    setWordChainMessage(detail ? `Valid word! ${detail.meaning}. Keep going — start with ${word.at(-1).toUpperCase()}.` : `Valid word! Next word starts with ${word.at(-1).toUpperCase()}.`, "success");
+  }
+}
+
+function countNextMoves(word, usedWords) {
+  // Fast count without filtering the full letter bucket for every bot candidate.
+  const letter = word.at(-1);
+  const bucket = state.wordsByFirstLetter.get(letter) || [];
+  let usedCount = 0;
+  for (const usedWord of usedWords) {
+    if (usedWord[0] === letter) usedCount += 1;
+  }
+  return Math.max(0, bucket.length - usedCount);
+}
+
+function chooseComputerWord(candidates, difficulty, usedWords) {
+  if (difficulty === "easy") return randomItem(candidates);
+  const ranked = candidates.map(word => {
+    const nextUsed = new Set(usedWords);
+    nextUsed.add(word);
+    return { word, nextMoves: countNextMoves(word, nextUsed) };
+  }).sort((a, b) => a.nextMoves - b.nextMoves);
+
+  if (difficulty === "hard") {
+    // The hard bot chooses the tightest next-letter position, including a dead end when available.
+    const best = ranked[0].nextMoves;
+    return randomItem(ranked.filter(item => item.nextMoves === best)).word;
+  }
+
+  // Medium chooses from the lower half of continuation counts, but prefers leaving at least one move.
+  const playable = ranked.filter(item => item.nextMoves > 0);
+  const pool = playable.length ? playable : ranked;
+  const topCount = Math.max(1, Math.ceil(pool.length * 0.4));
+  return randomItem(pool.slice(0, topCount)).word;
+}
+
+function scheduleWordChainBotMove() {
+  if (state.wordChainTimer) window.clearTimeout(state.wordChainTimer);
+  state.wordChainTimer = window.setTimeout(playWordChainBotMove, 500);
+}
+
+function playWordChainBotMove() {
+  state.wordChainTimer = null;
+  const game = getWordChainProfile().activeGame;
+  if (!game || game.status !== "playing" || game.currentTurn !== "computer") return;
+  const candidates = availableWordsFor(game.currentWord.at(-1), new Set(game.usedWords));
+  if (!candidates.length) {
+    finishWordChainGame("player", "The computer could not find an unused word. You win!");
+    return;
+  }
+  const word = chooseComputerWord(candidates, game.difficulty, new Set(game.usedWords));
+  game.words.push({ word, by: "computer", at: new Date().toISOString() });
+  game.usedWords.push(word);
+  game.currentWord = word;
+  game.computerWords += 1;
+  game.currentTurn = "player";
+  const playerCandidates = availableWordsFor(game.currentWord.at(-1), new Set(game.usedWords));
+  saveWordChainGame();
+  renderWordChainGame();
+  if (!playerCandidates.length) {
+    finishWordChainGame("computer", `The built-in list has no unused word beginning with ${word.at(-1).toUpperCase()}. The computer wins this round.`);
+    return;
+  }
+  const detail = state.wordDetails[word];
+  setWordChainMessage(detail ? `Computer played ${word.toUpperCase()} — ${detail.meaning}. Your turn: ${word.at(-1).toUpperCase()}.` : `Computer played ${word.toUpperCase()}. Your turn: ${word.at(-1).toUpperCase()}.`, "info");
+  renderWordChainWordDetail(word);
+  saveWordChainGame();
+}
+
+function showWordChainHints() {
+  const game = getWordChainProfile().activeGame;
+  if (!game || game.currentTurn !== "player") return;
+  const candidates = availableWordsFor(game.currentWord.at(-1), new Set(game.usedWords));
+  const hints = $("#wordchain-hints");
+  hints.replaceChildren();
+  if (!candidates.length) {
+    hints.classList.remove("hidden");
+    hints.appendChild(makeElement("span", "wordchain-muted", "No unused word in the built-in list starts with this letter."));
+    return;
+  }
+  game.hintsUsed += 1;
+  const sample = shuffleArray(candidates).slice(0, Math.min(4, candidates.length));
+  sample.forEach(word => {
+    const button = makeElement("button", "wordchain-hint-chip", word.toUpperCase());
+    button.type = "button";
+    button.addEventListener("click", () => {
+      $("#wordchain-input").value = word;
+      $("#wordchain-input").focus();
+    });
+    hints.appendChild(button);
+  });
+  hints.classList.remove("hidden");
+  setWordChainMessage("Here are a few possible words. Choose one or enter a different valid word.", "info");
+}
+
+function finishWordChainGame(winner, reason) {
+  const profile = getWordChainProfile();
+  const game = profile.activeGame;
+  if (!game || game.status !== "playing") return;
+  game.status = "finished";
+  const record = {
+    mode: game.mode,
+    difficulty: game.difficulty,
+    winner,
+    reason,
+    playerWords: game.playerWords,
+    computerWords: game.computerWords,
+    totalWords: game.words.length,
+    chain: game.words.map(item => item.word),
+    completedAt: new Date().toISOString()
+  };
+  profile.gamesPlayed += 1;
+  profile.totalPlayerWords += game.playerWords;
+  profile.bestChain = Math.max(profile.bestChain, game.words.length);
+  profile.history.unshift(record);
+  profile.history = profile.history.slice(0, 30);
+  profile.activeGame = null;
+  saveProfile();
+
+  $("#wordchain-result-icon").textContent = winner === "player" ? "🏆" : winner === "computer" ? "✦" : "✓";
+  $("#wordchain-result-title").textContent = winner === "player" ? "You win!" : winner === "computer" ? "Good game!" : "Nice practice!";
+  $("#wordchain-result-copy").textContent = reason;
+  $("#wordchain-result-score").textContent = `${game.playerWords} words`;
+  $("#wordchain-result-caption").textContent = game.mode === "solo" ? `${game.words.length} words in your chain` : `${game.playerWords} yours · ${game.computerWords} computer`;
+  const chain = $("#wordchain-result-chain");
+  chain.replaceChildren();
+  game.words.forEach((entry, index) => chain.appendChild(makeElement("span", `wordchain-token ${entry.by}`, `${index + 1}. ${entry.word.toUpperCase()}`)));
+
+  $("#wordchain-game").classList.add("hidden");
+  $("#wordchain-home").classList.add("hidden");
+  $("#wordchain-result").classList.remove("hidden");
+  renderWordChainHome();
+}
+
+function exitWordChainGame() {
+  saveWordChainGame();
+  $("#wordchain-game").classList.add("hidden");
+  $("#wordchain-result").classList.add("hidden");
+  $("#wordchain-home").classList.remove("hidden");
+  renderWordChainHome();
+  showPage("wordchain", "wordchain");
+}
+
+function endWordChainPractice() {
+  const game = getWordChainProfile().activeGame;
+  if (!game) return;
+  finishWordChainGame("none", "You ended this practice session. Your word chain has been recorded.");
+}
+
+function goToWordChainHome() {
+  $("#wordchain-game").classList.add("hidden");
+  $("#wordchain-result").classList.add("hidden");
+  $("#wordchain-home").classList.remove("hidden");
+  renderWordChainHome();
+  showPage("wordchain", "wordchain");
+}
+
+
 function handleAction(action) {
   switch (action) {
     case "go-practice": goToPractice(); break;
@@ -877,6 +1318,21 @@ function handleAction(action) {
       break;
     }
     case "retry-quiz": retryQuiz(); break;
+    case "go-wordchain":
+      renderWordChainHome();
+      $("#wordchain-home").classList.remove("hidden");
+      $("#wordchain-game").classList.add("hidden");
+      $("#wordchain-result").classList.add("hidden");
+      showPage("wordchain", "wordchain");
+      break;
+    case "resume-wordchain": resumeWordChainGame(); break;
+    case "exit-wordchain": exitWordChainGame(); break;
+    case "end-wordchain": endWordChainPractice(); break;
+    case "new-wordchain":
+      goToWordChainHome();
+      startWordChainGame();
+      break;
+    case "back-wordchain-home": goToWordChainHome(); break;
   }
 }
 
@@ -892,13 +1348,38 @@ document.addEventListener("click", event => {
     if (destination === "practice") goToPractice();
     else if (destination === "saved") { renderSaved(); showPage("saved", "saved"); }
     else if (destination === "progress") { renderProgress(); showPage("progress", "progress"); }
+    else if (destination === "wordchain") {
+      renderWordChainHome();
+      $("#wordchain-home").classList.remove("hidden");
+      $("#wordchain-game").classList.add("hidden");
+      $("#wordchain-result").classList.add("hidden");
+      showPage("wordchain", "wordchain");
+    }
     else { renderHome(); showPage("home", "home"); }
   }
 });
 
-document.addEventListener("visibilitychange", () => {
-  if (document.visibilityState === "hidden") saveActiveQuizSession();
+const wordChainForm = $("#wordchain-form");
+if (wordChainForm) wordChainForm.addEventListener("submit", submitWordChainWord);
+const wordChainStart = $("#wordchain-start");
+if (wordChainStart) wordChainStart.addEventListener("click", startWordChainGame);
+const wordChainHint = $("#wordchain-hint");
+if (wordChainHint) wordChainHint.addEventListener("click", showWordChainHints);
+const wordChainMode = $("#wordchain-mode");
+if (wordChainMode) wordChainMode.addEventListener("change", () => {
+  const difficulty = $("#wordchain-difficulty");
+  difficulty.disabled = wordChainMode.value === "solo";
 });
-window.addEventListener("pagehide", saveActiveQuizSession);
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "hidden") {
+    saveActiveQuizSession();
+    saveWordChainGame();
+  }
+});
+window.addEventListener("pagehide", () => {
+  saveActiveQuizSession();
+  saveWordChainGame();
+});
 
 loadData();

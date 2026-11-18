@@ -196,10 +196,53 @@
     .quiz-row-actions { display:flex; align-items:center; gap:7px; }
     .quiz-session-meta { display:block; margin-top:5px; color:var(--pink-dark); font-size:10px; font-weight:700; }
     .notice { padding:14px 16px; border:1px solid #ead8e1; border-radius:13px; background:#fff8fb; color:#765a69; font-size:12px; }
-    .bottom-nav { position:fixed; z-index:20; left:50%; bottom:12px; transform:translateX(-50%); display:grid; grid-template-columns:repeat(4,1fr); width:min(calc(100% - 24px),520px); padding:7px; border:1px solid rgba(226,211,220,.95); border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 12px 40px rgba(58,37,48,.12); backdrop-filter:blur(14px); }
+    .bottom-nav { position:fixed; z-index:20; left:50%; bottom:12px; transform:translateX(-50%); display:grid; grid-template-columns:repeat(5,1fr); width:min(calc(100% - 24px),600px); padding:7px; border:1px solid rgba(226,211,220,.95); border-radius:18px; background:rgba(255,255,255,.94); box-shadow:0 12px 40px rgba(58,37,48,.12); backdrop-filter:blur(14px); }
     .nav-button { display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; min-height:48px; border:0; border-radius:12px; background:transparent; color:#9a8c94; font-size:10px; font-weight:700; cursor:pointer; }
     .nav-button .nav-icon { font-size:17px; line-height:1; }
     .nav-button.active { background:var(--pink-soft); color:var(--pink-dark); }
+
+    /* WORD CHAIN */
+    .wordchain-panel { margin:14px 0; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; box-shadow:var(--shadow); }
+    .wordchain-panel h2,.wordchain-panel h3 { margin:0 0 6px; }
+    .wordchain-muted { color:var(--muted); font-size:12px; }
+    .wordchain-controls { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; margin-top:16px; }
+    .wordchain-field { display:grid; gap:6px; }
+    .wordchain-field label { color:var(--muted); font-size:11px; font-weight:750; }
+    .wordchain-field select,.wordchain-input { width:100%; min-height:44px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:#fff; color:var(--ink); font:inherit; font-size:13px; }
+    .wordchain-input-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px; margin-top:12px; }
+    .wordchain-current { display:grid; grid-template-columns:1fr auto; align-items:center; gap:12px; padding:18px; border-radius:16px; background:var(--surface-soft); }
+    .wordchain-current-word { margin:3px 0 0; font-size:clamp(27px,7vw,40px); font-weight:850; letter-spacing:.06em; overflow-wrap:anywhere; }
+    .wordchain-required { display:grid; place-items:center; width:54px; height:54px; border:1px solid #e4c3d3; border-radius:15px; background:#fff; color:var(--pink-dark); font-size:25px; font-weight:850; }
+    .wordchain-chain { display:flex; flex-wrap:wrap; align-items:center; gap:7px; margin-top:12px; }
+    .wordchain-token { display:inline-flex; align-items:center; gap:5px; padding:7px 10px; border:1px solid var(--line); border-radius:999px; background:#fff; font-size:11px; font-weight:750; }
+    .wordchain-token.player { border-color:#e3bfd0; background:var(--pink-soft); color:var(--pink-dark); }
+    .wordchain-token.computer { background:#f0edf5; color:#6c5c83; }
+    .wordchain-token.seed { background:#f2f0ed; color:#786e64; }
+    .wordchain-feedback { margin-top:12px; padding:12px 13px; border:1px solid var(--line); border-radius:12px; background:#faf8f9; color:var(--muted); font-size:12px; line-height:1.55; }
+    .wordchain-feedback.success { border-color:#cfe5d6; background:var(--green-soft); color:var(--green); }
+    .wordchain-feedback.error { border-color:#f0d3d4; background:var(--red-soft); color:var(--red); }
+    .wordchain-feedback.warning { border-color:#ead9b9; background:var(--amber-soft); color:var(--amber); }
+    .wordchain-detail { margin-top:10px; padding:12px; border-radius:12px; background:#faf6f8; }
+    .wordchain-detail strong { display:block; font-size:13px; }
+    .wordchain-detail p { margin:3px 0 0; color:var(--muted); font-size:11px; }
+    .wordchain-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .wordchain-actions .button { flex:1; }
+    .wordchain-resume { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px; border:1px solid #dfc1d1; border-radius:14px; background:#fff9fc; }
+    .wordchain-history { display:grid; gap:8px; margin-top:12px; }
+    .wordchain-history-row { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:10px 12px; border:1px solid var(--line); border-radius:11px; background:#fff; }
+    .wordchain-history-row strong { font-size:12px; }
+    .wordchain-history-row span { color:var(--muted); font-size:10px; }
+    .wordchain-hints { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+    .wordchain-hint-chip { padding:7px 10px; border:1px dashed #d9b7c8; border-radius:999px; background:#fff; color:var(--pink-dark); font-size:11px; font-weight:750; cursor:pointer; }
+    .wordchain-stat-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px; }
+    .wordchain-stat { padding:12px 9px; border:1px solid var(--line); border-radius:12px; background:#fff; }
+    .wordchain-stat strong { display:block; font-size:20px; }
+    .wordchain-stat span { color:var(--muted); font-size:10px; }
+    .wordchain-turn-label { color:var(--pink-dark); font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.06em; }
+    .wordchain-small-button { padding:8px 11px; border:1px solid var(--line); border-radius:10px; background:#fff; color:var(--muted); font-size:11px; font-weight:700; cursor:pointer; }
+    .wordchain-small-button:hover { border-color:#d7aec1; color:var(--pink-dark); }
+    @media (max-width:580px) { .wordchain-controls { grid-template-columns:1fr; } .wordchain-resume { align-items:stretch; flex-direction:column; } .wordchain-resume .button { width:100%; } }
+
     .toast { position:fixed; z-index:50; left:50%; bottom:88px; transform:translate(-50%,10px); padding:10px 14px; border-radius:12px; background:#342b31; color:white; font-size:12px; opacity:0; pointer-events:none; transition:.2s; }
     .toast.show { opacity:1; transform:translate(-50%,0); }
     .site-footer { padding:26px 0 8px; color:#aa9ba3; text-align:center; font-size:10px; }
@@ -278,6 +321,12 @@
           <div id="quiz-resume-list" class="resume-list"></div>
         </div>
 
+        <div class="content-card feature-card" style="margin-top:14px">
+          <div class="feature-icon">↔</div>
+          <div class="feature-copy"><h3>Word Chain</h3><p>Connect English words, play with a computer, and build vocabulary.</p></div>
+          <button class="button secondary small-button" data-action="go-wordchain">Play</button>
+        </div>
+
         <div class="section-heading"><div><span class="eyebrow">A little grammar goes a long way</span><h2>Quick practice</h2></div><button class="text-link" data-action="go-quiz-library">See topics →</button></div>
         <div class="content-card feature-card">
           <div class="feature-icon">Aa</div>
@@ -291,6 +340,11 @@
         <div class="page-heading"><span class="eyebrow">Practice</span><h1>Choose a situation.</h1><p>Step into everyday moments and practice choosing a response that fits the context and tone.</p></div>
         <div class="filter-row" id="category-filters"></div>
         <div class="card-grid" id="conversation-library"></div>
+        <div class="content-card feature-card" style="margin:18px 0">
+          <div class="feature-icon">↔</div>
+          <div class="feature-copy"><h3>Word Chain</h3><p>A quick word game to practice spelling and vocabulary.</p></div>
+          <button class="button secondary small-button" data-action="go-wordchain">Play</button>
+        </div>
         <div class="quiz-library" id="quiz-library">
           <div class="section-heading"><div><span class="eyebrow">More ways to learn</span><h2>Grammar & Vocabulary</h2></div></div>
           <div id="quiz-set-list"></div>
@@ -352,6 +406,106 @@
         <div class="phrase-list" id="progress-history"></div>
       </section>
 
+
+      <!-- WORD CHAIN -->
+      <section class="page" id="page-wordchain">
+        <div class="page-heading">
+          <span class="eyebrow">Vocabulary game</span>
+          <h1>Word Chain.</h1>
+          <p>Use the last letter of the previous word to start your next word. All levels share one dictionary.</p>
+        </div>
+        <div class="notice" id="wordchain-dictionary-status">Loading the offline word list…</div>
+
+        <div id="wordchain-home">
+          <div id="wordchain-resume" class="wordchain-panel hidden">
+            <div class="eyebrow">Saved game</div>
+            <div class="wordchain-resume">
+              <div><strong id="wordchain-resume-title">Continue your game</strong><div class="wordchain-muted" id="wordchain-resume-meta">Your last game is saved on this device.</div></div>
+              <button class="button small-button" data-action="resume-wordchain">Continue →</button>
+            </div>
+          </div>
+
+          <div class="wordchain-panel">
+            <span class="eyebrow">New game</span>
+            <h2>How would you like to play?</h2>
+            <p class="wordchain-muted">The dictionary is shared by everyone. Your selected difficulty changes the computer's strategy, not which words you are allowed to use.</p>
+            <div class="wordchain-controls">
+              <div class="wordchain-field">
+                <label for="wordchain-mode">Game mode</label>
+                <select id="wordchain-mode">
+                  <option value="computer">Player vs Computer</option>
+                  <option value="solo">Solo Practice</option>
+                </select>
+              </div>
+              <div class="wordchain-field">
+                <label for="wordchain-difficulty">Computer difficulty</label>
+                <select id="wordchain-difficulty">
+                  <option value="easy">Easy · random word</option>
+                  <option value="medium">Medium · balanced strategy</option>
+                  <option value="hard">Hard · fewer next moves</option>
+                </select>
+              </div>
+            </div>
+            <button class="button full" id="wordchain-start" style="margin-top:15px" disabled>Loading dictionary…</button>
+          </div>
+
+          <div class="wordchain-stat-grid">
+            <div class="wordchain-stat"><strong id="wordchain-games-played">0</strong><span>Games played</span></div>
+            <div class="wordchain-stat"><strong id="wordchain-total-words">0</strong><span>Your valid words</span></div>
+            <div class="wordchain-stat"><strong id="wordchain-best-chain">0</strong><span>Best chain</span></div>
+          </div>
+
+          <div class="section-heading"><div><span class="eyebrow">Recent activity</span><h2>Word Chain history</h2></div></div>
+          <div id="wordchain-recent" class="phrase-list"></div>
+        </div>
+
+        <div id="wordchain-game" class="hidden">
+          <div class="conversation-head">
+            <button class="back-link" data-action="exit-wordchain">← Save & exit</button>
+            <div class="conversation-title-row"><div><span class="eyebrow" id="wordchain-mode-label">PLAYER VS COMPUTER</span><h1 id="wordchain-turn-label">Your turn.</h1></div><span class="pill" id="wordchain-difficulty-label">Easy</span></div>
+          </div>
+          <div class="wordchain-panel">
+            <div class="wordchain-current">
+              <div><div class="wordchain-muted">Current word</div><div class="wordchain-current-word" id="wordchain-current-word">APPLE</div><div class="wordchain-muted" id="wordchain-chain-count">1 word in the chain</div></div>
+              <div><div class="wordchain-muted" style="text-align:center">Start with</div><div class="wordchain-required" id="wordchain-required-letter">E</div></div>
+            </div>
+            <div class="wordchain-feedback" id="wordchain-message" role="status" aria-live="polite">Enter an English word beginning with the required letter.</div>
+            <div id="wordchain-word-detail" class="wordchain-detail hidden"></div>
+            <form id="wordchain-form">
+              <div class="wordchain-input-row">
+                <input class="wordchain-input" id="wordchain-input" type="text" placeholder="Type your word…" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="24" required>
+                <button class="button" id="wordchain-submit" type="submit">Submit</button>
+              </div>
+            </form>
+            <div class="wordchain-actions">
+              <button class="wordchain-small-button" id="wordchain-hint" type="button">Show a hint</button>
+              <button class="wordchain-small-button" data-action="end-wordchain" type="button">End practice</button>
+            </div>
+            <div id="wordchain-hints" class="wordchain-hints hidden"></div>
+          </div>
+          <div class="wordchain-panel">
+            <div class="section-heading" style="margin:0 0 10px"><div><span class="eyebrow">Your word chain</span><h2>Words played</h2></div><span class="pill" id="wordchain-score-label">You: 0 · Computer: 0</span></div>
+            <div id="wordchain-history" class="wordchain-chain"></div>
+          </div>
+        </div>
+
+        <div id="wordchain-result" class="hidden">
+          <div class="summary-hero">
+            <div class="summary-icon" id="wordchain-result-icon">✦</div>
+            <span class="eyebrow">Word Chain complete</span>
+            <h1 style="font-size:30px;margin-top:7px" id="wordchain-result-title">Nice game!</h1>
+            <p class="muted" id="wordchain-result-copy">Your chain is saved on this device.</p>
+            <div class="summary-score" id="wordchain-result-score">0 words</div>
+            <p class="muted small" id="wordchain-result-caption">Your valid words</p>
+          </div>
+          <div class="wordchain-panel"><div class="eyebrow">Final chain</div><div id="wordchain-result-chain" class="wordchain-chain"></div></div>
+          <div class="wordchain-actions">
+            <button class="button" data-action="new-wordchain">Play again</button>
+            <button class="button secondary" data-action="back-wordchain-home">Word Chain home</button>
+          </div>
+        </div>
+      </section>
+
       <!-- LEGACY GRAMMAR / VOCAB QUIZ -->
       <section class="page" id="page-quiz">
         <div class="conversation-head">
@@ -380,6 +534,7 @@
   <nav class="bottom-nav" aria-label="Main navigation">
     <button class="nav-button active" data-nav="home"><span class="nav-icon">⌂</span><span>Home</span></button>
     <button class="nav-button" data-nav="practice"><span class="nav-icon">▤</span><span>Practice</span></button>
+    <button class="nav-button" data-nav="wordchain"><span class="nav-icon">↔</span><span>Words</span></button>
     <button class="nav-button" data-nav="saved"><span class="nav-icon">♡</span><span>Saved</span></button>
     <button class="nav-button" data-nav="progress"><span class="nav-icon">◷</span><span>Progress</span></button>
   </nav>
