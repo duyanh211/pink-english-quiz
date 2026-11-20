@@ -1581,6 +1581,7 @@ function submitWordChainWord(event) {
       return;
     }
     setWordChainMessage(detail ? `Valid word! ${detail.meaning}. Keep going — start with ${word.at(-1).toUpperCase()}.` : `Valid word! Next word starts with ${word.at(-1).toUpperCase()}.`, "success");
+    input.focus();
   }
 }
 
@@ -1643,6 +1644,7 @@ function playWordChainBotMove() {
     finishWordChainGame("computer", `The built-in list has no unused word beginning with ${word.at(-1).toUpperCase()}. The computer wins this round.`);
     return;
   }
+  $("#wordchain-input").focus();
   setWordChainMessage(
     `Computer played ${word.toUpperCase()}. Your turn: ${word.at(-1).toUpperCase()}.`,
     "info"
