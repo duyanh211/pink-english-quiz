@@ -1,0 +1,1504 @@
+{
+  "version": "1.0",
+  "game": "memory-match",
+  "pairsPerSession": 16,
+  "modes": [
+    {
+      "id": "word-meaning",
+      "title": "Word & Meaning",
+      "description": "Ghép từ tiếng Anh với nghĩa tiếng Việt.",
+      "leftLabel": "English word",
+      "rightLabel": "Vietnamese meaning",
+      "pairs": [
+        {
+          "id": "wm-001",
+          "left": "apple",
+          "right": "quả táo",
+          "pronunciation": "",
+          "example": "I usually have an apple as a snack.",
+          "explanation": "Danh từ chỉ một loại quả phổ biến."
+        },
+        {
+          "id": "wm-002",
+          "left": "reliable",
+          "right": "đáng tin cậy",
+          "pronunciation": "",
+          "example": "She's reliable, so I know I can count on her.",
+          "explanation": "Dùng để mô tả người hoặc vật mà bạn có thể tin tưởng."
+        },
+        {
+          "id": "wm-003",
+          "left": "borrow",
+          "right": "mượn",
+          "pronunciation": "",
+          "example": "Can I borrow your charger for a minute?",
+          "explanation": "Borrow là nhận thứ gì từ người khác và sẽ trả lại; trái nghĩa với lend."
+        },
+        {
+          "id": "wm-004",
+          "left": "crowded",
+          "right": "đông đúc",
+          "pronunciation": "",
+          "example": "The train is always crowded at this time.",
+          "explanation": "Mô tả nơi có quá nhiều người."
+        },
+        {
+          "id": "wm-005",
+          "left": "affordable",
+          "right": "có giá phải chăng",
+          "pronunciation": "",
+          "example": "This café serves good food at affordable prices.",
+          "explanation": "Giá đủ hợp túi tiền, không quá đắt."
+        },
+        {
+          "id": "wm-006",
+          "left": "appointment",
+          "right": "cuộc hẹn",
+          "pronunciation": "",
+          "example": "I have a doctor's appointment at three.",
+          "explanation": "Một lịch hẹn đã được sắp xếp trước, thường với chuyên gia hoặc dịch vụ."
+        },
+        {
+          "id": "wm-007",
+          "left": "delicious",
+          "right": "ngon",
+          "pronunciation": "",
+          "example": "That pasta was absolutely delicious.",
+          "explanation": "Tính từ dùng để khen đồ ăn hoặc thức uống ngon."
+        },
+        {
+          "id": "wm-008",
+          "left": "improve",
+          "right": "cải thiện",
+          "pronunciation": "",
+          "example": "I want to improve my spoken English.",
+          "explanation": "Làm cho điều gì đó tốt hơn."
+        },
+        {
+          "id": "wm-009",
+          "left": "avoid",
+          "right": "tránh",
+          "pronunciation": "",
+          "example": "Try to avoid checking your phone while driving.",
+          "explanation": "Không làm hoặc không đến gần điều gì đó để tránh vấn đề."
+        },
+        {
+          "id": "wm-010",
+          "left": "commute",
+          "right": "đi lại giữa nhà và nơi làm/học",
+          "pronunciation": "",
+          "example": "My daily commute takes about 30 minutes.",
+          "explanation": "Thường chỉ việc di chuyển thường xuyên giữa nhà và nơi làm việc hoặc trường học."
+        },
+        {
+          "id": "wm-011",
+          "left": "receipt",
+          "right": "hóa đơn mua hàng",
+          "pronunciation": "",
+          "example": "Could I have a receipt, please?",
+          "explanation": "Giấy xác nhận đã thanh toán; khác với bill trong một số ngữ cảnh."
+        },
+        {
+          "id": "wm-012",
+          "left": "refund",
+          "right": "tiền hoàn lại; hoàn tiền",
+          "pronunciation": "",
+          "example": "The store gave me a refund for the damaged item.",
+          "explanation": "Tiền được trả lại khi hàng hóa hoặc dịch vụ được hoàn trả."
+        },
+        {
+          "id": "wm-013",
+          "left": "schedule",
+          "right": "lịch trình; lên lịch",
+          "pronunciation": "",
+          "example": "My schedule is pretty full this week.",
+          "explanation": "Danh sách các hoạt động hoặc thời gian đã được sắp xếp."
+        },
+        {
+          "id": "wm-014",
+          "left": "available",
+          "right": "có sẵn; rảnh",
+          "pronunciation": "",
+          "example": "Are you available for a quick call tomorrow?",
+          "explanation": "Có thể được sử dụng hoặc có thời gian để làm việc gì."
+        },
+        {
+          "id": "wm-015",
+          "left": "exhausted",
+          "right": "kiệt sức",
+          "pronunciation": "",
+          "example": "I'm exhausted after that long flight.",
+          "explanation": "Mệt rã rời, mạnh hơn tired."
+        },
+        {
+          "id": "wm-016",
+          "left": "convenient",
+          "right": "thuận tiện",
+          "pronunciation": "",
+          "example": "Online shopping is convenient when you're busy.",
+          "explanation": "Dễ dàng và phù hợp với nhu cầu hoặc hoàn cảnh."
+        },
+        {
+          "id": "wm-017",
+          "left": "apologize",
+          "right": "xin lỗi",
+          "pronunciation": "",
+          "example": "I should apologize for being late.",
+          "explanation": "Thừa nhận mình đã làm điều không đúng và nói lời xin lỗi."
+        },
+        {
+          "id": "wm-018",
+          "left": "delay",
+          "right": "sự trì hoãn; làm chậm trễ",
+          "pronunciation": "",
+          "example": "Our flight was delayed by two hours.",
+          "explanation": "Việc xảy ra muộn hơn dự kiến."
+        },
+        {
+          "id": "wm-019",
+          "left": "arrange",
+          "right": "sắp xếp",
+          "pronunciation": "",
+          "example": "I'll arrange a taxi for you.",
+          "explanation": "Tổ chức hoặc chuẩn bị điều gì đó theo một trật tự/kế hoạch."
+        },
+        {
+          "id": "wm-020",
+          "left": "recommend",
+          "right": "đề xuất; giới thiệu",
+          "pronunciation": "",
+          "example": "Can you recommend a good place for lunch?",
+          "explanation": "Đưa ra lời khuyên hoặc gợi ý điều mình cho là tốt."
+        },
+        {
+          "id": "wm-021",
+          "left": "confirm",
+          "right": "xác nhận",
+          "pronunciation": "",
+          "example": "Please confirm your booking by email.",
+          "explanation": "Cho biết điều gì đó là chính xác hoặc chắc chắn."
+        },
+        {
+          "id": "wm-022",
+          "left": "cancel",
+          "right": "hủy",
+          "pronunciation": "",
+          "example": "We had to cancel the meeting.",
+          "explanation": "Quyết định không tiếp tục một kế hoạch hoặc sự kiện."
+        },
+        {
+          "id": "wm-023",
+          "left": "nearby",
+          "right": "ở gần",
+          "pronunciation": "",
+          "example": "Is there a pharmacy nearby?",
+          "explanation": "Ở một khoảng cách không xa."
+        },
+        {
+          "id": "wm-024",
+          "left": "neighborhood",
+          "right": "khu dân cư; khu phố",
+          "pronunciation": "",
+          "example": "It's a quiet neighborhood with lots of trees.",
+          "explanation": "Khu vực nơi mọi người sống, thường gồm nhiều con phố."
+        },
+        {
+          "id": "wm-025",
+          "left": "estimate",
+          "right": "ước tính",
+          "pronunciation": "",
+          "example": "Can you give me an estimate of the cost?",
+          "explanation": "Tính gần đúng khi chưa có con số chính xác."
+        },
+        {
+          "id": "wm-026",
+          "left": "budget",
+          "right": "ngân sách",
+          "pronunciation": "",
+          "example": "We're working with a limited budget.",
+          "explanation": "Số tiền có sẵn hoặc được dự định để chi tiêu."
+        },
+        {
+          "id": "wm-027",
+          "left": "prefer",
+          "right": "thích hơn",
+          "pronunciation": "",
+          "example": "I prefer tea to coffee.",
+          "explanation": "Thích một lựa chọn hơn lựa chọn khác."
+        },
+        {
+          "id": "wm-028",
+          "left": "repair",
+          "right": "sửa chữa",
+          "pronunciation": "",
+          "example": "I need to repair my laptop screen.",
+          "explanation": "Làm cho đồ vật bị hỏng hoạt động lại."
+        },
+        {
+          "id": "wm-029",
+          "left": "delivery",
+          "right": "việc giao hàng; hàng được giao",
+          "pronunciation": "",
+          "example": "Your delivery should arrive this afternoon.",
+          "explanation": "Việc mang hàng hóa đến cho người nhận."
+        },
+        {
+          "id": "wm-030",
+          "left": "complain",
+          "right": "phàn nàn",
+          "pronunciation": "",
+          "example": "He complained about the noisy room.",
+          "explanation": "Nói rằng mình không hài lòng về điều gì."
+        },
+        {
+          "id": "wm-031",
+          "left": "customer",
+          "right": "khách hàng",
+          "pronunciation": "",
+          "example": "The customer asked for a refund.",
+          "explanation": "Người mua hoặc sử dụng sản phẩm/dịch vụ."
+        },
+        {
+          "id": "wm-032",
+          "left": "colleague",
+          "right": "đồng nghiệp",
+          "pronunciation": "",
+          "example": "I'll check with my colleague first.",
+          "explanation": "Người làm việc cùng nơi hoặc cùng tổ chức với bạn."
+        },
+        {
+          "id": "wm-033",
+          "left": "deadline",
+          "right": "hạn chót",
+          "pronunciation": "",
+          "example": "The deadline for the report is Friday.",
+          "explanation": "Thời điểm cuối cùng phải hoàn thành việc gì."
+        },
+        {
+          "id": "wm-034",
+          "left": "flexible",
+          "right": "linh hoạt",
+          "pronunciation": "",
+          "example": "My working hours are flexible.",
+          "explanation": "Có thể thay đổi hoặc điều chỉnh dễ dàng."
+        },
+        {
+          "id": "wm-035",
+          "left": "urgent",
+          "right": "khẩn cấp; gấp",
+          "pronunciation": "",
+          "example": "This is urgent, so please call me back.",
+          "explanation": "Cần được xử lý ngay hoặc rất sớm."
+        },
+        {
+          "id": "wm-036",
+          "left": "evidence",
+          "right": "bằng chứng",
+          "pronunciation": "",
+          "example": "We need more evidence before making a decision.",
+          "explanation": "Thông tin hoặc vật chứng giúp chứng minh điều gì."
+        },
+        {
+          "id": "wm-037",
+          "left": "opportunity",
+          "right": "cơ hội",
+          "pronunciation": "",
+          "example": "This job is a great opportunity to learn.",
+          "explanation": "Hoàn cảnh thuận lợi để làm hoặc đạt được điều gì."
+        },
+        {
+          "id": "wm-038",
+          "left": "decision",
+          "right": "quyết định",
+          "pronunciation": "",
+          "example": "It was a difficult decision to make.",
+          "explanation": "Sự lựa chọn sau khi cân nhắc các khả năng."
+        },
+        {
+          "id": "wm-039",
+          "left": "confident",
+          "right": "tự tin",
+          "pronunciation": "",
+          "example": "She feels confident about the interview.",
+          "explanation": "Tin vào khả năng hoặc phán đoán của bản thân."
+        },
+        {
+          "id": "wm-040",
+          "left": "grateful",
+          "right": "biết ơn",
+          "pronunciation": "",
+          "example": "I'm grateful for all your help.",
+          "explanation": "Cảm thấy trân trọng vì ai đó đã giúp mình."
+        },
+        {
+          "id": "wm-041",
+          "left": "awkward",
+          "right": "ngượng ngùng; khó xử",
+          "pronunciation": "",
+          "example": "There was an awkward silence after the joke.",
+          "explanation": "Tình huống khiến mọi người không thoải mái hoặc không biết cư xử thế nào."
+        },
+        {
+          "id": "wm-042",
+          "left": "embarrassed",
+          "right": "xấu hổ; bối rối",
+          "pronunciation": "",
+          "example": "I was embarrassed when I forgot his name.",
+          "explanation": "Cảm thấy ngượng vì mình mắc lỗi hoặc bị chú ý."
+        },
+        {
+          "id": "wm-043",
+          "left": "disappointed",
+          "right": "thất vọng",
+          "pronunciation": "",
+          "example": "We were disappointed with the result.",
+          "explanation": "Buồn vì điều xảy ra không như mong đợi."
+        },
+        {
+          "id": "wm-044",
+          "left": "relieved",
+          "right": "nhẹ nhõm",
+          "pronunciation": "",
+          "example": "I was relieved to hear that everyone was safe.",
+          "explanation": "Cảm thấy bớt lo lắng sau khi biết mọi chuyện ổn."
+        },
+        {
+          "id": "wm-045",
+          "left": "frustrated",
+          "right": "bực bội; nản lòng",
+          "pronunciation": "",
+          "example": "I'm frustrated because the app keeps crashing.",
+          "explanation": "Khó chịu vì không thể làm được điều mình muốn."
+        },
+        {
+          "id": "wm-046",
+          "left": "curious",
+          "right": "tò mò; hiếu kỳ",
+          "pronunciation": "",
+          "example": "I'm curious about how this works.",
+          "explanation": "Muốn biết hoặc tìm hiểu thêm về điều gì."
+        },
+        {
+          "id": "wm-047",
+          "left": "generous",
+          "right": "hào phóng",
+          "pronunciation": "",
+          "example": "That was generous of you to share your notes.",
+          "explanation": "Sẵn lòng chia sẻ tiền bạc, thời gian hoặc sự giúp đỡ."
+        },
+        {
+          "id": "wm-048",
+          "left": "patient",
+          "right": "kiên nhẫn",
+          "pronunciation": "",
+          "example": "Thanks for being patient with me.",
+          "explanation": "Có khả năng chờ đợi hoặc xử lý tình huống khó mà không nóng giận."
+        },
+        {
+          "id": "wm-049",
+          "left": "accurate",
+          "right": "chính xác",
+          "pronunciation": "",
+          "example": "The information in this report is accurate.",
+          "explanation": "Đúng và không có sai sót đáng kể."
+        },
+        {
+          "id": "wm-050",
+          "left": "efficient",
+          "right": "hiệu quả",
+          "pronunciation": "",
+          "example": "This is a more efficient way to organize files.",
+          "explanation": "Đạt kết quả tốt mà không lãng phí thời gian hoặc công sức."
+        },
+        {
+          "id": "wm-051",
+          "left": "maintain",
+          "right": "duy trì; bảo dưỡng",
+          "pronunciation": "",
+          "example": "It's important to maintain a healthy routine.",
+          "explanation": "Giữ cho điều gì tiếp tục ở trạng thái tốt."
+        },
+        {
+          "id": "wm-052",
+          "left": "require",
+          "right": "yêu cầu; đòi hỏi",
+          "pronunciation": "",
+          "example": "The job requires excellent communication skills.",
+          "explanation": "Cần có điều gì như một điều kiện bắt buộc."
+        },
+        {
+          "id": "wm-053",
+          "left": "suggest",
+          "right": "đề nghị; gợi ý",
+          "pronunciation": "",
+          "example": "I'd suggest taking a short break.",
+          "explanation": "Đưa ra một ý tưởng hoặc lời khuyên để người khác cân nhắc."
+        },
+        {
+          "id": "wm-054",
+          "left": "assume",
+          "right": "cho rằng; giả định",
+          "pronunciation": "",
+          "example": "I assumed you were already on your way.",
+          "explanation": "Tin rằng điều gì đúng khi chưa kiểm tra chắc chắn."
+        },
+        {
+          "id": "wm-055",
+          "left": "handle",
+          "right": "xử lý; giải quyết",
+          "pronunciation": "",
+          "example": "Don't worry. I can handle the booking.",
+          "explanation": "Quản lý hoặc giải quyết một công việc/tình huống."
+        },
+        {
+          "id": "wm-056",
+          "left": "mention",
+          "right": "đề cập",
+          "pronunciation": "",
+          "example": "She mentioned your name during the meeting.",
+          "explanation": "Nói đến điều gì đó một cách ngắn gọn."
+        },
+        {
+          "id": "wm-057",
+          "left": "realize",
+          "right": "nhận ra",
+          "pronunciation": "",
+          "example": "I didn't realize it was so late.",
+          "explanation": "Bắt đầu hiểu hoặc nhận thức được một sự thật."
+        },
+        {
+          "id": "wm-058",
+          "left": "support",
+          "right": "hỗ trợ; ủng hộ",
+          "pronunciation": "",
+          "example": "My friends supported me during a difficult time.",
+          "explanation": "Giúp đỡ về tinh thần, vật chất hoặc hành động."
+        },
+        {
+          "id": "wm-059",
+          "left": "negotiate",
+          "right": "thương lượng; đàm phán",
+          "pronunciation": "",
+          "example": "They negotiated a better price.",
+          "explanation": "Thảo luận để đạt được thỏa thuận mà các bên chấp nhận."
+        },
+        {
+          "id": "wm-060",
+          "left": "hesitate",
+          "right": "do dự; ngần ngại",
+          "pronunciation": "",
+          "example": "Don't hesitate to ask if you need help.",
+          "explanation": "Tạm dừng vì chưa chắc chắn hoặc còn e ngại."
+        }
+      ]
+    },
+    {
+      "id": "synonyms",
+      "title": "Synonyms",
+      "description": "Ghép hai từ có nghĩa giống hoặc gần giống nhau.",
+      "leftLabel": "Word A",
+      "rightLabel": "Similar word",
+      "pairs": [
+        {
+          "id": "syn-001",
+          "left": "begin",
+          "right": "start",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cả hai có nghĩa là bắt đầu; start phổ biến trong giao tiếp hằng ngày."
+        },
+        {
+          "id": "syn-002",
+          "left": "end",
+          "right": "finish",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều có nghĩa kết thúc; finish thường nhấn mạnh hoàn tất một việc."
+        },
+        {
+          "id": "syn-003",
+          "left": "help",
+          "right": "assist",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Assist trang trọng hơn help; cả hai đều có nghĩa hỗ trợ."
+        },
+        {
+          "id": "syn-004",
+          "left": "buy",
+          "right": "purchase",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Purchase trang trọng hơn buy, thường gặp trong văn viết hoặc giao dịch."
+        },
+        {
+          "id": "syn-005",
+          "left": "ask",
+          "right": "inquire",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Inquire lịch sự hoặc trang trọng hơn ask."
+        },
+        {
+          "id": "syn-006",
+          "left": "answer",
+          "right": "reply",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Reply thường dùng cho phản hồi tin nhắn, câu hỏi hoặc lời nói."
+        },
+        {
+          "id": "syn-007",
+          "left": "choose",
+          "right": "select",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Select có sắc thái trang trọng hoặc có chủ đích hơn choose."
+        },
+        {
+          "id": "syn-008",
+          "left": "fix",
+          "right": "repair",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Repair thường dùng cho việc sửa đồ vật; fix thân mật và rộng nghĩa hơn."
+        },
+        {
+          "id": "syn-009",
+          "left": "job",
+          "right": "occupation",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Occupation trang trọng hơn và chỉ nghề nghiệp nói chung."
+        },
+        {
+          "id": "syn-010",
+          "left": "goal",
+          "right": "aim",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ mục tiêu; aim cũng có thể là ý định hướng tới."
+        },
+        {
+          "id": "syn-011",
+          "left": "idea",
+          "right": "notion",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Notion là một ý niệm hoặc quan điểm; idea thông dụng hơn."
+        },
+        {
+          "id": "syn-012",
+          "left": "quick",
+          "right": "fast",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ tốc độ nhanh; fast thường mô tả tốc độ, quick còn nhấn mạnh thời gian ngắn."
+        },
+        {
+          "id": "syn-013",
+          "left": "smart",
+          "right": "intelligent",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ thông minh; intelligent trang trọng và nhấn mạnh năng lực trí tuệ."
+        },
+        {
+          "id": "syn-014",
+          "left": "happy",
+          "right": "glad",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ vui; glad thường diễn tả vui vì một tin hoặc sự việc cụ thể."
+        },
+        {
+          "id": "syn-015",
+          "left": "sad",
+          "right": "unhappy",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ buồn hoặc không vui; unhappy có thể nhẹ hơn tùy ngữ cảnh."
+        },
+        {
+          "id": "syn-016",
+          "left": "angry",
+          "right": "furious",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Furious mạnh hơn angry, nghĩa là cực kỳ tức giận."
+        },
+        {
+          "id": "syn-017",
+          "left": "tired",
+          "right": "exhausted",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Exhausted mạnh hơn tired, nghĩa là kiệt sức."
+        },
+        {
+          "id": "syn-018",
+          "left": "calm",
+          "right": "peaceful",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều liên quan đến sự yên bình; peaceful thường mô tả nơi/chủ thể không có xung đột."
+        },
+        {
+          "id": "syn-019",
+          "left": "brave",
+          "right": "courageous",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ dũng cảm; courageous trang trọng hơn một chút."
+        },
+        {
+          "id": "syn-020",
+          "left": "kind",
+          "right": "caring",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều mô tả người tốt bụng; caring nhấn mạnh sự quan tâm và chăm sóc."
+        },
+        {
+          "id": "syn-021",
+          "left": "important",
+          "right": "significant",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Significant thường nhấn mạnh mức độ đáng kể hoặc có ảnh hưởng."
+        },
+        {
+          "id": "syn-022",
+          "left": "difficult",
+          "right": "challenging",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Challenging thường gợi ý việc khó nhưng có tính thử thách tích cực."
+        },
+        {
+          "id": "syn-023",
+          "left": "easy",
+          "right": "simple",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Simple nhấn mạnh không phức tạp; easy nhấn mạnh không khó thực hiện."
+        },
+        {
+          "id": "syn-024",
+          "left": "big",
+          "right": "large",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều có nghĩa lớn; large thường trung tính hoặc trang trọng hơn."
+        },
+        {
+          "id": "syn-025",
+          "left": "small",
+          "right": "little",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ nhỏ; little đôi khi mang sắc thái tình cảm hoặc nhấn mạnh kích thước."
+        },
+        {
+          "id": "syn-026",
+          "left": "beautiful",
+          "right": "attractive",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Attractive nghĩa là hấp dẫn, không chỉ giới hạn ở vẻ đẹp bên ngoài."
+        },
+        {
+          "id": "syn-027",
+          "left": "ugly",
+          "right": "unattractive",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Unattractive nhẹ và lịch sự hơn ugly."
+        },
+        {
+          "id": "syn-028",
+          "left": "rich",
+          "right": "wealthy",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ giàu có; wealthy thường trang trọng hơn."
+        },
+        {
+          "id": "syn-029",
+          "left": "cheap",
+          "right": "inexpensive",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Inexpensive là cách nói lịch sự/trung tính hơn cheap."
+        },
+        {
+          "id": "syn-030",
+          "left": "expensive",
+          "right": "costly",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ đắt; costly đôi khi nhấn mạnh chi phí hoặc tổn thất lớn."
+        },
+        {
+          "id": "syn-031",
+          "left": "quiet",
+          "right": "silent",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Silent mạnh hơn quiet, thường có nghĩa hoàn toàn im lặng."
+        },
+        {
+          "id": "syn-032",
+          "left": "loud",
+          "right": "noisy",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Loud mô tả âm lượng lớn; noisy mô tả có nhiều tiếng ồn."
+        },
+        {
+          "id": "syn-033",
+          "left": "often",
+          "right": "frequently",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều nghĩa là thường xuyên; frequently trang trọng hơn."
+        },
+        {
+          "id": "syn-034",
+          "left": "sometimes",
+          "right": "occasionally",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Occasionally thường mang nghĩa thỉnh thoảng, không thường xuyên."
+        },
+        {
+          "id": "syn-035",
+          "left": "maybe",
+          "right": "perhaps",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều diễn tả khả năng; perhaps trang trọng hơn một chút."
+        },
+        {
+          "id": "syn-036",
+          "left": "almost",
+          "right": "nearly",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều có nghĩa gần như; thường có thể thay thế nhau trong nhiều ngữ cảnh."
+        },
+        {
+          "id": "syn-037",
+          "left": "later",
+          "right": "afterward",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ thời điểm sau đó; afterward thường nối các sự kiện."
+        },
+        {
+          "id": "syn-038",
+          "left": "because",
+          "right": "since",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Since có thể mang nghĩa bởi vì khi dùng làm liên từ chỉ nguyên nhân."
+        },
+        {
+          "id": "syn-039",
+          "left": "but",
+          "right": "however",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều thể hiện sự tương phản; however thường đứng như trạng từ nối câu."
+        },
+        {
+          "id": "syn-040",
+          "left": "also",
+          "right": "too",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều có nghĩa cũng; too thường đứng cuối mệnh đề."
+        },
+        {
+          "id": "syn-041",
+          "left": "need",
+          "right": "require",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Require trang trọng hơn need và thường dùng cho yêu cầu/điều kiện."
+        },
+        {
+          "id": "syn-042",
+          "left": "want",
+          "right": "desire",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Desire trang trọng hơn và có thể diễn tả mong muốn mạnh."
+        },
+        {
+          "id": "syn-043",
+          "left": "show",
+          "right": "display",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Display thường dùng khi trình bày hoặc trưng bày thông tin/vật phẩm."
+        },
+        {
+          "id": "syn-044",
+          "left": "hide",
+          "right": "conceal",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Conceal trang trọng hơn hide, nghĩa là cố ý che giấu."
+        },
+        {
+          "id": "syn-045",
+          "left": "tell",
+          "right": "inform",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Inform trang trọng hơn tell, thường dùng khi cung cấp thông tin."
+        },
+        {
+          "id": "syn-046",
+          "left": "say",
+          "right": "state",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "State trang trọng hơn say, nghĩa là phát biểu rõ ràng."
+        },
+        {
+          "id": "syn-047",
+          "left": "think",
+          "right": "believe",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Think là suy nghĩ/cho rằng; believe nhấn mạnh niềm tin hoặc sự tin chắc."
+        },
+        {
+          "id": "syn-048",
+          "left": "understand",
+          "right": "comprehend",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Comprehend trang trọng hơn và thường dùng cho việc hiểu nội dung phức tạp."
+        },
+        {
+          "id": "syn-049",
+          "left": "continue",
+          "right": "carry on",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Carry on thân mật hơn, thường dùng trong hội thoại."
+        },
+        {
+          "id": "syn-050",
+          "left": "stop",
+          "right": "quit",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Quit thường có nghĩa bỏ hoặc chấm dứt một hoạt động/thói quen."
+        },
+        {
+          "id": "syn-051",
+          "left": "leave",
+          "right": "depart",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Depart trang trọng hơn leave, thường dùng cho việc rời đi/khởi hành."
+        },
+        {
+          "id": "syn-052",
+          "left": "arrive",
+          "right": "reach",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Reach nhấn mạnh đến được một nơi; arrive thường đi với at/in."
+        },
+        {
+          "id": "syn-053",
+          "left": "get",
+          "right": "receive",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Receive trang trọng hơn get, nghĩa là nhận được."
+        },
+        {
+          "id": "syn-054",
+          "left": "give",
+          "right": "provide",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Provide nhấn mạnh cung cấp thứ cần thiết."
+        },
+        {
+          "id": "syn-055",
+          "left": "keep",
+          "right": "retain",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Retain trang trọng hơn keep, nghĩa là giữ lại."
+        },
+        {
+          "id": "syn-056",
+          "left": "use",
+          "right": "utilize",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Utilize trang trọng hơn use, thường nhấn mạnh sử dụng hiệu quả."
+        },
+        {
+          "id": "syn-057",
+          "left": "make",
+          "right": "create",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Create nhấn mạnh tạo ra điều mới; make có phạm vi rộng hơn."
+        },
+        {
+          "id": "syn-058",
+          "left": "check",
+          "right": "verify",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Verify nghĩa là kiểm chứng để xác nhận tính chính xác."
+        },
+        {
+          "id": "syn-059",
+          "left": "improve",
+          "right": "enhance",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Enhance thường có nghĩa nâng cao chất lượng hoặc giá trị."
+        },
+        {
+          "id": "syn-060",
+          "left": "reduce",
+          "right": "decrease",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Đều chỉ giảm; decrease thường dùng cho số lượng/mức độ."
+        }
+      ]
+    },
+    {
+      "id": "phrase-situation",
+      "title": "Phrase & Situation",
+      "description": "Ghép cách diễn đạt với tình huống sử dụng phù hợp.",
+      "leftLabel": "Useful expression",
+      "rightLabel": "When to use it",
+      "pairs": [
+        {
+          "id": "ps-001",
+          "left": "Could I get ...?",
+          "right": "Gọi món / đặt đồ uống",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Mẫu câu tự nhiên, thân thiện khi gọi món: Could I get an iced latte, please?"
+        },
+        {
+          "id": "ps-002",
+          "left": "Would you mind ...?",
+          "right": "Nhờ ai làm việc lịch sự",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Theo sau thường là V-ing: Would you mind closing the window?"
+        },
+        {
+          "id": "ps-003",
+          "left": "Take your time.",
+          "right": "Trấn an: không cần vội",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Dùng khi người kia đang lựa chọn, chuẩn bị hoặc hoàn thành việc gì."
+        },
+        {
+          "id": "ps-004",
+          "left": "I'm running a bit late.",
+          "right": "Báo mình sẽ đến muộn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách báo trễ tự nhiên, nhẹ nhàng trong tin nhắn hoặc cuộc gọi."
+        },
+        {
+          "id": "ps-005",
+          "left": "No worries.",
+          "right": "Đáp lại lời xin lỗi/cảm ơn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Có thể mang nghĩa không sao đâu hoặc không có gì đâu."
+        },
+        {
+          "id": "ps-006",
+          "left": "That works for me.",
+          "right": "Đồng ý thời gian hoặc kế hoạch",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách xác nhận kế hoạch tự nhiên: Friday at 3? — That works for me."
+        },
+        {
+          "id": "ps-007",
+          "left": "Sounds good.",
+          "right": "Đồng ý một đề xuất",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu đồng ý ngắn, phổ biến trong hội thoại và tin nhắn."
+        },
+        {
+          "id": "ps-008",
+          "left": "Let me check.",
+          "right": "Cần kiểm tra thông tin",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Giúp bạn có thời gian kiểm tra thay vì đoán ngay."
+        },
+        {
+          "id": "ps-009",
+          "left": "I'll get back to you.",
+          "right": "Sẽ phản hồi sau",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Get back to someone nghĩa là liên hệ/phản hồi lại."
+        },
+        {
+          "id": "ps-010",
+          "left": "Could you give me a hand?",
+          "right": "Nhờ ai giúp một tay",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Give me a hand là thành ngữ thân mật nghĩa là giúp một tay."
+        },
+        {
+          "id": "ps-011",
+          "left": "Do you happen to know ...?",
+          "right": "Hỏi thông tin nhẹ nhàng",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Happen to làm câu hỏi mềm hơn: Do you happen to know where the station is?"
+        },
+        {
+          "id": "ps-012",
+          "left": "I'm just browsing.",
+          "right": "Chỉ đang xem hàng",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu trả lời tự nhiên trong cửa hàng: I'm just browsing, thanks."
+        },
+        {
+          "id": "ps-013",
+          "left": "Can I try this on?",
+          "right": "Xin thử quần áo",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Try something on nghĩa là mặc thử quần áo/giày."
+        },
+        {
+          "id": "ps-014",
+          "left": "Could we get the bill?",
+          "right": "Xin hóa đơn thanh toán",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Ở Mỹ thường dùng bill; ở Anh cũng hay dùng the bill hoặc the check tùy vùng."
+        },
+        {
+          "id": "ps-015",
+          "left": "Is this seat taken?",
+          "right": "Hỏi chỗ ngồi còn trống",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách hỏi lịch sự trước khi ngồi xuống."
+        },
+        {
+          "id": "ps-016",
+          "left": "Mind if I join you?",
+          "right": "Xin tham gia nhóm",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách xin phép thân mật, tự nhiên."
+        },
+        {
+          "id": "ps-017",
+          "left": "I see what you mean.",
+          "right": "Thể hiện đã hiểu ý",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Không nhất thiết có nghĩa là bạn đồng ý; chỉ xác nhận đã hiểu ý."
+        },
+        {
+          "id": "ps-018",
+          "left": "Fair enough.",
+          "right": "Chấp nhận lý do hợp lý",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu ngắn để thể hiện sự chấp nhận dù có thể không hoàn toàn đồng ý."
+        },
+        {
+          "id": "ps-019",
+          "left": "I'm not so sure about that.",
+          "right": "Bất đồng nhẹ nhàng",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Lịch sự hơn cách nói thẳng You're wrong."
+        },
+        {
+          "id": "ps-020",
+          "left": "That's a good point.",
+          "right": "Công nhận một ý kiến",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Dùng trong họp hoặc thảo luận để công nhận một điểm đáng cân nhắc."
+        },
+        {
+          "id": "ps-021",
+          "left": "Let me rephrase that.",
+          "right": "Muốn diễn đạt lại cho rõ",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Rephrase nghĩa là nói/viết lại bằng cách khác cho dễ hiểu."
+        },
+        {
+          "id": "ps-022",
+          "left": "Just to clarify ...",
+          "right": "Xác nhận để tránh hiểu nhầm",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cụm mở đầu hữu ích trong công việc và trao đổi kế hoạch."
+        },
+        {
+          "id": "ps-023",
+          "left": "Are we still on for ...?",
+          "right": "Kiểm tra lịch hẹn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "On for Friday? nghĩa là vẫn giữ lịch vào thứ Sáu chứ?"
+        },
+        {
+          "id": "ps-024",
+          "left": "Something came up.",
+          "right": "Có việc đột xuất",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách nói ngắn, không cần tiết lộ chi tiết việc riêng."
+        },
+        {
+          "id": "ps-025",
+          "left": "Can we push it back?",
+          "right": "Xin dời lịch muộn hơn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Push back nghĩa là hoãn/lùi; cần nêu rõ thời gian mới nếu có."
+        },
+        {
+          "id": "ps-026",
+          "left": "How does ... sound?",
+          "right": "Đề xuất và hỏi ý kiến",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Ví dụ: How does Saturday afternoon sound?"
+        },
+        {
+          "id": "ps-027",
+          "left": "I'm flexible.",
+          "right": "Linh hoạt về thời gian",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Thể hiện rằng bạn có thể điều chỉnh theo lịch của người khác."
+        },
+        {
+          "id": "ps-028",
+          "left": "Count me in.",
+          "right": "Đồng ý tham gia",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách đồng ý thân mật, hào hứng."
+        },
+        {
+          "id": "ps-029",
+          "left": "I'll pass this time.",
+          "right": "Từ chối lời mời lần này",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Pass nghĩa là không tham gia/không nhận lần này; không nhất thiết từ chối mãi mãi."
+        },
+        {
+          "id": "ps-030",
+          "left": "Maybe another time.",
+          "right": "Để ngỏ dịp khác",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách từ chối mềm, thường dùng với lời mời."
+        },
+        {
+          "id": "ps-031",
+          "left": "I appreciate it.",
+          "right": "Thể hiện sự trân trọng",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Trang trọng hơn thanks một chút; thường dùng trong công việc."
+        },
+        {
+          "id": "ps-032",
+          "left": "That's on me.",
+          "right": "Nhận lỗi / nhận trả tiền",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Tùy ngữ cảnh, có thể là lỗi của tôi hoặc để tôi trả tiền."
+        },
+        {
+          "id": "ps-033",
+          "left": "My bad.",
+          "right": "Nhận lỗi thân mật",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách nói casual, không phù hợp với mọi tình huống trang trọng."
+        },
+        {
+          "id": "ps-034",
+          "left": "I didn't catch that.",
+          "right": "Không nghe rõ lời vừa nói",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Catch trong ngữ cảnh này nghĩa là nghe/hiểu được lời nói."
+        },
+        {
+          "id": "ps-035",
+          "left": "Could you say that again?",
+          "right": "Nhờ nhắc lại câu vừa nói",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách yêu cầu nhắc lại lịch sự và tự nhiên."
+        },
+        {
+          "id": "ps-036",
+          "left": "What have you been up to?",
+          "right": "Hỏi thăm người quen",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu hỏi thân mật về những hoạt động gần đây."
+        },
+        {
+          "id": "ps-037",
+          "left": "Long time no see.",
+          "right": "Gặp lại bạn cũ",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Lời chào thân mật, thường nói khi gặp lại người quen."
+        },
+        {
+          "id": "ps-038",
+          "left": "How's it going?",
+          "right": "Chào hỏi thân mật",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách chào thông dụng; có thể đáp Pretty good, you?"
+        },
+        {
+          "id": "ps-039",
+          "left": "Not much, you?",
+          "right": "Đáp lại câu 'What's up?'",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu trả lời casual, thường dùng với bạn bè."
+        },
+        {
+          "id": "ps-040",
+          "left": "I've got to run.",
+          "right": "Cần rời đi ngay",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Run ở đây không phải chạy bộ; nghĩa là phải đi ngay."
+        },
+        {
+          "id": "ps-041",
+          "left": "Talk soon.",
+          "right": "Kết thúc trò chuyện thân thiện",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách kết thúc thân thiện, không quá trang trọng."
+        },
+        {
+          "id": "ps-042",
+          "left": "Keep me posted.",
+          "right": "Nhờ cập nhật tình hình",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Post trong cụm này nghĩa là cập nhật/thông báo thông tin mới."
+        },
+        {
+          "id": "ps-043",
+          "left": "Fingers crossed.",
+          "right": "Chúc ai đó may mắn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu nói thân mật tương đương chúc may mắn/mong mọi chuyện tốt đẹp."
+        },
+        {
+          "id": "ps-044",
+          "left": "That sounds rough.",
+          "right": "Đồng cảm khi gặp khó khăn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Rough nghĩa bóng là khó khăn, mệt mỏi hoặc không dễ chịu."
+        },
+        {
+          "id": "ps-045",
+          "left": "I'm glad it worked out.",
+          "right": "Mừng vì mọi việc ổn thỏa",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Work out ở đây nghĩa là có kết quả tốt hoặc được giải quyết."
+        },
+        {
+          "id": "ps-046",
+          "left": "Thanks for the heads-up.",
+          "right": "Cảm ơn vì báo trước",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Heads-up là lời cảnh báo/thông tin báo trước."
+        },
+        {
+          "id": "ps-047",
+          "left": "I'll keep that in mind.",
+          "right": "Ghi nhớ lời khuyên",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách phản hồi tự nhiên, lịch sự."
+        },
+        {
+          "id": "ps-048",
+          "left": "Would it be possible to ...?",
+          "right": "Đề nghị lịch sự",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cấu trúc yêu cầu gián tiếp, mềm hơn Can you...?"
+        },
+        {
+          "id": "ps-049",
+          "left": "Let's play it by ear.",
+          "right": "Chưa chốt kế hoạch",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Nghĩa là linh hoạt quyết định sau khi biết tình hình thực tế."
+        },
+        {
+          "id": "ps-050",
+          "left": "Give me a heads-up.",
+          "right": "Nhờ báo trước",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách nhờ báo trước thân mật."
+        },
+        {
+          "id": "ps-051",
+          "left": "That slipped my mind.",
+          "right": "Giải thích mình lỡ quên",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách thừa nhận mình quên, nhẹ nhàng hơn I forgot trong vài ngữ cảnh."
+        },
+        {
+          "id": "ps-052",
+          "left": "I'm tied up right now.",
+          "right": "Đang bận, chưa thể giúp",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Tied up nghĩa bóng là đang bận/đang vướng việc."
+        },
+        {
+          "id": "ps-053",
+          "left": "I'm all set, thanks.",
+          "right": "Đã đủ, không cần thêm",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách từ chối lịch sự, tự nhiên trong cửa hàng hoặc nhà hàng."
+        },
+        {
+          "id": "ps-054",
+          "left": "Could you walk me through it?",
+          "right": "Nhờ hướng dẫn từng bước",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Walk someone through something nghĩa là giải thích/hướng dẫn từng bước."
+        },
+        {
+          "id": "ps-055",
+          "left": "Let's touch base tomorrow.",
+          "right": "Hẹn cập nhật ngày mai",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Touch base là liên hệ để cập nhật hoặc trao đổi ngắn."
+        },
+        {
+          "id": "ps-056",
+          "left": "That's a bit out of my budget.",
+          "right": "Nói món hàng vượt ngân sách",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Cách nói lịch sự rằng thứ gì đó quá đắt đối với ngân sách."
+        },
+        {
+          "id": "ps-057",
+          "left": "Do you have this in a smaller size?",
+          "right": "Hỏi size nhỏ hơn",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu hỏi tự nhiên khi mua sắm."
+        },
+        {
+          "id": "ps-058",
+          "left": "Could I get this to go?",
+          "right": "Gọi món mang đi",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "To go là cách nói phổ biến ở Mỹ; take away phổ biến ở Anh."
+        },
+        {
+          "id": "ps-059",
+          "left": "I’m on my way.",
+          "right": "Báo đang trên đường đến",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Câu nhắn ngắn thông báo đang đến."
+        },
+        {
+          "id": "ps-060",
+          "left": "It slipped my mind.",
+          "right": "Giải thích mình quên mất",
+          "pronunciation": "",
+          "example": "",
+          "explanation": "Tương tự That slipped my mind; thường dùng để nhận lỗi nhẹ nhàng."
+        }
+      ]
+    }
+  ],
+  "difficulty": [
+    {
+      "id": "easy",
+      "title": "Easy",
+      "seconds": 60,
+      "description": "60 giây · Dễ bắt đầu, lượt chơi ngắn"
+    },
+    {
+      "id": "medium",
+      "title": "Medium",
+      "seconds": 100,
+      "description": "100 giây · Thử thách vừa phải"
+    },
+    {
+      "id": "hard",
+      "title": "Hard",
+      "seconds": 140,
+      "description": "140 giây · Dành thời gian xử lý các cặp khó hơn"
+    }
+  ],
+  "metadata": {
+    "pairsPerRound": 16,
+    "shuffle": "random without replacement per mode per session",
+    "difficultyTimesSeconds": {
+      "easy": 60,
+      "medium": 100,
+      "hard": 140
+    },
+    "note": "Each mode has its own 60-pair bank. Only the selected 16 pairs are used in a round."
+  }
+}

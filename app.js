@@ -29,14 +29,27 @@ const state = {
   dictionaryGroupPromises: new Map(),
   dictionaryDetailsCache: {},
   dictionaryLookupPromises: new Map(),
-  wordDetailRequestId: 0
+  wordDetailRequestId: 0,
+  memoryData: null,
+  memoryGame: null,
+  memorySelectedModeId: null,
+  memoryTimerId: null,
+  memoryMismatchTimerId: null,
+  memoryFinishTimerId: null,
+  memoryLastSetup: null
 };
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
 function loadProfile() {
-  const emptyProfile = { savedPhrases: [], history: [], quizSessions: {}, wordChain: { activeGame: null, gamesPlayed: 0, totalPlayerWords: 0, bestChain: 0, history: [] } };
+  const emptyProfile = {
+    savedPhrases: [],
+    history: [],
+    quizSessions: {},
+    wordChain: { activeGame: null, gamesPlayed: 0, totalPlayerWords: 0, bestChain: 0, history: [] },
+    memoryMatch: { gamesPlayed: 0, totalPairsMatched: 0, bestMovesByMode: {}, history: [] }
+  };
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return emptyProfile;
@@ -56,7 +69,15 @@ function loadProfile() {
             bestChain: Number(parsed.wordChain.bestChain) || 0,
             history: Array.isArray(parsed.wordChain.history) ? parsed.wordChain.history : []
           }
-        : emptyProfile.wordChain
+        : emptyProfile.wordChain,
+      memoryMatch: parsed.memoryMatch && typeof parsed.memoryMatch === "object" && !Array.isArray(parsed.memoryMatch)
+        ? {
+            gamesPlayed: Number(parsed.memoryMatch.gamesPlayed) || 0,
+            totalPairsMatched: Number(parsed.memoryMatch.totalPairsMatched) || 0,
+            bestMovesByMode: parsed.memoryMatch.bestMovesByMode && typeof parsed.memoryMatch.bestMovesByMode === "object" ? parsed.memoryMatch.bestMovesByMode : {},
+            history: Array.isArray(parsed.memoryMatch.history) ? parsed.memoryMatch.history : []
+          }
+        : emptyProfile.memoryMatch
     };
   } catch (error) {
     console.warn("Could not read saved learning progress:", error);
@@ -191,6 +212,7 @@ async function loadData() {
     renderSaved();
     renderProgress();
     renderWordChainHome();
+    loadMemoryGameData();
   } catch (error) {
     console.error("Pink English data error:", error);
     homeScenarios.replaceChildren();
@@ -1469,7 +1491,7 @@ function saveWordChainGame() {
     window.clearTimeout(state.wordChainTimer);
     state.wordChainTimer = null;
   }
-  const game = getWordChainProfile().activeGame;
+  const game = profile.activeGame;
   if (!game || game.status !== "playing") return;
   game.updatedAt = new Date().toISOString();
   saveProfile();
@@ -1480,6 +1502,23 @@ function setWordChainMessage(message, type = "info") {
   if (!box) return;
   box.className = `wordchain-feedback ${type}`;
   box.textContent = message;
+}
+
+function renderWordChainWordDetail(word) {
+  const box = $("#wordchain-word-detail");
+  if (!box) return;
+  box.replaceChildren();
+  const detail = state.wordDetails[word];
+  box.classList.remove("hidden");
+  const title = makeElement("strong", "", detail?.meaning ? `${word} · ${detail.meaning}` : word);
+  const example = makeElement("p", "", detail?.example || "Từ này hợp lệ trong danh sách offline. Nghĩa chi tiết chưa có trong phần tra cứu rút gọn.");
+  const tools = makeElement("div");
+  tools.style.marginTop = "7px";
+  const listen = makeElement("button", "wordchain-small-button", "▶ Listen");
+  listen.type = "button";
+  listen.addEventListener("click", () => speak(word));
+  tools.appendChild(listen);
+  box.append(title, example, tools);
 }
 
 function renderWordChainGame() {
@@ -1547,20 +1586,11 @@ function submitWordChainWord(event) {
   game.currentWord = word;
   game.playerWords += 1;
   input.value = "";
-  if (game.mode === "solo") {
-    setWordChainMessage(`Valid word! Next word starts with ${word.at(-1).toUpperCase()}.`, "success");
-    renderWordChainWordDetail(word);
-  } else {
-    // In computer mode, only the computer's reply is explained.
-    const detailBox = $("#wordchain-word-detail");
-    if (detailBox) {
-      // Invalidate any pending lookup for the previous computer word.
-      state.wordDetailRequestId += 1;
-      detailBox.replaceChildren();
-      detailBox.classList.add("hidden");
-    }
-    setWordChainMessage("Valid word! The computer is choosing its reply…", "success");
-  }
+  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
+  setWordChainMessage(detail?.meaning
+    ? `Valid word! ${word} means “${detail.meaning}”.`
+    : "Valid word! Looking up its Vietnamese meaning…", "success");
+  renderWordChainWordDetail(word);
   saveWordChainGame();
   renderWordChainGame();
 
@@ -1581,7 +1611,6 @@ function submitWordChainWord(event) {
       return;
     }
     setWordChainMessage(detail ? `Valid word! ${detail.meaning}. Keep going — start with ${word.at(-1).toUpperCase()}.` : `Valid word! Next word starts with ${word.at(-1).toUpperCase()}.`, "success");
-    input.focus();
   }
 }
 
@@ -1644,21 +1673,12 @@ function playWordChainBotMove() {
     finishWordChainGame("computer", `The built-in list has no unused word beginning with ${word.at(-1).toUpperCase()}. The computer wins this round.`);
     return;
   }
-  setWordChainMessage(
-    `Computer played ${word.toUpperCase()}. Your turn: ${word.at(-1).toUpperCase()}.`,
-    "info"
-  );
+  const detail = state.wordDetails[word] || state.dictionaryDetailsCache[word];
+  setWordChainMessage(detail?.meaning
+    ? `Computer played ${word.toUpperCase()} — ${detail.meaning}. Your turn: ${word.at(-1).toUpperCase()}.`
+    : `Computer played ${word.toUpperCase()}. Looking up its meaning… Your turn: ${word.at(-1).toUpperCase()}.`, "info");
   renderWordChainWordDetail(word);
   saveWordChainGame();
-
-  // Focus only after the computer's UI updates have completed, and confirm it is still the player's turn.
-  window.requestAnimationFrame(() => {
-    const currentGame = getWordChainProfile().activeGame;
-    const input = $("#wordchain-input");
-    if (currentGame === game && game.status === "playing" && game.currentTurn === "player" && input && !input.disabled) {
-      input.focus({ preventScroll: true });
-    }
-  });
 }
 
 function showWordChainHints() {
@@ -1750,7 +1770,378 @@ function goToWordChainHome() {
 }
 
 
-function handleAction(action) {
+
+// ==========================================
+// MEMORY MATCH — 3 banks × 60 pairs, 16 pairs per round
+// ==========================================
+
+const MEMORY_PAIRS_PER_ROUND = 16;
+const MEMORY_DIFFICULTY_FALLBACK = [
+  { id: "easy", title: "Easy", seconds: 60, description: "60 giây · Dễ bắt đầu, lượt chơi ngắn" },
+  { id: "medium", title: "Medium", seconds: 100, description: "100 giây · Thử thách vừa phải" },
+  { id: "hard", title: "Hard", seconds: 140, description: "140 giây · Dành thời gian xử lý các cặp khó hơn" }
+];
+
+function validateMemoryData(data) {
+  if (!data || !Array.isArray(data.modes) || data.modes.length < 3) {
+    throw new Error("games.json cần có ít nhất 3 chế độ Memory Match.");
+  }
+  data.modes.forEach(mode => {
+    if (!mode.id || !mode.title || !Array.isArray(mode.pairs) || mode.pairs.length < MEMORY_PAIRS_PER_ROUND) {
+      throw new Error(`Chế độ ${mode.title || "không tên"} cần ít nhất ${MEMORY_PAIRS_PER_ROUND} cặp dữ liệu.`);
+    }
+    const ids = new Set();
+    mode.pairs.forEach(pair => {
+      if (!pair.id || typeof pair.left !== "string" || typeof pair.right !== "string" || !pair.left.trim() || !pair.right.trim()) {
+        throw new Error(`Một cặp trong chế độ ${mode.title} thiếu id/left/right.`);
+      }
+      if (ids.has(pair.id)) throw new Error(`ID cặp ${pair.id} bị trùng trong ${mode.title}.`);
+      ids.add(pair.id);
+    });
+  });
+}
+
+async function loadMemoryGameData() {
+  const status = $("#memory-match-status");
+  const grid = $("#memory-mode-grid");
+  if (grid) grid.replaceChildren(makeElement("p", "memory-muted", "Loading matching modes…"));
+  try {
+    const response = await fetch("./games.json", { cache: "no-store" });
+    if (!response.ok) throw new Error(`Không tải được games.json (HTTP ${response.status}).`);
+    const data = await response.json();
+    validateMemoryData(data);
+    state.memoryData = data;
+    if (status) status.classList.add("hidden");
+    renderMemoryMatchHome();
+  } catch (error) {
+    console.error("Memory Match data error:", error);
+    if (status) {
+      status.textContent = `Không thể tải games.json: ${error.message} Hãy kiểm tra file games.json đã được commit ở cùng thư mục với index.html chưa.`;
+      status.classList.remove("hidden");
+    }
+    if (grid) grid.replaceChildren(makeElement("p", "memory-muted", "Memory Match data is unavailable."));
+  }
+}
+
+function shuffleItems(items) {
+  const result = [...items];
+  for (let i = result.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [result[i], result[j]] = [result[j], result[i]];
+  }
+  return result;
+}
+
+function getMemoryProfile() {
+  if (!state.profile.memoryMatch) {
+    state.profile.memoryMatch = { gamesPlayed: 0, totalPairsMatched: 0, bestMovesByMode: {}, history: [] };
+  }
+  return state.profile.memoryMatch;
+}
+
+function renderMemoryMatchHome() {
+  const grid = $("#memory-mode-grid");
+  if (!grid) return;
+  grid.replaceChildren();
+  if (!state.memoryData) {
+    grid.appendChild(makeElement("p", "memory-muted", "Loading matching modes…"));
+    return;
+  }
+  const icons = { "word-meaning": "Aa", "synonyms": "≈", "phrase-situation": "☷" };
+  state.memoryData.modes.forEach(mode => {
+    const button = makeElement("button", "memory-mode-card");
+    button.type = "button";
+    button.dataset.action = "memory-select-mode";
+    button.dataset.modeId = mode.id;
+    const symbol = makeElement("span", "memory-mode-symbol", icons[mode.id] || "✦");
+    const title = makeElement("strong", "", mode.title);
+    const description = makeElement("span", "", mode.description || "Match the related cards.");
+    const count = makeElement("span", "pill pink", `${mode.pairs.length} pairs · ${MEMORY_PAIRS_PER_ROUND} per round`);
+    button.append(symbol, title, description, count);
+    grid.appendChild(button);
+  });
+
+  const profile = getMemoryProfile();
+  $("#memory-games-played").textContent = String(profile.gamesPlayed);
+  $("#memory-total-pairs").textContent = String(profile.totalPairsMatched);
+  const bestValues = Object.values(profile.bestMovesByMode).filter(value => Number.isFinite(value) && value > 0);
+  $("#memory-best-moves").textContent = bestValues.length ? String(Math.min(...bestValues)) : "—";
+}
+
+function selectMemoryMode(modeId) {
+  if (!state.memoryData) return showToast("Memory Match data is still loading.");
+  const mode = state.memoryData.modes.find(item => item.id === modeId);
+  if (!mode) return showToast("Không tìm thấy chế độ này.");
+  state.memorySelectedModeId = modeId;
+  $("#memory-match-home").classList.add("hidden");
+  $("#memory-match-play").classList.add("hidden");
+  $("#memory-match-result").classList.add("hidden");
+  $("#memory-match-difficulty").classList.remove("hidden");
+  $("#memory-selected-mode-title").textContent = mode.title;
+  $("#memory-selected-mode-description").textContent = `${mode.description || "Find all matching pairs."} ${mode.pairs.length} cặp trong kho dữ liệu; mỗi lượt chọn ngẫu nhiên ${MEMORY_PAIRS_PER_ROUND} cặp.`;
+  renderMemoryDifficultyOptions();
+  showPage("memory-match", "home");
+}
+
+function renderMemoryDifficultyOptions() {
+  const container = $("#memory-difficulty-grid");
+  container.replaceChildren();
+  const difficulties = Array.isArray(state.memoryData?.difficulty) && state.memoryData.difficulty.length
+    ? state.memoryData.difficulty
+    : MEMORY_DIFFICULTY_FALLBACK;
+  difficulties.forEach(difficulty => {
+    const button = makeElement("button", "memory-difficulty-card");
+    button.type = "button";
+    button.dataset.action = "memory-start";
+    button.dataset.difficultyId = difficulty.id;
+    button.append(
+      makeElement("strong", "", difficulty.title),
+      makeElement("span", "", difficulty.description || `${difficulty.seconds} seconds`)
+    );
+    container.appendChild(button);
+  });
+}
+
+function startMemoryMatch(difficultyId) {
+  const mode = state.memoryData?.modes.find(item => item.id === state.memorySelectedModeId);
+  const difficulties = state.memoryData?.difficulty || MEMORY_DIFFICULTY_FALLBACK;
+  const difficulty = difficulties.find(item => item.id === difficultyId);
+  if (!mode || !difficulty) return showToast("Không thể bắt đầu trò chơi. Vui lòng chọn lại chế độ.");
+  if (mode.pairs.length < MEMORY_PAIRS_PER_ROUND) return showToast(`Chế độ này cần ít nhất ${MEMORY_PAIRS_PER_ROUND} cặp từ.`);
+
+  clearMemoryTimers();
+  const selectedPairs = shuffleItems(mode.pairs).slice(0, MEMORY_PAIRS_PER_ROUND);
+  const cards = [];
+  selectedPairs.forEach(pair => {
+    cards.push({ cardId: `${pair.id}-left`, pairId: pair.id, side: "left", text: pair.left, pair });
+    cards.push({ cardId: `${pair.id}-right`, pairId: pair.id, side: "right", text: pair.right, pair });
+  });
+
+  const seconds = Number(difficulty.seconds) || 100;
+  state.memoryLastSetup = { modeId: mode.id, difficultyId: difficulty.id };
+  state.memoryGame = {
+    modeId: mode.id,
+    modeTitle: mode.title,
+    difficultyId: difficulty.id,
+    difficultyTitle: difficulty.title,
+    seconds,
+    deadline: Date.now() + seconds * 1000,
+    startedAt: Date.now(),
+    cards: shuffleItems(cards),
+    matchedPairIds: new Set(),
+    flippedCardIds: [],
+    moves: 0,
+    mismatches: 0,
+    locked: false,
+    ended: false
+  };
+
+  $("#memory-match-home").classList.add("hidden");
+  $("#memory-match-difficulty").classList.add("hidden");
+  $("#memory-match-result").classList.add("hidden");
+  $("#memory-match-play").classList.remove("hidden");
+  $("#memory-mode-label").textContent = mode.title.toUpperCase();
+  $("#memory-game-title").textContent = "Memory Match";
+  $("#memory-difficulty-label").textContent = difficulty.title;
+  $("#memory-feedback").classList.add("hidden");
+  $("#memory-feedback").replaceChildren();
+  renderMemoryBoard();
+  updateMemoryStats();
+  showPage("memory-match", "home");
+  tickMemoryTimer();
+  state.memoryTimerId = window.setInterval(tickMemoryTimer, 250);
+}
+
+function renderMemoryBoard() {
+  const game = state.memoryGame;
+  const board = $("#memory-board");
+  if (!game || !board) return;
+  board.replaceChildren();
+  game.cards.forEach(card => {
+    const matched = game.matchedPairIds.has(card.pairId);
+    const flipped = matched || game.flippedCardIds.includes(card.cardId);
+    const button = makeElement("button", `memory-card${flipped ? " is-flipped" : ""}${matched ? " is-matched" : ""}`);
+    button.type = "button";
+    button.dataset.action = "memory-flip-card";
+    button.dataset.cardId = card.cardId;
+    button.disabled = matched || game.locked || game.flippedCardIds.includes(card.cardId);
+    button.setAttribute("aria-label", flipped ? card.text : "Hidden memory card");
+    const inner = makeElement("span", "memory-card-inner");
+    const back = makeElement("span", "memory-card-face memory-card-back", "p.");
+    const front = makeElement("span", "memory-card-face memory-card-front", card.text);
+    inner.append(back, front);
+    button.appendChild(inner);
+    board.appendChild(button);
+  });
+}
+
+function updateMemoryStats() {
+  const game = state.memoryGame;
+  if (!game) return;
+  $("#memory-matched-count").textContent = `${game.matchedPairIds.size} / ${MEMORY_PAIRS_PER_ROUND}`;
+  $("#memory-moves-count").textContent = String(game.moves);
+}
+
+function formatClock(seconds) {
+  const safe = Math.max(0, Math.ceil(seconds));
+  const minutes = Math.floor(safe / 60);
+  const remaining = safe % 60;
+  return `${String(minutes).padStart(2, "0")}:${String(remaining).padStart(2, "0")}`;
+}
+
+function tickMemoryTimer() {
+  const game = state.memoryGame;
+  if (!game || game.ended) return;
+  const remainingMs = Math.max(0, game.deadline - Date.now());
+  const remaining = remainingMs / 1000;
+  $("#memory-time-left").textContent = formatClock(remaining);
+  const percent = Math.max(0, (remainingMs / (game.seconds * 1000)) * 100);
+  const fill = $("#memory-timer-fill");
+  fill.style.width = `${percent}%`;
+  fill.classList.toggle("warning", remaining <= 15);
+  if (remainingMs <= 0) finishMemoryMatch("timeout");
+}
+
+function showMemoryFeedback(pair, success) {
+  const panel = $("#memory-feedback");
+  panel.replaceChildren();
+  panel.classList.remove("hidden", "success");
+  if (success) panel.classList.add("success");
+  panel.appendChild(makeElement("strong", "", success ? "✓ Match found!" : "Not a match — try again."));
+  if (success) {
+    const line = makeElement("p", "", `${pair.left}  ↔  ${pair.right}`);
+    panel.appendChild(line);
+    if (pair.explanation) panel.appendChild(makeElement("p", "", pair.explanation));
+    if (pair.example) panel.appendChild(makeElement("p", "memory-example", pair.example));
+    const listenButton = makeElement("button", "wordchain-small-button", "▶ Listen");
+    listenButton.type = "button";
+    listenButton.addEventListener("click", () => speak(pair.left));
+    panel.appendChild(listenButton);
+  } else {
+    panel.appendChild(makeElement("p", "", "Hai thẻ chưa khớp. Hãy ghi nhớ vị trí và thử lại."));
+  }
+}
+
+function flipMemoryCard(cardId) {
+  const game = state.memoryGame;
+  if (!game || game.ended || game.locked || game.flippedCardIds.length >= 2) return;
+  const card = game.cards.find(item => item.cardId === cardId);
+  if (!card || game.matchedPairIds.has(card.pairId) || game.flippedCardIds.includes(cardId)) return;
+
+  game.flippedCardIds.push(cardId);
+  renderMemoryBoard();
+  if (game.flippedCardIds.length < 2) return;
+
+  game.moves += 1;
+  updateMemoryStats();
+  const first = game.cards.find(item => item.cardId === game.flippedCardIds[0]);
+  const second = game.cards.find(item => item.cardId === game.flippedCardIds[1]);
+
+  if (first.pairId === second.pairId) {
+    game.matchedPairIds.add(first.pairId);
+    game.flippedCardIds = [];
+    renderMemoryBoard();
+    updateMemoryStats();
+    showMemoryFeedback(first.pair, true);
+    if (game.matchedPairIds.size === MEMORY_PAIRS_PER_ROUND) {
+      state.memoryFinishTimerId = window.setTimeout(() => finishMemoryMatch("completed"), 850);
+    }
+  } else {
+    game.mismatches += 1;
+    game.locked = true;
+    showMemoryFeedback(null, false);
+    state.memoryMismatchTimerId = window.setTimeout(() => {
+      if (!state.memoryGame || state.memoryGame !== game || game.ended) return;
+      game.flippedCardIds = [];
+      game.locked = false;
+      renderMemoryBoard();
+    }, 850);
+  }
+}
+
+function clearMemoryTimers() {
+  if (state.memoryTimerId) window.clearInterval(state.memoryTimerId);
+  if (state.memoryMismatchTimerId) window.clearTimeout(state.memoryMismatchTimerId);
+  if (state.memoryFinishTimerId) window.clearTimeout(state.memoryFinishTimerId);
+  state.memoryTimerId = null;
+  state.memoryMismatchTimerId = null;
+  state.memoryFinishTimerId = null;
+}
+
+function finishMemoryMatch(reason) {
+  const game = state.memoryGame;
+  if (!game || game.ended) return;
+  game.ended = true;
+  clearMemoryTimers();
+  const matched = game.matchedPairIds.size;
+  const completed = reason === "completed";
+  const timeLeft = Math.max(0, Math.ceil((game.deadline - Date.now()) / 1000));
+  const accuracy = game.moves ? Math.round((matched / game.moves) * 100) : 0;
+  const record = {
+    modeId: game.modeId,
+    difficultyId: game.difficultyId,
+    pairsMatched: matched,
+    totalPairs: MEMORY_PAIRS_PER_ROUND,
+    moves: game.moves,
+    mismatches: game.mismatches,
+    timeLeft,
+    completed,
+    playedAt: new Date().toISOString()
+  };
+  const profile = getMemoryProfile();
+  profile.gamesPlayed += 1;
+  profile.totalPairsMatched += matched;
+  const previousBest = Number(profile.bestMovesByMode[game.modeId]);
+  if (completed && (!previousBest || game.moves < previousBest)) {
+    profile.bestMovesByMode[game.modeId] = game.moves;
+  }
+  profile.history.unshift(record);
+  profile.history = profile.history.slice(0, 30);
+  saveProfile();
+
+  $("#memory-result-icon").textContent = completed ? "🏆" : "✦";
+  $("#memory-result-title").textContent = completed ? "All pairs found!" : "Time's up!";
+  $("#memory-result-copy").textContent = completed
+    ? `Bạn đã ghép đủ 16 cặp trong chế độ ${game.modeTitle}.`
+    : `Bạn đã ghép được ${matched} trên 16 cặp. Thử lại để cải thiện nhé!`;
+  $("#memory-result-pairs").textContent = `${matched} / ${MEMORY_PAIRS_PER_ROUND} pairs`;
+  $("#memory-result-caption").textContent = completed ? "Completed before the timer ended" : "Matched pairs before time ran out";
+  $("#memory-result-moves").textContent = String(game.moves);
+  $("#memory-result-time").textContent = formatClock(timeLeft);
+  $("#memory-result-accuracy").textContent = `${accuracy}%`;
+
+  $("#memory-match-play").classList.add("hidden");
+  $("#memory-match-result").classList.remove("hidden");
+  renderMemoryMatchHome();
+}
+
+function showMemoryMatchHome() {
+  clearMemoryTimers();
+  state.memoryGame = null;
+  $("#memory-match-home").classList.remove("hidden");
+  $("#memory-match-difficulty").classList.add("hidden");
+  $("#memory-match-play").classList.add("hidden");
+  $("#memory-match-result").classList.add("hidden");
+  renderMemoryMatchHome();
+  showPage("memory-match", "home");
+}
+
+function exitMemoryMatch() {
+  const game = state.memoryGame;
+  if (game && !game.ended && (game.moves > 0 || game.flippedCardIds.length > 0)) {
+    const leave = window.confirm("Exit this round? Your current matching progress will not be saved.");
+    if (!leave) return;
+  }
+  showMemoryMatchHome();
+}
+
+function replayMemoryMatch() {
+  if (!state.memoryLastSetup) return showMemoryMatchHome();
+  state.memorySelectedModeId = state.memoryLastSetup.modeId;
+  startMemoryMatch(state.memoryLastSetup.difficultyId);
+}
+
+function handleAction(action, actionButton = null) {
   switch (action) {
     case "go-practice": goToPractice(); break;
     case "go-quiz-library": goToPractice(); setTimeout(() => $("#quiz-library").scrollIntoView({ behavior: "smooth", block: "start" }), 40); break;
@@ -1781,13 +2172,24 @@ function handleAction(action) {
       startWordChainGame();
       break;
     case "back-wordchain-home": goToWordChainHome(); break;
+    case "go-memory-match":
+      state.memoryGame = null;
+      clearMemoryTimers();
+      showMemoryMatchHome();
+      break;
+    case "memory-select-mode": selectMemoryMode(actionButton?.dataset.modeId); break;
+    case "memory-start": startMemoryMatch(actionButton?.dataset.difficultyId); break;
+    case "memory-flip-card": flipMemoryCard(actionButton?.dataset.cardId); break;
+    case "memory-back-modes": showMemoryMatchHome(); break;
+    case "memory-exit": exitMemoryMatch(); break;
+    case "memory-replay": replayMemoryMatch(); break;
   }
 }
 
 document.addEventListener("click", event => {
   const actionButton = event.target.closest("[data-action]");
   if (actionButton) {
-    handleAction(actionButton.dataset.action);
+    handleAction(actionButton.dataset.action, actionButton);
     return;
   }
   const navButton = event.target.closest("[data-nav]");
@@ -1823,6 +2225,8 @@ document.addEventListener("visibilitychange", () => {
   if (document.visibilityState === "hidden") {
     saveActiveQuizSession();
     saveWordChainGame();
+  } else if (state.memoryGame) {
+    tickMemoryTimer();
   }
 });
 window.addEventListener("pagehide", () => {
