@@ -1469,7 +1469,7 @@ function saveWordChainGame() {
     window.clearTimeout(state.wordChainTimer);
     state.wordChainTimer = null;
   }
-  const game = profile.activeGame;
+  const game = getWordChainProfile().activeGame;
   if (!game || game.status !== "playing") return;
   game.updatedAt = new Date().toISOString();
   saveProfile();
