@@ -1,7 +1,6 @@
 {
-  "version": "1.0",
+  "version": "1.1",
   "game": "memory-match",
-  "pairsPerSession": 16,
   "modes": [
     {
       "id": "word-meaning",
@@ -1475,30 +1474,43 @@
     {
       "id": "easy",
       "title": "Easy",
-      "seconds": 60,
-      "description": "60 giây · Dễ bắt đầu, lượt chơi ngắn"
+      "pairCount": 4,
+      "seconds": 140,
+      "description": "4 cặp · 140 giây · Dễ bắt đầu"
     },
     {
       "id": "medium",
       "title": "Medium",
-      "seconds": 100,
-      "description": "100 giây · Thử thách vừa phải"
+      "pairCount": 8,
+      "seconds": 140,
+      "description": "8 cặp · 140 giây · Thử thách vừa phải"
     },
     {
       "id": "hard",
       "title": "Hard",
+      "pairCount": 12,
       "seconds": 140,
-      "description": "140 giây · Dành thời gian xử lý các cặp khó hơn"
+      "description": "12 cặp · 140 giây · Thử thách cao hơn"
     }
   ],
   "metadata": {
-    "pairsPerRound": 16,
     "shuffle": "random without replacement per mode per session",
     "difficultyTimesSeconds": {
-      "easy": 60,
-      "medium": 100,
+      "easy": 140,
+      "medium": 140,
       "hard": 140
     },
-    "note": "Each mode has its own 60-pair bank. Only the selected 16 pairs are used in a round."
+    "note": "Each mode has its own 60-pair bank. Easy selects 4 pairs, Medium 8 pairs, and Hard 12 pairs. Every round lasts 140 seconds.",
+    "pairCountsByDifficulty": {
+      "easy": 4,
+      "medium": 8,
+      "hard": 12
+    },
+    "timeLimitSeconds": 140
+  },
+  "pairCountsByDifficulty": {
+    "easy": 4,
+    "medium": 8,
+    "hard": 12
   }
 }

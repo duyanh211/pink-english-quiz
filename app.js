@@ -1772,23 +1772,43 @@ function goToWordChainHome() {
 
 
 // ==========================================
-// MEMORY MATCH — 3 banks × 60 pairs, 16 pairs per round
+// MEMORY MATCH — 3 banks × 60 pairs
+// Fixed 140-second timer; difficulty changes pair count.
 // ==========================================
 
-const MEMORY_PAIRS_PER_ROUND = 16;
+const MEMORY_SECONDS_PER_ROUND = 140;
 const MEMORY_DIFFICULTY_FALLBACK = [
-  { id: "easy", title: "Easy", seconds: 60, description: "60 giây · Dễ bắt đầu, lượt chơi ngắn" },
-  { id: "medium", title: "Medium", seconds: 100, description: "100 giây · Thử thách vừa phải" },
-  { id: "hard", title: "Hard", seconds: 140, description: "140 giây · Dành thời gian xử lý các cặp khó hơn" }
+  { id: "easy", title: "Easy", pairCount: 4, seconds: MEMORY_SECONDS_PER_ROUND, description: "4 cặp · 140 giây · Dễ bắt đầu" },
+  { id: "medium", title: "Medium", pairCount: 8, seconds: MEMORY_SECONDS_PER_ROUND, description: "8 cặp · 140 giây · Thử thách vừa phải" },
+  { id: "hard", title: "Hard", pairCount: 12, seconds: MEMORY_SECONDS_PER_ROUND, description: "12 cặp · 140 giây · Thử thách cao hơn" }
 ];
+
+function getMemoryDifficultyOptions() {
+  const configured = Array.isArray(state.memoryData?.difficulty) ? state.memoryData.difficulty : [];
+  return configured.length ? configured : MEMORY_DIFFICULTY_FALLBACK;
+}
+
+function getMemoryPairCount(difficulty) {
+  const count = Number(difficulty?.pairCount);
+  return Number.isInteger(count) && count > 0 ? count : 4;
+}
 
 function validateMemoryData(data) {
   if (!data || !Array.isArray(data.modes) || data.modes.length < 3) {
     throw new Error("games.json cần có ít nhất 3 chế độ Memory Match.");
   }
+  const configuredDifficulties = Array.isArray(data.difficulty) && data.difficulty.length
+    ? data.difficulty
+    : MEMORY_DIFFICULTY_FALLBACK;
+  const maximumPairCount = Math.max(...configuredDifficulties.map(getMemoryPairCount));
+  configuredDifficulties.forEach(difficulty => {
+    if (!difficulty.id || !difficulty.title || getMemoryPairCount(difficulty) < 1) {
+      throw new Error("Cấu hình độ khó Memory Match không hợp lệ.");
+    }
+  });
   data.modes.forEach(mode => {
-    if (!mode.id || !mode.title || !Array.isArray(mode.pairs) || mode.pairs.length < MEMORY_PAIRS_PER_ROUND) {
-      throw new Error(`Chế độ ${mode.title || "không tên"} cần ít nhất ${MEMORY_PAIRS_PER_ROUND} cặp dữ liệu.`);
+    if (!mode.id || !mode.title || !Array.isArray(mode.pairs) || mode.pairs.length < maximumPairCount) {
+      throw new Error(`Chế độ ${mode.title || "không tên"} cần ít nhất ${maximumPairCount} cặp dữ liệu.`);
     }
     const ids = new Set();
     mode.pairs.forEach(pair => {
@@ -1856,7 +1876,7 @@ function renderMemoryMatchHome() {
     const symbol = makeElement("span", "memory-mode-symbol", icons[mode.id] || "✦");
     const title = makeElement("strong", "", mode.title);
     const description = makeElement("span", "", mode.description || "Match the related cards.");
-    const count = makeElement("span", "pill pink", `${mode.pairs.length} pairs · ${MEMORY_PAIRS_PER_ROUND} per round`);
+    const count = makeElement("span", "pill pink", `${mode.pairs.length} pairs in bank · 4 / 8 / 12 per round`);
     button.append(symbol, title, description, count);
     grid.appendChild(button);
   });
@@ -1878,7 +1898,7 @@ function selectMemoryMode(modeId) {
   $("#memory-match-result").classList.add("hidden");
   $("#memory-match-difficulty").classList.remove("hidden");
   $("#memory-selected-mode-title").textContent = mode.title;
-  $("#memory-selected-mode-description").textContent = `${mode.description || "Find all matching pairs."} ${mode.pairs.length} cặp trong kho dữ liệu; mỗi lượt chọn ngẫu nhiên ${MEMORY_PAIRS_PER_ROUND} cặp.`;
+  $("#memory-selected-mode-description").textContent = `${mode.description || "Find all matching pairs."} Kho có ${mode.pairs.length} cặp; Easy chọn 4, Medium 8, Hard 12 cặp. Mỗi lượt có 140 giây.`;
   renderMemoryDifficultyOptions();
   showPage("memory-match", "home");
 }
@@ -1886,9 +1906,7 @@ function selectMemoryMode(modeId) {
 function renderMemoryDifficultyOptions() {
   const container = $("#memory-difficulty-grid");
   container.replaceChildren();
-  const difficulties = Array.isArray(state.memoryData?.difficulty) && state.memoryData.difficulty.length
-    ? state.memoryData.difficulty
-    : MEMORY_DIFFICULTY_FALLBACK;
+  const difficulties = getMemoryDifficultyOptions();
   difficulties.forEach(difficulty => {
     const button = makeElement("button", "memory-difficulty-card");
     button.type = "button";
@@ -1896,7 +1914,7 @@ function renderMemoryDifficultyOptions() {
     button.dataset.difficultyId = difficulty.id;
     button.append(
       makeElement("strong", "", difficulty.title),
-      makeElement("span", "", difficulty.description || `${difficulty.seconds} seconds`)
+      makeElement("span", "", difficulty.description || `${getMemoryPairCount(difficulty)} pairs · 140 seconds`)
     );
     container.appendChild(button);
   });
@@ -1904,26 +1922,28 @@ function renderMemoryDifficultyOptions() {
 
 function startMemoryMatch(difficultyId) {
   const mode = state.memoryData?.modes.find(item => item.id === state.memorySelectedModeId);
-  const difficulties = state.memoryData?.difficulty || MEMORY_DIFFICULTY_FALLBACK;
+  const difficulties = getMemoryDifficultyOptions();
   const difficulty = difficulties.find(item => item.id === difficultyId);
   if (!mode || !difficulty) return showToast("Không thể bắt đầu trò chơi. Vui lòng chọn lại chế độ.");
-  if (mode.pairs.length < MEMORY_PAIRS_PER_ROUND) return showToast(`Chế độ này cần ít nhất ${MEMORY_PAIRS_PER_ROUND} cặp từ.`);
+  const pairCount = getMemoryPairCount(difficulty);
+  if (mode.pairs.length < pairCount) return showToast(`Chế độ này cần ít nhất ${pairCount} cặp từ.`);
 
   clearMemoryTimers();
-  const selectedPairs = shuffleItems(mode.pairs).slice(0, MEMORY_PAIRS_PER_ROUND);
+  const selectedPairs = shuffleItems(mode.pairs).slice(0, pairCount);
   const cards = [];
   selectedPairs.forEach(pair => {
     cards.push({ cardId: `${pair.id}-left`, pairId: pair.id, side: "left", text: pair.left, pair });
     cards.push({ cardId: `${pair.id}-right`, pairId: pair.id, side: "right", text: pair.right, pair });
   });
 
-  const seconds = Number(difficulty.seconds) || 100;
+  const seconds = MEMORY_SECONDS_PER_ROUND;
   state.memoryLastSetup = { modeId: mode.id, difficultyId: difficulty.id };
   state.memoryGame = {
     modeId: mode.id,
     modeTitle: mode.title,
     difficultyId: difficulty.id,
     difficultyTitle: difficulty.title,
+    pairCount,
     seconds,
     deadline: Date.now() + seconds * 1000,
     startedAt: Date.now(),
@@ -1978,7 +1998,7 @@ function renderMemoryBoard() {
 function updateMemoryStats() {
   const game = state.memoryGame;
   if (!game) return;
-  $("#memory-matched-count").textContent = `${game.matchedPairIds.size} / ${MEMORY_PAIRS_PER_ROUND}`;
+  $("#memory-matched-count").textContent = `${game.matchedPairIds.size} / ${game.pairCount}`;
   $("#memory-moves-count").textContent = String(game.moves);
 }
 
@@ -2043,7 +2063,7 @@ function flipMemoryCard(cardId) {
     renderMemoryBoard();
     updateMemoryStats();
     showMemoryFeedback(first.pair, true);
-    if (game.matchedPairIds.size === MEMORY_PAIRS_PER_ROUND) {
+    if (game.matchedPairIds.size === game.pairCount) {
       state.memoryFinishTimerId = window.setTimeout(() => finishMemoryMatch("completed"), 850);
     }
   } else {
@@ -2081,7 +2101,7 @@ function finishMemoryMatch(reason) {
     modeId: game.modeId,
     difficultyId: game.difficultyId,
     pairsMatched: matched,
-    totalPairs: MEMORY_PAIRS_PER_ROUND,
+    totalPairs: game.pairCount,
     moves: game.moves,
     mismatches: game.mismatches,
     timeLeft,
@@ -2102,9 +2122,9 @@ function finishMemoryMatch(reason) {
   $("#memory-result-icon").textContent = completed ? "🏆" : "✦";
   $("#memory-result-title").textContent = completed ? "All pairs found!" : "Time's up!";
   $("#memory-result-copy").textContent = completed
-    ? `Bạn đã ghép đủ 16 cặp trong chế độ ${game.modeTitle}.`
-    : `Bạn đã ghép được ${matched} trên 16 cặp. Thử lại để cải thiện nhé!`;
-  $("#memory-result-pairs").textContent = `${matched} / ${MEMORY_PAIRS_PER_ROUND} pairs`;
+    ? `Bạn đã ghép đủ ${game.pairCount} cặp trong chế độ ${game.modeTitle} (${game.difficultyTitle}).`
+    : `Bạn đã ghép được ${matched} trên ${game.pairCount} cặp. Thử lại để cải thiện nhé!`;
+  $("#memory-result-pairs").textContent = `${matched} / ${game.pairCount} pairs`;
   $("#memory-result-caption").textContent = completed ? "Completed before the timer ended" : "Matched pairs before time ran out";
   $("#memory-result-moves").textContent = String(game.moves);
   $("#memory-result-time").textContent = formatClock(timeLeft);
